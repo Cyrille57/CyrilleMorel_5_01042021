@@ -1,0 +1,21 @@
+// utils:
+@import "./utils/variable_overrides";
+@import "./utils/variables";
+@import "./utils/functions";
+@import "./utils/mixins";
+@import "./utils/placeholders";
+// vendors:
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+// base:
+@import "./base/fonts.scss";
+// components:
+@import "./components/buttons.scss";
+// layout:
+@import "./layout/general.scss";
+@import "./layout/navbar.scss";
+@import "./layout/jumbotron.scss";
+// pages:
+@import "./pages/index.scss"
+// themes:
+
+
