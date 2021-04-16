@@ -1,3 +1,4 @@
+
 ///////////////////////////////////////////////////////////
 //////////////////// Fonction de base: ////////////////////
 ///////////////////////////////////////////////////////////
@@ -8,10 +9,10 @@
  *  et récupére les données:
  */
 
+
 // Déclaration des variables:
-
-
 const url = "http://localhost:3000/api/teddies";
+
 
 async function connect(url) {
 
@@ -23,10 +24,12 @@ async function connect(url) {
       if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
 
         // Envoie terminé et contenu bien recue et convertit en Json:
-        let result = JSON.parse(this.responseText)
+        var result = JSON.parse(this.responseText)
+        //console.log(result)
 
         // envoie le result a la fonction display:
         display(result)
+        //console.log(display)
 
       } else if (this.readyState == XMLHttpRequest.DONE && this.status == 404) {
         console.log("Erreur 404")
@@ -44,7 +47,6 @@ async function connect(url) {
   connect(url)
 
 
-
 /**
  * Fonction qui crées les balises
  */
@@ -58,3 +60,9 @@ function createTag(tag) {
 function addClass(name, classe) {
     return name.classList.add(classe)
   }
+
+
+
+
+
+
