@@ -91,7 +91,6 @@ async function displayProduct(result2) {
 
     //Selectionne l'id parent:
     let main = document.querySelector('main')
-    console.log(main)
 
     /**
      * Création des éléments de base enfants:
@@ -99,17 +98,14 @@ async function displayProduct(result2) {
     // Container:
     let divContainer = createTag('div')
     addClass(divContainer, 'container')
-    console.log(divContainer)
 
     // Row:
     let divRow = createTag('div')
     addClass(divRow, 'row')
-    console.log(divRow)
 
     // Col-12
     let divCol = createTag('div')
     addClass(divCol, 'col-12')
-    console.log(divCol)
 
     /**
      * Création de la box qui vas contenir le produit:
@@ -117,13 +113,10 @@ async function displayProduct(result2) {
     // Box:
     let divBox = createTag('div')
     addClass(divBox, 'box')
-    console.log(divBox)
 
     // BoxProduct
     let divBoxProduct = createTag('div')
     addClass(divBoxProduct, 'box__product')
-    console.log(divBoxProduct)
-
 
     /**
      * Création des éléments de la box :
@@ -132,13 +125,11 @@ async function displayProduct(result2) {
     let divCard = createTag('div')
     addClass(divCard, 'card')
     addClass(divCard, 'text-center')
-    console.log(divCard)
 
     // Card-body:
     let divCardBody = createTag('div')
     addClass(divCardBody, 'card-body')
     addClass(divCardBody, 'card-body-product')
-    console.log(divCardBody)
 
     /**
      * Partie gauche de la box:
@@ -146,32 +137,72 @@ async function displayProduct(result2) {
     // PictureBox:
     let divPictureBox = createTag('div')
     addClass(divPictureBox, 'picture-box')
-    console.log(divPictureBox)
-
-    // CardHeaderPicture:
-    //let divCardHeaderPicture = createTag('div')
-    //addClass(divCardHeaderPicture, 'card-header')
-    //console.log(divCardHeaderPicture)
 
     // PictureProduct:
     let divPictureProduct = createTag('img')
     addClass(divPictureProduct, 'picture__product')
-    console.log(divPictureProduct )
-    divPictureProduct.src = result2.imageUrl
-    console.log(divPictureProduct.src)
-    divPictureProduct.alt = 'Image de nounours de la gamme Orinoco'
-    console.log(divPictureProduct.alt)
 
+    // Récupére l'imageUrl
+    divPictureProduct.src = result2.imageUrl
+    // Alt de l'image:
+    divPictureProduct.alt = 'Image de nounours de la gamme Orinoco'
+
+    // ColorTitle
+    let divColorTitle = createTag('div')
+    addClass(divColorTitle, 'color__title')
+    divColorTitle.innerHTML = "Choix des couleurs:"
 
     // PictureColor:
     let divPictureColor = createTag('div')
     addClass(divPictureColor, 'picture__color')
-    console.log(divPictureColor )
+
+    // Color:
+    let divColor = createTag('div')
+    addClass(divColor, 'color')
+
+    // Choice:
+    let divChoice = createTag('div')
+    addClass(divChoice, 'choice')
+
+    // Recupére l'objet colors:
+    let colors = result2.colors
+
+    for (var i = 0; i < colors.length; i++) {
+
+        // Création du divColorChoice:
+        let divColorChoice = createTag('a')
+        addClass(divColorChoice, 'color--choice')
+
+        divColorChoice.setAttribute("href", "#")
+        divColorChoice.setAttribute("data-toggle", "tooltip")
+        divColorChoice.setAttribute("data-placement", "bottom")
+        divColorChoice.setAttribute("title", colors[i])
+        divColorChoice.appendChild = ""
+
+        // Récupére les couleurs une a une:
+        let selectColors = colors[i]
+
+        // Convertit dark et pale brown et met le background adéquate:
+        switch (selectColors) {
+            case 'Dark brown':
+                divColorChoice.style.backgroundColor = "#341c02"
+                break;
+            case 'Pale brown':
+                divColorChoice.style.backgroundColor = "#755847"
+                break;
+            default:
+                divColorChoice.style.backgroundColor = colors[i]
+        }
+
+        //divPictureColor.appendChild(divColorTitle)
+        divChoice.appendChild(divColorChoice)
+        //divColorChoice.innerHTML = selectColors
+
+    }
 
     // Séparation:
     let divSeparation = createTag('div')
     addClass(divSeparation, 'separation')
-    console.log(divSeparation)
 
     /**
      * Partie droite de la box:
@@ -179,59 +210,52 @@ async function displayProduct(result2) {
     // DescritionBox:
     let divDescriptionBox = createTag('div')
     addClass(divDescriptionBox, 'description-box')
-    console.log(divDescriptionBox)
 
     // CardHeaderDescription:
     let divCardHeaderDescription = createTag('div')
     addClass(divCardHeaderDescription, 'card-header')
-    console.log(divCardHeaderDescription)
 
     // DescriptionTitle
     let divDescriptionTitle = createTag('h3')
     addClass(divDescriptionTitle, 'description__title')
-    console.log(divDescriptionTitle)
-
 
     // DescriptionProduct:
     let divDescriptionProduct = createTag('p')
     addClass(divDescriptionProduct, 'description__product')
-    console.log(divDescriptionProduct)
-
 
     // DescriptionPrice:
     let divDescriptionPrice = createTag('p')
     addClass(divDescriptionPrice, 'description__price')
-    console.log(divDescriptionPrice)
-
 
     // CardFooter:
     let divCardFooter = createTag('div')
     addClass(divCardFooter, 'card-footer')
-    console.log(divCardFooter)
+    addClass(divCardFooter, 'card-footer--height')
 
     // ButtonBox:
     let divButtonBox = createTag('div')
     addClass(divButtonBox, 'button-box')
-    console.log(divButtonBox)
 
     // a:
     let divA = createTag('a')
     addClass(divA, 'btn')
+    addClass(divA, 'panier')
     addClass(divA, 'rounded-pill')
     addClass(divA, 'btn-dark')
     addClass(divA, 'btn-lg')
     addClass(divA, 'mb-2')
     divA.textContent = "Ajouter au panier"
     divA.setAttribute("href", "../panier.html")
-    console.log(divA)
+    
 
     // Ajoute la reponse trouvé dans l'objet:
     divDescriptionTitle.innerHTML = result2.name
     console.log(divDescriptionTitle.innerHTML)
     divDescriptionProduct.innerHTML = result2.description
     console.log(divDescriptionProduct.innerHTML)
-    divDescriptionPrice.innerHTML = result2.price
+    divDescriptionPrice.innerHTML = result2.price + "€"
     console.log(divDescriptionPrice.innerHTML)
+
 
 
     // Ajout des élément de base:
@@ -246,9 +270,14 @@ async function displayProduct(result2) {
     divCard.appendChild(divCardBody)
 
     divCardBody.appendChild(divPictureBox)
-    //divPictureBox.appendChild(divCardHeaderPicture)
     divPictureBox.appendChild(divPictureProduct)
+
     divPictureBox.appendChild(divPictureColor)
+    divPictureColor.appendChild(divColor)
+    divPictureColor.appendChild(divChoice)
+    divColor.appendChild(divColorTitle)
+
+
 
     divCardBody.appendChild(divSeparation)
 
@@ -259,8 +288,13 @@ async function displayProduct(result2) {
     divDescriptionBox.appendChild(divDescriptionPrice)
     divDescriptionBox.appendChild(divCardFooter)
 
-    divCardFooter .appendChild(divButtonBox)
+    divCardFooter.appendChild(divButtonBox)
     divButtonBox.appendChild(divA)
+
+
+
+
+
 
 }
 

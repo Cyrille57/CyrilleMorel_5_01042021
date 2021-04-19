@@ -2,7 +2,10 @@
 // **************** Card *****************
 // ***************************************
 
-
+.jumbotron-title{
+    font-size: 2em;
+    text-align: center;
+}
 .box{
     width: auto;
     height: auto;
@@ -19,7 +22,10 @@
 
         display: flex;
         justify-content: space-around;
+        align-content: center;
         flex-wrap: wrap;
+
+        box-shadow: -1px 2px 10px 3px #e9ecef inset;
     }
 }
 

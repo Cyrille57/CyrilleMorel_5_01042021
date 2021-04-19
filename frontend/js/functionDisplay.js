@@ -13,8 +13,19 @@ async function display(result) {
   let main = document.querySelector('main')
 
   /**
-   * Création des éléments enfants:
+   * Création des éléments de base enfants:
    */
+   // Container:
+   let divContainer = createTag('div')
+   addClass(divContainer, 'container')
+
+   // Row:
+   let divRow = createTag('div')
+   addClass(divRow, 'row')
+
+   // Col-12
+   let divCol = createTag('div')
+   addClass(divCol, 'col-12')
 
   // Box:
   let box = createTag('div')
@@ -135,7 +146,7 @@ async function display(result) {
     divCardPicture.innerHTML = result[i].imageurl
     divCarteTitle.innerHTML = result[i].name
     pCarteDescription.innerHTML = result[i].description
-    price.innerHTML = result[i].price
+    price.innerHTML = result[i].price + "€"
     //console.log(result)
 
     /**
@@ -143,7 +154,11 @@ async function display(result) {
      */
 
     // Ajout des élément de base:
-    main.appendChild(box)
+    main.appendChild(divContainer)
+    divContainer.appendChild(divRow)
+    divRow.appendChild(divCol)
+
+    divCol.appendChild(box)
     box.appendChild(boxCarte)
     boxCarte.appendChild(divCarte)
     divCarte.appendChild(divCarteTurned)
