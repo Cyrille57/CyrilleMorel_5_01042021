@@ -18,8 +18,12 @@ const getIdUrl = window.location.search;
  *  Purge getIdUrl de ?id= et recupere uniquement l'id
  *  avec la méthode .slice:
  */
-const getId = getIdUrl.slice(4);
-//console.log(getId)
+// Analyser les paramètres de la chaîne de requête:
+const getUrlParams = new URLSearchParams(getIdUrl);
+
+// retournera la première valeur associée au paramètre de recherche donné:
+const getId = getUrlParams.get('id')
+console.log(getId)
 // réponse : xxxxxxxxx
 
 
@@ -62,11 +66,11 @@ async function connect2(urlProduct) {
             var result2 = JSON.parse(this.responseText);
             //console.log(result2);
 
-            // envoie le result a la fonction display:
+            // envoie le result2 a la fonction displayProduct:
             displayProduct(result2);
             //console.log(displayProduct)
-        } else if (this.readyState == XMLHttpRequest.DONE && this.status == 404) {
-            console.log("Erreur 404");
+        } else if (this.readyState == XMLHttpRequest.DONE && this.status == 500) {
+            console.log("Erreur 500");
         }
     };
 
@@ -76,7 +80,7 @@ async function connect2(urlProduct) {
     // Envoie la requête:
     xhr.send();
 }
-connect2();
+
 
 
 ///////////////////////////////////////////////////////////
@@ -87,7 +91,7 @@ connect2();
 
 
 async function displayProduct(result2) {
-    console.log(result2)
+    //console.log(result2)
 
     //Selectionne l'id parent:
     let main = document.querySelector('main')
@@ -119,7 +123,7 @@ async function displayProduct(result2) {
     addClass(divBoxProduct, 'box__product')
 
     /**
-     * Création des éléments de la box :
+     * Création de la carte produit:
      */
     // Card:
     let divCard = createTag('div')
@@ -194,10 +198,7 @@ async function displayProduct(result2) {
                 divColorChoice.style.backgroundColor = colors[i]
         }
 
-        //divPictureColor.appendChild(divColorTitle)
         divChoice.appendChild(divColorChoice)
-        //divColorChoice.innerHTML = selectColors
-
     }
 
     // Séparation:
@@ -243,44 +244,42 @@ async function displayProduct(result2) {
     addClass(divA, 'rounded-pill')
     addClass(divA, 'btn-dark')
     addClass(divA, 'btn-lg')
-    addClass(divA, 'mb-2')
     divA.textContent = "Ajouter au panier"
     divA.setAttribute("href", "../panier.html")
-    
+    console.log(divA)
 
     // Ajoute la reponse trouvé dans l'objet:
     divDescriptionTitle.innerHTML = result2.name
-    console.log(divDescriptionTitle.innerHTML)
     divDescriptionProduct.innerHTML = result2.description
-    console.log(divDescriptionProduct.innerHTML)
     divDescriptionPrice.innerHTML = result2.price + "€"
-    console.log(divDescriptionPrice.innerHTML)
-
-
 
     // Ajout des élément de base:
     main.appendChild(divContainer)
     divContainer.appendChild(divRow)
     divRow.appendChild(divCol)
 
+    // Ajout de la box qui vas contenir le produit:
     divCol.appendChild(divBox)
     divBox.appendChild(divBoxProduct)
 
+    // Ajout de la carte produit:
     divBoxProduct.appendChild(divCard)
     divCard.appendChild(divCardBody)
 
+    // Ajout de la partie gauche de la box:
     divCardBody.appendChild(divPictureBox)
     divPictureBox.appendChild(divPictureProduct)
 
+    // Ajout de la partie choix de couleur:
     divPictureBox.appendChild(divPictureColor)
     divPictureColor.appendChild(divColor)
     divPictureColor.appendChild(divChoice)
     divColor.appendChild(divColorTitle)
 
-
-
+    // Ajout de la séparation:
     divCardBody.appendChild(divSeparation)
 
+    // // Ajout de la partie droite de la box:
     divCardBody.appendChild(divDescriptionBox)
     divDescriptionBox.appendChild(divCardHeaderDescription)
     divDescriptionBox.appendChild(divDescriptionTitle)
@@ -288,15 +287,25 @@ async function displayProduct(result2) {
     divDescriptionBox.appendChild(divDescriptionPrice)
     divDescriptionBox.appendChild(divCardFooter)
 
+    // Ajout du bouton:
     divCardFooter.appendChild(divButtonBox)
     divButtonBox.appendChild(divA)
 
+    /**
+     * Récupération des donneés de l'article selectionné par le client
+     * et création de l'objet du produit:
+     */
+    let objectProduct = {
+        amountProduct: 1,
+        idProduct: result2._id,
+    }
 
-
-
-
+    console.log(objectProduct)
+    sendCaddy(objectProduct)
 
 }
+
+
 
 
 

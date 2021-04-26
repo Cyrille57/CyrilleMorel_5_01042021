@@ -1,6 +1,10 @@
+h2{
+    margin-top: 10%;
+}
+
 .box__product {
     width: auto;
-    margin-top: 3%;
+    margin-top: 5%;
 
     border: 1px solid #e9ecef;
 
@@ -13,7 +17,7 @@
 }
 
 .card {
-    height: 500px;
+    height: 450px;
     width: 90%;
     margin: 5%;
 
@@ -132,6 +136,10 @@
 
 .card-footer--height {
     height: 55px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
 
     @media screen and (max-width: 480px) {
         height: 65px;
@@ -139,23 +147,33 @@
 }
 
 .button-box {
+
+    width: 80%;
+
     @media screen and (max-width: 480px) {
+        width: 100%;
         font-size: 0.8em;
         display: flex;
         justify-content: center;
         align-items: center;
+        border: 1px solid blue;
     }
 
+    
     @media screen and (min-width: 480px) and (max-width: 1000px) {
 
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
     }
+ 
 }
 
 .panier {
     width: 70%;
+    padding-bottom: 0%;
+    font-size: 1em;
 
     @media screen and (max-width: 480px) {
         font-size: 1em;
@@ -182,4 +200,15 @@
         align-items: center;
     }
 
+    @media screen and (min-width: 1000px){
+        height: 40px;
+    }
+
+    &:nth-child(1){
+        padding-bottom: 5%;
+
+        @media screen and (min-width: 480px) and (max-width: 767px){
+
+        }
+    }
 }

@@ -31,8 +31,8 @@ async function connect(url) {
         display(result)
         //console.log(display)
 
-      } else if (this.readyState == XMLHttpRequest.DONE && this.status == 404) {
-        console.log("Erreur 404")
+      } else if (this.readyState == XMLHttpRequest.DONE && this.status == 500) {
+        console.log("Erreur 500")
       }
     }
 
