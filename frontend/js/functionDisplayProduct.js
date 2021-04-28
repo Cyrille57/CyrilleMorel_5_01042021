@@ -1,9 +1,9 @@
 ///////////////////////////////////////////////////////////
-/// Fonction pour afficher le produit sur product.html: ///
+////////// Afficher le produit sur product.html: //////////
 ///////////////////////////////////////////////////////////
 
 
-///////////////////////////////////////////////////////////
+// 1) ////////////////////////////////////////////////////////
 /**
  * Récupére l'id de l'url
  * avec la propriété .search de window.location:
@@ -13,10 +13,10 @@ const getIdUrl = window.location.search;
 // réponse : ?id=XXXXXXXX
 
 
-///////////////////////////////////////////////////////////
+// 2) /////////////////////////////////////////////////////////
 /**
  *  Purge getIdUrl de ?id= et recupere uniquement l'id
- *  avec la méthode .slice:
+ *  avec la méthode getUrlParams:
  */
 // Analyser les paramètres de la chaîne de requête:
 const getUrlParams = new URLSearchParams(getIdUrl);
@@ -27,7 +27,7 @@ console.log(getId)
 // réponse : xxxxxxxxx
 
 
-///////////////////////////////////////////////////////////
+// 3) /////////////////////////////////////////////////////////
 /**
  * Fonction qui concaténe l'url de l'API
  * avec l'id récupéré et filtré
@@ -43,11 +43,12 @@ async function assemblyId(getId) {
     // reponse http://localhost:3000/api/teddies/5beaaa8f1c9d440000a57d95
 
     connect2(urlProduct);
+
 }
 assemblyId(getId);
 
 
-///////////////////////////////////////////////////////////
+// 4) /////////////////////////////////////////////////////////
 /**
  * Fonction XMLHttpRequest qui se connecte avec l'url précédent
  *  et récupére les données:
@@ -71,6 +72,7 @@ async function connect2(urlProduct) {
             //console.log(displayProduct)
         } else if (this.readyState == XMLHttpRequest.DONE && this.status == 500) {
             console.log("Erreur 500");
+            window.location.href = '../page404.html'
         }
     };
 
@@ -83,7 +85,7 @@ async function connect2(urlProduct) {
 
 
 
-///////////////////////////////////////////////////////////
+// 5) ////////////////////////////////////////////////////////
 /**
  * Fonction qui affiche les données
  * par rapport a l'id du produit:
@@ -93,9 +95,11 @@ async function connect2(urlProduct) {
 async function displayProduct(result2) {
     //console.log(result2)
 
+    ///////////////////////////////////////////////////////////
     //Selectionne l'id parent:
     let main = document.querySelector('main')
 
+    ///////////////////////////////////////////////////////////
     /**
      * Création des éléments de base enfants:
      */
@@ -111,6 +115,7 @@ async function displayProduct(result2) {
     let divCol = createTag('div')
     addClass(divCol, 'col-12')
 
+    ///////////////////////////////////////////////////////////
     /**
      * Création de la box qui vas contenir le produit:
      */
@@ -122,6 +127,7 @@ async function displayProduct(result2) {
     let divBoxProduct = createTag('div')
     addClass(divBoxProduct, 'box__product')
 
+    ///////////////////////////////////////////////////////////
     /**
      * Création de la carte produit:
      */
@@ -304,111 +310,3 @@ async function displayProduct(result2) {
     sendCaddy(objectProduct)
 
 }
-
-
-
-
-
-
-
-/*
-    async function connect2(urlProduct) {
-        console.log(urlProduct)
-
-        // Creer un nouvel objet Ajax de type XMLHttpRequest:
-        let xhr = new XMLHttpRequest()
-
-        // Détecte de la requête:
-        xhr.onreadystatechange = function () {
-          if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-
-            // Envoie terminé et contenu bien recue et convertit en Json:
-            var result2 = JSON.parse(this.responseText)
-            console.log(result2)
-
-            // envoie le result a la fonction display:
-            displayProduct(result2)
-            //console.log(displayProduct)
-
-          } else if (this.readyState == XMLHttpRequest.DONE && this.status == 404) {
-            console.log("Erreur 404")
-          }
-        }
-
-        // Ouvre la connexion en précisant la méthode:
-        xhr.open("GET", urlProduct, true)
-
-        // Envoie la requête:
-        xhr.send()
-    }
-
-      //console.log(result)
-      connect2(urlProduct)
-
-
-
-async function displayProduct (product) {
-    console.log(product)
-}
-
-
-    async function affiche (product){
-        console.log(product)
-    let main = document.querySelector('main')
-    let box = createTag('h3')
-    main.appendChild(box)
-
-    /*
-    for (var i = 0; i < result.length; i++){
-    box.innerHTML = product[i].name
-    }
-    */
-
-
-
-//console.log(response)
-//console.log(result)
-//console.log(getId)
-
-//console.log(getId)
-
-//let response = fetch('http://localhost:3000/api/teddies?id='+ getId)
-//console.log(response)
-/*
-function essai(getId) {
-    let main = document.querySelector('main')
-    let box = createTag('h3')
-    main.appendChild(box)
-    for (var i = 0; i < getId.length; i++) {
-
-        box.innerHTML = getId.name
-    }
-}
-
-console.log(box)
-
-box.innerHTML = getId.name
-console.log(getId.name)
-*/
-/*
-function displayProduct(result) {
-    //Selectionne l'id parent:
-    main = document.querySelector('main')
-
-    //Création des éléments enfants:
-
-    // Box:
-    box = createTag('div')
-    addClass(box, 'box')
-
-
-    box.innerHTML = getId[i].name
-    console.log(getId)
-
-    main.appendChild(box)
-    console.log(result)
-}
-
-
-displayProduct()
-*/

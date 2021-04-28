@@ -1,31 +1,76 @@
 ///////////////////////////////////////////////////////////
-/// Fonction pour afficher les produits sur index.html: ///
+////////// Afficher les produits sur index.html: //////////
 ///////////////////////////////////////////////////////////
 
 
+// 1) ////////////////////////////////////////////////////////
+/**
+ * Fonction XMLHttpRequest qui se connecte
+ * et récupére les données:
+ */
+
+// Déclaration des variables:
+const url = "http://localhost:3000/api/teddies";
 
 
+async function connect(url) {
 
-async function display(result) {
+  // Creer un nouvel objet Ajax de type XMLHttpRequest:
+  let xhr = new XMLHttpRequest()
 
-  console.log(result)
+  // Détecte de la requête:
+  xhr.onreadystatechange = function () {
+    if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+
+      // Envoie terminé et contenu bien recue et convertit en Json:
+      var result = JSON.parse(this.responseText)
+      //console.log(result)
+
+      // envoie le result a la fonction display:
+      displayAll(result)
+      //console.log(display)
+
+    } else if (this.readyState == XMLHttpRequest.DONE && this.status == 500) {
+      console.log("Erreur 500")
+    }
+  }
+
+  // Ouvre la connexion en précisant la méthode:
+  xhr.open("GET", url, true)
+
+  // Envoie la requête:
+  xhr.send()
+}
+
+//console.log(result)
+connect(url)
+
+// 2) ////////////////////////////////////////////////////////
+/**
+ * Fonction qui affiche les produit:
+ */
+
+async function displayAll(result) {
+  //console.log(result)
+
   //Selectionne l'id parent:
   let main = document.querySelector('main')
 
+  ///////////////////////////////////////////////////////////
   /**
    * Création des éléments de base enfants:
    */
-   // Container:
-   let divContainer = createTag('div')
-   addClass(divContainer, 'container')
+  // Container:
+  let divContainer = createTag('div')
+  addClass(divContainer, 'container')
 
-   // Row:
-   let divRow = createTag('div')
-   addClass(divRow, 'row')
+  // Row:
+  let divRow = createTag('div')
+  addClass(divRow, 'row')
 
-   // Col-12
-   let divCol = createTag('div')
-   addClass(divCol, 'col-12')
+  // Col-12
+  let divCol = createTag('div')
+  addClass(divCol, 'col-12')
 
   // Box:
   let box = createTag('div')
@@ -35,9 +80,11 @@ async function display(result) {
   let boxCarte = createTag('div')
   addClass(boxCarte, 'box__carte')
 
+  ///////////////////////////////////////////////////////////
   // Boucle qui parcour result:
   for (var i = 0; i < result.length; i++) {
 
+    ///////////////////////////////////////////////////////////
     /**
      * Création des éléments enfants a chaque tour du tableau:
      */
@@ -54,6 +101,7 @@ async function display(result) {
     let divCarteFront = createTag('label')
     addClass(divCarteFront, 'carte__front')
 
+    ///////////////////////////////////////////////////////////
     /**
      * Intérieur du Front:
      */
@@ -78,6 +126,7 @@ async function display(result) {
     addClass(divCarteBack, 'text-center')
     addClass(divCarteBack, 'bg-gradient')
 
+    ///////////////////////////////////////////////////////////
     /**
      * Intérieur du Back:
      */
@@ -90,6 +139,7 @@ async function display(result) {
     let divCarteBody = createTag('div')
     addClass(divCarteBody, 'card-body')
 
+    ///////////////////////////////////////////////////////////
     /**
      * Intérieur de Card-body:
      */
@@ -112,6 +162,7 @@ async function display(result) {
     let carteFooter = createTag('div')
     addClass(carteFooter, 'card-footer')
 
+    ///////////////////////////////////////////////////////////
     /**
      * Intérieur de CardFooter:
      */
@@ -123,7 +174,7 @@ async function display(result) {
     addClass(button, 'btn-dark')
     button.textContent = "En savoir plus"
 
-
+    ///////////////////////////////////////////////////////////
     //Récupére l'id pour le mettre dans le href:
     let id = result[i]._id
     //console.log(id)
@@ -131,17 +182,8 @@ async function display(result) {
     button.setAttribute("href", "../../frontend/product.html?id=" + id)
     //console.log(id)
 
-    /**
-     * Intérieur du Button:
-     */
 
-    // Icone:
-    /*
-      icone = createTag('i');
-      addClass(icone, 'fas')
-      addClass(icone, 'fa-shopping-cart')
-    */
-
+    ///////////////////////////////////////////////////////////
     // Ajoute la reponse trouvé de la boucle result:
     divCardPicture.innerHTML = result[i].imageurl
     divCarteTitle.innerHTML = result[i].name
@@ -149,6 +191,7 @@ async function display(result) {
     price.innerHTML = result[i].price + "€"
     //console.log(result)
 
+    ///////////////////////////////////////////////////////////
     /**
      * Ajout des élément dans le index.html
      */

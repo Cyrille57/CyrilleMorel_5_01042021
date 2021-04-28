@@ -3,6 +3,7 @@
 ///////////////////////////////////////////////////////////
 
 
+// 1) /////////////////////////////////////////////////////////
 /**
  * Fonction pour ajouter au panier:
  */
@@ -18,7 +19,7 @@ function sendCaddy(objectProduct) {
         event.preventDefault();
 
 
-        ///////////////////////////////////////////////////////////
+        // 2) /////////////////////////////////////////////////////////
         // fonction pour afficher une pop up de confirmation:
         const popConfirmation = () => {
             if (window.confirm(
@@ -30,7 +31,7 @@ function sendCaddy(objectProduct) {
         }
 
 
-        ///////////////////////////////////////////////////////////
+        // 3) /////////////////////////////////////////////////////////
         // Fonction pour ajouté un produit selectionné dans le localstorage:
         const addProduct = () => {
             // Pousse l'objet produit dans le tableau:
@@ -40,11 +41,10 @@ function sendCaddy(objectProduct) {
         }
 
 
-        ///////////////////////////////////////////////////////////
+        // 4) /////////////////////////////////////////////////////////
         /**
          * Local Storage
          */
-
         // Initialise de variable pour mettre les clef et values qui vont etre présent dans localstorage,
         // et recupéré product en format javascript:
         let productLocalStorage = JSON.parse(localStorage.getItem("product"))
