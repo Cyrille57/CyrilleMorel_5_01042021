@@ -93,7 +93,7 @@ async function connect2(urlProduct) {
 
 
 async function displayProduct(result2) {
-    //console.log(result2)
+    console.log(result2)
 
     ///////////////////////////////////////////////////////////
     //Selectionne l'id parent:
