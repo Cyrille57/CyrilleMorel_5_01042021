@@ -48,6 +48,7 @@ function sendCaddy(objectProduct) {
         // Initialise de variable pour mettre les clef et values qui vont etre présent dans localstorage,
         // et recupéré product en format javascript:
         let productLocalStorage = JSON.parse(localStorage.getItem("product"))
+        
 
         // Verifie si déja un article ou non dans le local strorage:
         if (productLocalStorage) {
