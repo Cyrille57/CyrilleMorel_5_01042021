@@ -245,14 +245,7 @@ async function takeProductInPanier(urlProduct) {
     // Border top:
     divCol.appendChild(divBorderTop)
 
-///////////////////////////////////////////////////////////
-// Pied de la carte: //////////////////////////////////////
-    // Div Back to shop:
-    divCol.appendChild(divBackShop)
-    // Lien fléché Back to shop:
-    divBackShop.appendChild(linkBackShop)
-    // Texte Back to shop:
-    divBackShop.appendChild(textBackShop)
+
 
 ///////////////////////////////////////////////////////////
 // Récapitulatif: /////////////////////////////////////////
@@ -386,7 +379,7 @@ function displayPanier(productData) {
     // Image:
     divCol2.appendChild(img)
 
-   // Col Titre du produit:
+    // Col Titre du produit:
     divRowMain.appendChild(divColTitleProduct)
     // Titre du produit:
     divColTitleProduct.appendChild(divTitleProduct)
@@ -402,6 +395,79 @@ function displayPanier(productData) {
     divRowMain.appendChild(divPrice)
     // Delete:
     divRowMain.appendChild(deleteProduct)
+
+    ///////////////////////////////////////////////////////////
+    // Pied de la carte: //////////////////////////////////////
+    // Div Back to shop:
+    divCol.appendChild(divBackShop)
+    // Lien fléché Back to shop:
+    divBackShop.appendChild(linkBackShop)
+    // Texte Back to shop:
+    divBackShop.appendChild(textBackShop)
+
+
+    ///////////////////////////////////////////////////////////
+    // Ajoute ou diminue la quantité: /////////////////////////
+
+    function modifyValue() {
+
+      //Selectionne et ecoute le boutton -:
+      let buttonLess = document.getElementById('less')
+      console.log(buttonLess)
+      buttonLess.addEventListener('click', () => {
+
+          // Récupére la valeur de l'element et l'initialise:
+          let getValue = document.getElementById('amount').value
+
+              --getValue
+
+          if (getValue >= 0) {
+              // Modifie la valeur de l'element:
+              getValue = document.getElementById('amount').value = getValue
+              modifyPrice(getValue)
+          }
+
+      })
+
+      //Selectionne et ecoute le boutton +:
+      let buttonMore = document.getElementById('more')
+      console.log(buttonMore)
+      buttonMore.addEventListener('click', () => {
+
+          // Récupére la valeur de l'element et l'initialise:
+          let getValue = document.getElementById('amount').value
+
+              ++getValue
+
+          // Modifie la valeur de l'element:
+          getValue = document.getElementById('amount').value = getValue
+          modifyPrice(getValue)
+      })
+    }
+    modifyValue()
+
+
+    ///////////////////////////////////////////////////////////
+    // Modifie le prix en fonction de la quantité: ////////////
+
+        function modifyPrice(getValue = 1) {
+          console.log(getValue)
+
+          // Selectionne le prix:
+          let getPrice = document.getElementById("price")
+          console.log(getPrice)
+
+          let price = getPrice.innerHTML = 50
+          console.log(price)
+
+          // Multiplie la quantité par le prix:
+          let result = getValue * price
+          console.log(result)
+
+          // Affiche le resultat de la multiplication:
+          getPrice.innerHTML = result + "€"
+    }
+    modifyPrice()
 
   }
 
