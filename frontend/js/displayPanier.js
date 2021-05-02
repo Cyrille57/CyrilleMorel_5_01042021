@@ -6,7 +6,7 @@
 // 1) ////////////////////////////////////////////////////////
 // Récupére les produit dans localStorager: //////////////////
 let productLocalStorage = JSON.parse(localStorage.getItem("product"))
-console.log(productLocalStorage)
+//console.log(productLocalStorage)
 //réponse : tableau des objets
 //console.log(productLocalStorage.length)
 //réponse : 3
@@ -58,7 +58,7 @@ async function takeProductInPanier(urlProduct) {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
             // Envoie terminé et contenu bien recue et convertit en Json:
             var productData = JSON.parse(this.responseText);
-            console.log(productData);
+            //console.log(productData);
 
             // envoie le productData a la fonction displayPanier:
             displayPanier(productData);
@@ -77,13 +77,13 @@ async function takeProductInPanier(urlProduct) {
 }
 
 // 5) ////////////////////////////////////////////////////////
-// Affichage des données /////////////////////////////////////
+// Affichage html /////////////////////////////////////
 
 ///////////////////////////////////////////////////////////
 // I) Création Panier: ////////////////////////////////////
     //Selectionne l'id parent:
     let main = document.querySelector('main')
-    console.log(main)
+    //console.log(main)
 
 ///////////////////////////////////////////////////////////
 // I) A) Création des éléments de base enfants: ///////////
@@ -138,75 +138,6 @@ async function takeProductInPanier(urlProduct) {
     addClass(divBorderTop, 'border-top')
 
 ///////////////////////////////////////////////////////////
-// I) C) Corps: ///////////////////////////////////////////
-    // Row Article:
-    let divRowArticle = createTag('div')
-    addClass(divRowArticle, "row")
-
-    // Row principale:
-    let divRowMain = createTag('div')
-    addClass(divRowMain, "row")
-     addClass(divRowMain, "main")
-      addClass(divRowMain, "align-items-center")
-       addClass(divRowMain, "border-bottom")
-
-    // Col Image:
-    let divCol2 = createTag('div')
-    addClass(divCol2, "col-2")
-
-    // Image:
-    let img = createTag('img')
-    addClass(img, "img-fluid")
-     addClass(img, "hidden-mobile")
-    // Récupére l'imageUrl
-    //img.src = productData.imageUrl
-     img.alt = 'Image du produit'
-      //console.log(productData.imageUrl)
-
-    // Col Titre du produit:
-    let divColTitleProduct = createTag('div')
-    addClass(divColTitleProduct, 'col')
-
-    // Titre du produit:
-    let divTitleProduct = createTag('div')
-    addClass(divTitleProduct, 'row')
-    //divTitleProduct.innerHTML = productData.name
-
-    // Div amount:
-    let divColAmount = createTag('div')
-    addClass(divColAmount, 'col')
-     divColAmount.setAttribute("style", " display:flex; ")
-
-    // Less:
-    let less = createTag('a')
-    less.setAttribute("id", "less")
-     less.setAttribute("href", "#")
-      less.innerHTML = "-"
-
-    // Input Amount:
-    let inputAmount = createTag('input')
-    addClass(inputAmount, 'text-center')
-     inputAmount.setAttribute("id", "amount")
-      inputAmount.setAttribute("value", "1")
-
-    // More:
-    let more = createTag('a')
-    more.setAttribute("id", "more")
-     more.setAttribute("href", "#")
-      more.innerHTML = "+"
-
-    //Div Price:
-    let divPrice = createTag('div')
-    addClass(divPrice, 'col')
-     divPrice.setAttribute("id", "price")
-     //divPrice.innerHTML = productData.price + "€"
-
-    // Delete:
-    let deleteProduct = createTag('span')
-    addClass(deleteProduct, 'close')
-     deleteProduct.innerHTML = "&#10005;"
-
-///////////////////////////////////////////////////////////
 // I) D) Pied de la carte: ////////////////////////////////
     // Div Back to shop:
     let divBackShop = createTag('div')
@@ -259,7 +190,6 @@ async function takeProductInPanier(urlProduct) {
     addClass(divPriceRecap, 'col')
      addClass(divPriceRecap, 'text-right')
       divPriceRecap.setAttribute("style", "margin-top: 5%;")
-       divPriceRecap.innerHTML = 55 + " €"
 
     // Div box total recap:
     let divBoxTotal = createTag('div')
@@ -310,10 +240,112 @@ async function takeProductInPanier(urlProduct) {
     divRowTitle.appendChild(divCountitem)
     // Border top:
     divCol.appendChild(divBorderTop)
+/*
+///////////////////////////////////////////////////////////
+// II) D) Pied de la carte: ///////////////////////////////
+    // Div Back to shop:
+    divCol.appendChild(divBackShop)
+    // Lien fléché Back to shop:
+    divBackShop.appendChild(linkBackShop)
+    // Texte Back to shop:
+    divBackShop.appendChild(textBackShop)
+*/
+///////////////////////////////////////////////////////////
+// II) E) Récapitulatif: //////////////////////////////////
+    // Box Récapitulatif:
+    divRow.appendChild(divBoxRecap)
+    // Div title récapitulatif:
+    divBoxRecap.appendChild(titleRecap)
+    // Strong title:
+    titleRecap.appendChild(titleStrongRecap)
+    // Trait recapitulatif:
+    divBoxRecap.appendChild(separationRecap)
+    // divBoxItemRecap:
+    divBoxRecap.appendChild(divBoxItemRecap)
+    // Div Item recapitulatif:
+    divBoxItemRecap.appendChild(divItemRecap)
+    // Price recapitulatif:
+    divBoxItemRecap.appendChild(divPriceRecap)
+    // Div box total recap:
+    divBoxRecap.appendChild(divBoxTotal)
+    // Div text price total:
+    divBoxTotal.appendChild(divTextPriceTotal)
+    // Div price total:
+    divBoxTotal.appendChild(divPriceTotal)
+    // button valider la commande:
+    divBoxRecap.appendChild(buttonConfirm)
 
 
-//////////////////////////////////////////////////////////
-// II) C) Corps: /////////////////////////////////////////
+
+
+function displayPanier(productData) {
+
+    ///////////////////////////////////////////////////////////
+    // I) C) Corps: ///////////////////////////////////////////
+    // Row Article:
+    let divRowArticle = createTag('div')
+    addClass(divRowArticle, "row")
+
+    // Row principale:
+    let divRowMain = createTag('div')
+    addClass(divRowMain, "row")
+     addClass(divRowMain, "main")
+      addClass(divRowMain, "align-items-center")
+       addClass(divRowMain, "border-bottom")
+
+    // Col Image:
+    let divCol2 = createTag('div')
+    addClass(divCol2, "col-2")
+
+    // Image:
+    let img = createTag('img')
+    addClass(img, "img-fluid")
+     addClass(img, "hidden-mobile")
+     img.alt = 'Image du produit'
+
+    // Col Titre du produit:
+    let divColTitleProduct = createTag('div')
+    addClass(divColTitleProduct, 'col')
+
+    // Titre du produit:
+    let divTitleProduct = createTag('div')
+    addClass(divTitleProduct, 'row')
+
+    // Div amount:
+    let divColAmount = createTag('div')
+    addClass(divColAmount, 'col')
+     divColAmount.setAttribute("style", " display:flex; ")
+
+    // Less:
+    let less = createTag('a')
+    less.setAttribute("id", "less")
+     less.setAttribute("href", "#")
+      less.innerHTML = "-"
+
+    // Input Amount:
+    let inputAmount = createTag('input')
+    addClass(inputAmount, 'text-center')
+     inputAmount.setAttribute("id", "amount")
+      inputAmount.setAttribute("value", "1")
+
+    // More:
+    let more = createTag('a')
+    more.setAttribute("id", "more")
+     more.setAttribute("href", "#")
+      more.innerHTML = "+"
+
+    //Div Price:
+    let divPrice = createTag('div')
+    addClass(divPrice, 'col')
+     divPrice.setAttribute("id", "price")
+
+    // Delete:
+    let deleteProduct = createTag('span')
+    addClass(deleteProduct, 'close')
+     deleteProduct.innerHTML = "&#10005;"
+
+    //////////////////////////////////////////////////////////
+    // II) C) Ajout Corps: ///////////////////////////////////
     // Row Article:
     divCol.appendChild(divRowArticle)
 
@@ -345,8 +377,9 @@ async function takeProductInPanier(urlProduct) {
     // Delete:
     divRowMain.appendChild(deleteProduct)
 
-///////////////////////////////////////////////////////////
-// II) D) Pied de la carte: ///////////////////////////////
+
+    ///////////////////////////////////////////////////////////
+    // II) D) Pied de la carte: ///////////////////////////////
     // Div Back to shop:
     divCol.appendChild(divBackShop)
     // Lien fléché Back to shop:
@@ -354,62 +387,51 @@ async function takeProductInPanier(urlProduct) {
     // Texte Back to shop:
     divBackShop.appendChild(textBackShop)
 
-///////////////////////////////////////////////////////////
-// II) E) Récapitulatif: //////////////////////////////////
-    // Box Récapitulatif:
-    divRow.appendChild(divBoxRecap)
-    // Div title récapitulatif:
-    divBoxRecap.appendChild(titleRecap)
-    // Strong title:
-    titleRecap.appendChild(titleStrongRecap)
-    // Trait recapitulatif:
-    divBoxRecap.appendChild(separationRecap)
-    // divBoxItemRecap:
-    divBoxRecap.appendChild(divBoxItemRecap)
-    // Div Item recapitulatif:
-    divBoxItemRecap.appendChild(divItemRecap)
-    // Price recapitulatif:
-    divBoxItemRecap.appendChild(divPriceRecap)
-    // Div box total recap:
-    divBoxRecap.appendChild(divBoxTotal)
-    // Div text price total:
-    divBoxTotal.appendChild(divTextPriceTotal)
-    // Div price total:
-    divBoxTotal.appendChild(divPriceTotal)
-    // button valider la commande:
-    divBoxRecap.appendChild(buttonConfirm)
+    //////////////////////////////////////////////////////////
+    // III) Récupére et affiche les données: /////////////////
+    // Récupére l'imageUrl
+    img.src = productData.imageUrl
+     //console.log(productData.imageUrl)
 
-///////////////////////////////////////////////////////////
-// Ajoute ou diminue la quantité: /////////////////////////
+    // Récupére le titre du produit:
+    divTitleProduct.innerHTML = productData.name
+     //console.log(productData.name)
+
+    //Récupére le prix du produit:
+    divPrice.innerHTML = productData.price + " €"
+
+    ///////////////////////////////////////////////////////////
+    // Ajoute ou diminue la quantité: /////////////////////////
 
     function modifyValue() {
-     // Selectionne le boutton -:
-     let buttonLess = document.getElementById('less')
-     console.log(buttonLess)
 
-     // Ecoute le boutton -:
-     buttonLess.addEventListener('click', () => {
+        // Selectionne le boutton -:
+        let buttonLess = document.getElementById('less')
+        console.log(buttonLess)
 
-        // Récupére la valeur de l'element et l'initialise:
+        // Ecoute le boutton -:
+         buttonLess.addEventListener('click', () => {
+
+         // Récupére la valeur de l'element et l'initialise:
          let getValue = document.getElementById('amount').value
          console.log(getValue)
 
          --getValue
 
          if (getValue >= 0) {
-             // Modifie la valeur de l'element:
-             getValue = document.getElementById('amount').value = getValue
-             modifyPrice(getValue)
-            }
-
+            // Modifie la valeur de l'element:
+            getValue = document.getElementById('amount').value = getValue
+            modifyPrice(getValue)
+            console.log(getValue)
+           }
         })
 
-     //Selectionne le boutton +:
-     let buttonMore = document.getElementById('more')
-     console.log(buttonMore)
+        //Selectionne le boutton +:
+        let buttonMore = document.getElementById('more')
+        console.log(buttonMore)
 
-     // Ecoute le boutton +:
-     buttonMore.addEventListener('click', () => {
+        // Ecoute le boutton +:
+        buttonMore.addEventListener('click', () => {
 
         // Récupére la valeur de l'element et l'initialise:
         let getValue = document.getElementById('amount').value
@@ -418,35 +440,13 @@ async function takeProductInPanier(urlProduct) {
 
         // Modifie la valeur de l'element:
         getValue = document.getElementById('amount').value = getValue
-        modifyPrice(getValue)
+        //modifyPrice(getValue)
         })
-    }
-    modifyValue()
+   }
+   modifyValue()
 
-
-function displayPanier(productData) {
-
-    //for ( i=0; i<productData.length; i++){
-
-        //console.log(productData.length)
-   // Récupére l'imageUrl
-    img.src = productData.imageUrl
-     //console.log(productData.imageUrl)
-
-   // Récupére le titre du produit:
-    divTitleProduct.innerHTML = productData.name
-     //console.log(productData.name)
-
-    //Récupére le prix du produit:
-    divPrice.innerHTML = productData.price + " €"
-
-   // }
-
-
-
-}
-
-    ///////////////////////////////////////////////////////////
+/*
+   ///////////////////////////////////////////////////////////
 // Modifie le prix en fonction de la quantité: ////////////
 
 function modifyPrice(getValue = 1 ) {
@@ -456,7 +456,7 @@ function modifyPrice(getValue = 1 ) {
     let getPrice = document.getElementById("price")
     console.log(getPrice)
 
-    //let price = getPrice.innerHTML = productData.price + "€"
+    let price = getPrice.innerHTML = productData.price + "€"
     //console.log(price)
 
     // Multiplie la quantité par le prix:
@@ -467,3 +467,75 @@ function modifyPrice(getValue = 1 ) {
     getPrice.innerHTML = result + "€"
 }
 modifyPrice()
+*/
+
+}
+
+/*
+///////////////////////////////////////////////////////////
+// Ajoute ou diminue la quantité: /////////////////////////
+
+    function modifyValue() {
+
+        // Selectionne le boutton -:
+        let buttonLess = document.getElementById('less')
+        console.log(buttonLess)
+
+        // Ecoute le boutton -:
+         buttonLess.addEventListener('click', () => {
+
+         // Récupére la valeur de l'element et l'initialise:
+         let getValue = document.getElementById('amount').value
+         console.log(getValue)
+
+         --getValue
+
+         if (getValue >= 0) {
+            // Modifie la valeur de l'element:
+            getValue = document.getElementById('amount').value = getValue
+            modifyPrice(getValue)
+           }
+        })
+
+        //Selectionne le boutton +:
+        let buttonMore = document.getElementById('more')
+        console.log(buttonMore)
+
+        // Ecoute le boutton +:
+        buttonMore.addEventListener('click', () => {
+
+        // Récupére la valeur de l'element et l'initialise:
+        let getValue = document.getElementById('amount').value
+
+        ++getValue
+
+        // Modifie la valeur de l'element:
+        getValue = document.getElementById('amount').value = getValue
+        modifyPrice(getValue)
+        })
+   }
+   modifyValue()
+
+
+///////////////////////////////////////////////////////////
+// Modifie le prix en fonction de la quantité: ////////////
+
+    function modifyPrice(getValue = 1 ) {
+        console.log(getValue)
+
+        // Selectionne le prix:
+        let getPrice = document.getElementById("price")
+        console.log(getPrice)
+
+        let price = getPrice.innerHTML = productData.price + "€"
+        //console.log(price)
+
+        // Multiplie la quantité par le prix:
+        let result = getValue * price
+        console.log(result)
+
+        // Affiche le resultat de la multiplication:
+        getPrice.innerHTML = result + "€"
+}
+modifyPrice()
+*/
