@@ -30,7 +30,6 @@ function sendCaddy(objectProduct) {
             }
         }
 
-
         // 3) /////////////////////////////////////////////////////////
         // Fonction pour ajouté un produit selectionné dans le localstorage:
         const addProduct = () => {
@@ -39,7 +38,6 @@ function sendCaddy(objectProduct) {
             // Envoie dans local storage avec la méthode setItem dans le format json:
             localStorage.setItem("product", JSON.stringify(productLocalStorage))
         }
-
 
         // 4) /////////////////////////////////////////////////////////
         /**
