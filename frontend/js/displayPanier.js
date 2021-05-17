@@ -14,7 +14,7 @@ console.log(productLocalStorage.length)
 //console.log(productLocalStorage.length)
 //réponse : 3
 
-
+let productData = ''
 
 // 2) ////////////////////////////////////////////////////////
 // Récupére l'id un a un: ////////////////////////////////////
@@ -23,12 +23,11 @@ function getId (productLocalStorage) {
     for (var i = 0; i < productLocalStorage.length; i++) {
 
         let idProductPanier = productLocalStorage[i].idProduct
-        //console.log(idProductPanier)
+        console.log(idProductPanier)
         // Réponse 1 seul id par produit
         assemblyId(idProductPanier)
-
+        
     }
-
 }
 getId (productLocalStorage)
 
@@ -63,11 +62,12 @@ async function takeProductInPanier(urlProduct) {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
             // Envoie terminé et contenu bien recue et convertit en Json:
             var productData = JSON.parse(this.responseText);
-            console.log(productData);
+            //console.log(productData);
 
             // envoie le productData a la fonction displayPanier:
             displayPanier(productData)
             countArticle (productData)
+            totalPrice (productData)
 
             //console.log(displayPanier)
         } else if (this.readyState == XMLHttpRequest.DONE && this.status == 500) {
@@ -182,17 +182,17 @@ async function takeProductInPanier(urlProduct) {
 
     // lien delete all:
     let linkDeleteAll = createTag('a')
-    addClass(linkDeleteAll, 'linkDeleteAll')
+    linkDeleteAll.setAttribute("id", "linkDeleteAll")
     linkDeleteAll.setAttribute("href", "#")
     linkDeleteAll.innerHTML= "&#8634;"
 
-    // Supprimer tout le panier:
-    let textDeleteAll = createTag('a')
+    // Texte supprimer tout le panier:
+    let textDeleteAll = createTag('span')
     addClass(textDeleteAll, 'textDelete')
     addClass(textDeleteAll, 'text-muted')
-    textDeleteAll.setAttribute("href", "#")
     textDeleteAll.innerHTML = "Vider le panier"
 
+    
 
 ///////////////////////////////////////////////////////////
 // I) E) Récapitulatif: ***********************************
@@ -461,6 +461,7 @@ function displayPanier(productData) {
     // texte delete all:
     boxDeleteAll.appendChild(textDeleteAll)
 
+
     //////////////////////////////////////////////////////////
     // I) E) Récupére et affiche les données: ****************
     // Récupére l'imageUrl
@@ -469,11 +470,11 @@ function displayPanier(productData) {
 
     // Récupére le titre du produit:
     divTitleProduct.innerHTML = productData.name
-     //console.log(productData.name)
+    //console.log(productData.name)
 
     //Récupére le prix du produit:
     divPrice.innerHTML = productData.price + " €"
-    console.log(divPrice.innerHTML)
+    //console.log(divPrice.innerHTML)
 
 ///////////////////////////////////////////////////////////
 // Ecoute les +,- et * : //////////////////////////////////
@@ -492,7 +493,6 @@ function displayPanier(productData) {
            // Envoie idProduct et getValue à la fonction modifyPrice:
            modifyPrice(idProduct,getValue)
            countArticle (getValue)
-           
 
            // Envoie idProduct à la fonction deleteProduct:
            //deleteProduct(idProduct)
@@ -501,7 +501,7 @@ function displayPanier(productData) {
 
         // Ecoute le boutton +:
         more.addEventListener('click', (event) => {
-            //console.log(event)
+            console.log(event)
             // Cible l'id du more utilisé:
             let idProduct = event.target.getAttribute('data-idproduct')
             console.log(idProduct)
@@ -517,7 +517,7 @@ function displayPanier(productData) {
 
         // Ecoute le boutton delete:
         deleteProduct.addEventListener('click', (event) => {
-
+            console.log(event)
             // Cible l'id du delete utilisé:
             let idDelete = event.target.getAttribute('data-iddelete')
             console.log(idDelete)
@@ -526,6 +526,19 @@ function displayPanier(productData) {
             // Envoie idDelete (l'id) aux fonctions:
             deleteRowProduct(idDelete)
             deleteProductLocalStorage(idDelete)
+        })
+
+        // Ecoute le boutton vider le panier:
+        let clearAllProduct = document.getElementById('linkDeleteAll')
+        clearAllProduct.addEventListener('click', (event) => {
+            console.log(event)
+            event.preventDefault
+            // Vide le localStorage avec .removeItem:
+            localStorage.removeItem('product')
+            // Recharge la page:
+            document.location.reload()
+            // ou si rediriger vers une page no produits:
+            // window.location.href = "./"
         })
 }
 
@@ -624,7 +637,6 @@ function deleteProductLocalStorage (idDelete) {
 }
 
 
-
 // 2) /////////////////////////////////////////////////////////
 // Affiche le nombre d'article: ///////////////////////////////
 
@@ -635,19 +647,19 @@ function countArticle (getValue) {
     let numberRecap = document.getElementById("numberArticle")
     //console.log(numberRecap)
 
-    console.log(getValue)
-    console.log(productLocalStorage)
-    console.log(productLocalStorage.lenght)
+    //console.log(getValue)
+    //console.log(productLocalStorage)
+    //console.log(productLocalStorage.lenght)
 
     let nbProductLocalStorage = productLocalStorage.length
-    console.log(nbProductLocalStorage)
+    //console.log(nbProductLocalStorage)
 
     //********************************************************** */
     //*********************** EN COURS ************************* */
     //********************************************************** */
     // Sélectionne tout les input amount :
     let getValueAmount = document.querySelectorAll('[data-inputamount]')
-    console.log(getValueAmount)
+    //console.log(getValueAmount)
     // Convertit getValueAmount en tableau:
     //let getValueAmountInTab = Array.from(getValueAmount)
     //console.log(getValueAmountInTab)
@@ -682,20 +694,44 @@ countArticle ()
 ///////////////////////////////////////////////////////////
 // Prix total: ////////////
 
+// Crér un tableau:
+let pushPriceTab = []
+
 // Selectionne le prix:
-function totalPrice (){
+function totalPrice (productData){
+    //console.log(productLocalStorage)
+    console.log(productData)
+    console.log(productData.price)
+    console.log(typeof(productData.price))
+
+    // Pousse les objet dans un tableau
+    pushPriceTab.push(productData)
+
+    // Crér un tableau:
+    let getPriceInTab = []
+
+    // Récupére le prix de chaque objet:
+    for (let i = 0; i<pushPriceTab.length; i++){
+        getPriceInTab.push(pushPriceTab[i].price)
+        console.log(getPriceInTab)
+    }
+
+    // Additionne avec la méthode .reduce:
+    const reducer = (accumulator, currentValue) => accumulator + currentValue
+    const totalPrice = getPriceInTab.reduce(reducer, 0)
+    console.log(typeof(totalPrice))
 
     // Sélectionne la div ou le total vas s'afficher:
     let sommeTotale = document.getElementById("total")
     //console.log(sommeTotale)
 
-    // Sélectionne les div price:
-   let getPrice = document.querySelectorAll('.price')
-   console.log(getPrice)
-   // Répoonse une NodeList avec mes div price
+    // Affiche le résultat sur la page html:
+    sommeTotale.innerHTML = totalPrice
+
+}
+totalPrice (productData)
 
 
-   //let price = "price_" + productData._id.length
 
 /*
    for (let entry of getPrice.entries()) {
@@ -754,8 +790,7 @@ function totalPrice (){
 
    }
 */
-}
-totalPrice ()
+
 
 
 
