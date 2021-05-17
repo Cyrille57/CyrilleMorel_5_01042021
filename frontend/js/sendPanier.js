@@ -7,7 +7,7 @@
 /**
  * Fonction pour ajouter au panier:
  */
-function sendCaddy(objectProduct) {
+function sendCaddy(idProduct) {
 
     // Selectionne le bouton envoyer au panier:
     let btn_panier = document.querySelector("a.btn")
@@ -17,7 +17,6 @@ function sendCaddy(objectProduct) {
 
         // Annule l'action par défaut:
         event.preventDefault();
-
 
         // 2) /////////////////////////////////////////////////////////
         // fonction pour afficher une pop up de confirmation:
@@ -33,8 +32,8 @@ function sendCaddy(objectProduct) {
         // 3) /////////////////////////////////////////////////////////
         // Fonction pour ajouté un produit selectionné dans le localstorage:
         const addProduct = () => {
-            // Pousse l'objet produit dans le tableau:
-            productLocalStorage.push(objectProduct)
+            productLocalStorage = verificationIdProductLocalStorage(idProduct, productLocalStorage)
+            
             // Envoie dans local storage avec la méthode setItem dans le format json:
             localStorage.setItem("product", JSON.stringify(productLocalStorage))
         }
@@ -46,7 +45,6 @@ function sendCaddy(objectProduct) {
         // Initialise de variable pour mettre les clef et values qui vont etre présent dans localstorage,
         // et recupéré product en format javascript:
         let productLocalStorage = JSON.parse(localStorage.getItem("product"))
-        
 
         // Verifie si déja un article ou non dans le local strorage:
         if (productLocalStorage) {
@@ -59,4 +57,24 @@ function sendCaddy(objectProduct) {
             popConfirmation()
         }
     })
+}
+
+function verificationIdProductLocalStorage (idProduct, productLocalStorage) {
+
+    var removeIndex = productLocalStorage.map(function(item) { return item.idProduct; }).indexOf(idProduct);
+    if (removeIndex > 0){
+        console.log(removeIndex)
+    }else{
+        let objectProduct = {
+
+            quantityProduct: 1,
+            idProduct: idProduct,
+
+        }
+        // Pousse l'objet produit dans le tableau:
+        productLocalStorage.push(objectProduct)
+
+        return productLocalStorage
+    }
+
 }

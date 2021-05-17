@@ -1,16 +1,703 @@
+// ***************************************
+// ************ Panier.html **************
+// ***************************************
 
+// Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+
+    }
+
+// Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    }
+
+// Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+
+    }
+
+// Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+
+    }
+
+
+//////////////////////////////////////////
+/////////////// En téte //////////////////
+header {
+    margin-bottom: 10%;
+}
 .logo {
     width: 6em;
 }
 
-input {
-    width: 27%;
+//////////////////////////////////////////
+/////////// Elément enfant ///////////////
+
+.divCardPanier{
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        width: 80% !important;
+    }
+
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+        width: 60% !important;
+    }
 }
+.divRow{
+    width: 100%;
+}
+#parentCardProduct{
+    width: 100%;
+
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        width: 30%;
+    }
+
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+        width: 30%;
+    }
+}
+//////////////////////////////////////////
+//// Element commun panier/formulaire ////
+
+.card {
+    height: auto;
+    width: 90%;
+    margin: auto;
+
+    margin-top: 5%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /*box-shadow: -1px 2px 10px 3px #e9ecef ;*/
+    border-radius: 1rem;
+    border: transparent;
+
+    @media(max-width:767px) {
+        .card {
+            margin: 3vh auto
+        }
+    }
+}
+
+.cart {
+    height: 100%;
+    width: 90%;
+    margin-top: 0%;
+    background-color: #fff;
+    padding: 4vh 5vh;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+
+    @media(max-width:767px) {
+        .cart {
+            padding: 4vh;
+            border-bottom-left-radius: unset;
+            border-top-right-radius: 1rem
+        }
+    }
+}
+
+
+//////////////////////////////////////////
+////////// En tete de la carte ///////////
+
+.title {
+    margin-bottom: 3vh;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+        display: flex;
+        justify-content: center;
+    }
+
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    }
+
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+
+    }
+
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+
+    }
+
+
+}
+//////////////////////////////////////////
+//////////////// Corps ///////////////////
+
+.divRowArticle{
+    display: flex;
+    justify-content: center;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+        
+    }
+
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    }
+
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+
+    }
+
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+
+    }
+}
+.main{
+
+        // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+        }
+    
+        // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+    
+        // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            width: 100%;
+            display: flex;
+        }
+    
+        // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+            width: 100%;
+            display: flex;
+        }
+}
+// ***************************************
+// images:
+.col-2{
+    padding: 0 1vh
+}
+img {
+    width: 3.5rem;
+}
+.hidden-mobile {
+    visibility: hidden;
+}
+
+@media screen and (min-width: 768px) {
+    .hidden-mobile {
+        visibility: visible
+    }
+}
+
+// ***************************************
+// Box title product and more,amount,less:
+.boxTitleAmount{
+    display: flex;
+    justify-content: center;
+
+                // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+                @media only screen and (min-width: 768px) and (max-width: 1024px) {
+                    width: 45%;
+                    display: flex;
+                    justify-content: center;
+                }
+                // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+                @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+                    width: 40%;
+                }
+            
+                // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+                @media only screen and (min-width: 1600px) {
+                    width: 40%;
+                }
+}
+.modifyWidth{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        padding: 0%;
+    }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        
+    }
+
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+        
+    }
+}
+#title{
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#less, #more{
+    color: #925df7
+}
+a {
+    padding: 0 1vh
+}
+.inputAmount {
+    width: 27%;
+    height: 28px;
+
+     
+}
+#delete{
+    color: #d88635;
+
+                // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+                @media only screen and (min-width: 480px) and (max-width: 768px) {
+
+                }
+            
+                // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+                @media only screen and (min-width: 768px) and (max-width: 1024px) {
+                    margin: 0% !important;
+                }
+            
+                // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+                @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+                    
+                }
+            
+                // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+                @media only screen and (min-width: 1600px) {
+                    
+                }
+}
+
+// ***************************************
+// Box price delete:
+.boxPriceDelete{
+    width: 100%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    display: flex;
+    justify-content: center;
+
+            // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+            @media only screen and (min-width: 480px) and (max-width: 768px) {
+
+            }
+        
+            // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+            @media only screen and (min-width: 768px) and (max-width: 1024px) {
+                width: 30%;
+
+            }
+        
+            // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        
+            @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+                width: 40%;
+            }
+        
+            // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+            @media only screen and (min-width: 1600px) {
+                width: 40%;
+            }
+}
+
+.price{
+    max-width: 50% !important;
+    display: flex;
+    justify-content: center;
+
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        padding: 0%;
+    }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        
+    }
+
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+        
+    }
+}
+// ***************************************
+// delete:
+#delete{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    font-size: 0.7rem;
+
+                // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+                @media only screen and (min-width: 768px) and (max-width: 1024px) {
+                    width: 20%;
+                    display: flex;
+                    justify-content: center;
+                }
+}
+
+//////////////////////////////////////////
+/////////// Pied de la carte /////////////
+.back-to-shop{
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.linkBackShop {
+    color: #925df7;
+}
+.linkDeleteAll{
+    color: #d88635;
+
+}
+.textDelete{
+    padding: 0%;
+    margin-top: 5%;
+}
+
+//////////////////////////////////////////
+//////////// Récapitulatif ///////////////
+
+.summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*background-color: #e9ecef;*/
+    background: linear-gradient(124deg, rgba(220, 136, 43, 1) 0%, rgba(143, 91, 254, 1) 100%) 30;
+    ;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 2vh;
+    /*color: rgb(65, 65, 65)*/
+    color: #fff;
+
+
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+        border-top-right-radius: unset;
+        border-bottom-left-radius: 1rem;
+
+    }
+
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        border-top-right-radius: 1rem;
+        border-bottom-left-radius: 0rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        border-top-right-radius: 1rem;
+        border-bottom-left-radius: 0rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+        border-top-right-radius: 1rem;
+        border-bottom-left-radius: 0rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+}
+
+.summary .col-2 {
+    padding: 0
+}
+
+.summary .col-10 {
+    padding: 0
+}
+
+hr {
+    width: 100%;
+    margin-top: 1.25rem;
+    margin-bottom: 0%;
+    background-color: #fff;
+}
+
+.divBoxItemRecap{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+}
+
 #numberArticle{
-    width: 240px;
+    width: 100%;
+    margin-top: 5%;
     text-align: center;
 }
 
+.divBoxTotal{
+    width: 100%;
+    padding: 2vh 0;
+    border-top: 1px solid #fff;
+}
+.divTextPriceTotal{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+#total{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start
+}
+.btnConfirmation{
+    margin-top: 10%;
+}
+
+//////////////////////////////////////////
+////////////// Formulaire ////////////////
+
+.section--modify {
+    padding-top: 50%;
+}
+
+.box-form{
+    width: 100%;
+    height: 800px;
+    margin-bottom: 20%;
+
+    margin-top: 5%;
+
+    border: 1px solid #e9ecef;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+
+    box-shadow: -1px 2px 10px 3px #e9ecef inset;
+
+        // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+        
+
+        }
+    
+        // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            height: 650px;
+            margin-bottom: 10%;
+            display: flex;
+            justify-content: center;
+        }
+    
+        // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            height: 650px;
+            margin-bottom: 10%;
+            display: flex;
+            justify-content: center;
+        }
+    
+        // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+            height: 650px;
+            margin-bottom: 10%;
+            display: flex;
+            justify-content: center;
+        }
+}
+.divCard{
+    width: 90%;
+    border-top: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+        
+
+    }
+
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        margin-top: 0%;
+    }
+
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        margin-top: 0%;
+    }
+
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+        margin-top: 0%;
+    }
+}
+
+form {
+    padding: 2vh 0
+}
+
+.row--modify {
+    width: 100%;
+    height: 700px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+        
+
+    }
+
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        height: 550px;
+    }
+
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        height: 550px;
+    }
+
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+        height: 550px;
+    }
+}
+
+.cart--modify {
+    height: 650px;
+    margin-top: 1%;
+    padding: 1%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+        // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+        
+
+        }
+    
+        // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            height: 500px;
+        }
+    
+        // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            height: 500px;
+        }
+    
+        // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+            height: 500px;
+        }
+}
+
+#formValidation{
+    height: 650px;
+    padding-bottom: 0%;
+    display: flex;
+    flex-direction: column;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+        
+
+    }
+
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        height: 500px;
+    }
+
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        height: 500px;
+    }
+
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+        height: 500px;
+    }
+}
+.form-row{
+    height: auto;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+.divFormGroupLocation{
+
+}
+.divFormGroupzip{
+    margin-bottom: 20%;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+        margin-bottom: 15%;
+    }
+
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        margin-bottom: 3%;
+    }
+
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        margin-bottom: 2.3%;
+    }
+
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+        margin-bottom: 2%;
+    }
+}
 
 
 @keyframes appearanceForm {
@@ -23,7 +710,6 @@ input {
 }
 #animation{
     opacity: 0%;
-    
 }
 .runAnimation{
     animation-name: appearanceForm;
@@ -32,3 +718,39 @@ input {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
 }
+
+.boxSubmit{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#buttonSubmit {
+    width: 80% !important;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+        width: 60% !important;
+    }
+
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        width: 40% !important;
+        margin-top: 5%;
+    }
+
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        width: 40% !important;
+        margin-top: 5%;
+    }
+
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+        width: 40% !important;
+        margin-top: 5%;
+    }
+
+}
+
+

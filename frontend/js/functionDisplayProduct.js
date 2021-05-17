@@ -106,6 +106,7 @@ async function displayProduct(result2) {
     // Container:
     let divContainer = createTag('div')
     addClass(divContainer, 'container')
+    addClass(divContainer, 'containerCardProduct')
 
     // Row:
     let divRow = createTag('div')
@@ -133,6 +134,7 @@ async function displayProduct(result2) {
      */
     // Card:
     let divCard = createTag('div')
+    divCard.setAttribute("id", "divCardIndex")
     addClass(divCard, 'card')
     addClass(divCard, 'text-center')
 
@@ -301,12 +303,12 @@ async function displayProduct(result2) {
      * Récupération des donneés de l'article selectionné par le client
      * et création de l'objet du produit:
      */
-    let objectProduct = {
-        amountProduct: 1,
-        idProduct: result2._id,
-    }
+    
 
-    console.log(objectProduct)
-    sendCaddy(objectProduct)
+
+
+
+    sendCaddy(result2._id)
 
 }
+

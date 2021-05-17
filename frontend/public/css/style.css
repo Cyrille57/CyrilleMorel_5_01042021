@@ -10071,19 +10071,132 @@ i {
   margin-bottom: 3%;
 }
 
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  header {
+    margin-bottom: 5% !important;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  header {
+    margin-bottom: 5% !important;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  header {
+    margin-bottom: 5% !important;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .titleH2Index {
+    margin-top: 0%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .titleH2Index {
+    margin-top: 0%;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .titleH2Index {
+    margin-top: 0%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .titleH2Index {
+    margin-top: 0%;
+  }
+}
+
 h2 {
   margin-top: 10%;
 }
 
+.containerCardProduct {
+  width: 90%;
+}
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .containerCardProduct {
+    max-width: 700px;
+  }
+}
 .box__product {
   width: auto;
+  height: 800px;
   margin-top: 5%;
+  margin-bottom: 20%;
   border: 1px solid #e9ecef;
   display: flex;
   justify-content: space-around;
   align-content: center;
   flex-wrap: wrap;
   box-shadow: -1px 2px 10px 3px #e9ecef inset;
+}
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .box__product {
+    height: 600px;
+    width: 100%;
+    margin: 0% !important;
+    margin-bottom: 20% !important;
+    display: flex;
+    justify-content: center;
+    border: 1px solid red;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .box__product {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5% !important;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .box__product {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5% !important;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .box__product {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5% !important;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  #divCardIndex {
+    width: 95%;
+    height: 500px;
+    margin: 0%;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #divCardIndex {
+    margin: 0%;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  #divCardIndex {
+    margin: 0%;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  #divCardIndex {
+    margin: 0%;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .card {
@@ -10266,17 +10379,531 @@ h2 {
 .panier:nth-child(1) {
   padding-bottom: 5%;
 }
+header {
+  margin-bottom: 10%;
+}
+
 .logo {
   width: 6em;
 }
 
-input {
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .divCardPanier {
+    width: 80% !important;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .divCardPanier {
+    width: 60% !important;
+  }
+}
+
+.divRow {
+  width: 100%;
+}
+
+#parentCardProduct {
+  width: 100%;
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  #parentCardProduct {
+    width: 30%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  #parentCardProduct {
+    width: 30%;
+  }
+}
+
+.card {
+  height: auto;
+  width: 90%;
+  margin: auto;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /*box-shadow: -1px 2px 10px 3px #e9ecef ;*/
+  border-radius: 1rem;
+  border: transparent;
+}
+@media (max-width: 767px) {
+  .card .card {
+    margin: 3vh auto;
+  }
+}
+
+.cart {
+  height: 100%;
+  width: 90%;
+  margin-top: 0%;
+  background-color: #fff;
+  padding: 4vh 5vh;
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+@media (max-width: 767px) {
+  .cart .cart {
+    padding: 4vh;
+    border-bottom-left-radius: unset;
+    border-top-right-radius: 1rem;
+  }
+}
+
+.title {
+  margin-bottom: 3vh;
+}
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .title {
+    display: flex;
+    justify-content: center;
+  }
+}
+.divRowArticle {
+  display: flex;
+  justify-content: center;
+}
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .main {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .main {
+    width: 100%;
+    display: flex;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .main {
+    width: 100%;
+    display: flex;
+  }
+}
+
+.col-2 {
+  padding: 0 1vh;
+}
+
+img {
+  width: 3.5rem;
+}
+
+.hidden-mobile {
+  visibility: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .hidden-mobile {
+    visibility: visible;
+  }
+}
+.boxTitleAmount {
+  display: flex;
+  justify-content: center;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .boxTitleAmount {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .boxTitleAmount {
+    width: 40%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .boxTitleAmount {
+    width: 40%;
+  }
+}
+
+.modifyWidth {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .modifyWidth {
+    padding: 0%;
+  }
+}
+#title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#less, #more {
+  color: #925df7;
+}
+
+a {
+  padding: 0 1vh;
+}
+
+.inputAmount {
   width: 27%;
+  height: 28px;
+}
+
+#delete {
+  color: #d88635;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #delete {
+    margin: 0% !important;
+  }
+}
+.boxPriceDelete {
+  width: 100%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  display: flex;
+  justify-content: center;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .boxPriceDelete {
+    width: 30%;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .boxPriceDelete {
+    width: 40%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .boxPriceDelete {
+    width: 40%;
+  }
+}
+
+.price {
+  max-width: 50% !important;
+  display: flex;
+  justify-content: center;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .price {
+    padding: 0%;
+  }
+}
+#delete {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  font-size: 0.7rem;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #delete {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.back-to-shop {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.linkBackShop {
+  color: #925df7;
+}
+
+.linkDeleteAll {
+  color: #d88635;
+}
+
+.textDelete {
+  padding: 0%;
+  margin-top: 5%;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*background-color: #e9ecef;*/
+  background: linear-gradient(124deg, #dc882b 0%, #8f5bfe 100%) 30;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding: 2vh;
+  /*color: rgb(65, 65, 65)*/
+  color: #fff;
+}
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .summary {
+    border-top-right-radius: unset;
+    border-bottom-left-radius: 1rem;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .summary {
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 0rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .summary {
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 0rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .summary {
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 0rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+
+.summary .col-2 {
+  padding: 0;
+}
+
+.summary .col-10 {
+  padding: 0;
+}
+
+hr {
+  width: 100%;
+  margin-top: 1.25rem;
+  margin-bottom: 0%;
+  background-color: #fff;
+}
+
+.divBoxItemRecap {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
 
 #numberArticle {
-  width: 240px;
+  width: 100%;
+  margin-top: 5%;
   text-align: center;
+}
+
+.divBoxTotal {
+  width: 100%;
+  padding: 2vh 0;
+  border-top: 1px solid #fff;
+}
+
+.divTextPriceTotal {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#total {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.btnConfirmation {
+  margin-top: 10%;
+}
+
+.section--modify {
+  padding-top: 50%;
+}
+
+.box-form {
+  width: 100%;
+  height: 800px;
+  margin-bottom: 20%;
+  margin-top: 5%;
+  border: 1px solid #e9ecef;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  box-shadow: -1px 2px 10px 3px #e9ecef inset;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .box-form {
+    height: 650px;
+    margin-bottom: 10%;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .box-form {
+    height: 650px;
+    margin-bottom: 10%;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .box-form {
+    height: 650px;
+    margin-bottom: 10%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.divCard {
+  width: 90%;
+  border-top: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .divCard {
+    margin-top: 0%;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .divCard {
+    margin-top: 0%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .divCard {
+    margin-top: 0%;
+  }
+}
+
+form {
+  padding: 2vh 0;
+}
+
+.row--modify {
+  width: 100%;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .row--modify {
+    height: 550px;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .row--modify {
+    height: 550px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .row--modify {
+    height: 550px;
+  }
+}
+
+.cart--modify {
+  height: 650px;
+  margin-top: 1%;
+  padding: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .cart--modify {
+    height: 500px;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .cart--modify {
+    height: 500px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .cart--modify {
+    height: 500px;
+  }
+}
+
+#formValidation {
+  height: 650px;
+  padding-bottom: 0%;
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #formValidation {
+    height: 500px;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  #formValidation {
+    height: 500px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  #formValidation {
+    height: 500px;
+  }
+}
+
+.form-row {
+  height: auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.divFormGroupzip {
+  margin-bottom: 20%;
+}
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .divFormGroupzip {
+    margin-bottom: 15%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .divFormGroupzip {
+    margin-bottom: 3%;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .divFormGroupzip {
+    margin-bottom: 2.3%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .divFormGroupzip {
+    margin-bottom: 2%;
+  }
 }
 
 @keyframes appearanceForm {
@@ -10297,6 +10924,39 @@ input {
   animation-duration: 1000ms;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+}
+
+.boxSubmit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#buttonSubmit {
+  width: 80% !important;
+}
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  #buttonSubmit {
+    width: 60% !important;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #buttonSubmit {
+    width: 40% !important;
+    margin-top: 5%;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  #buttonSubmit {
+    width: 40% !important;
+    margin-top: 5%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  #buttonSubmit {
+    width: 40% !important;
+    margin-top: 5%;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
