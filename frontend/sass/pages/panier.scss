@@ -142,12 +142,14 @@ header {
 //////////////// Corps ///////////////////
 
 .divRowArticle{
+    height: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 
     // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
     @media only screen and (min-width: 480px) and (max-width: 768px) {
-        
+
     }
 
     // Pour écrans entre 768px et 1024px (Tablette mode paysage)
@@ -167,38 +169,63 @@ header {
     }
 }
 .main{
+    width: 100%;
+    height: auto;
+    margin: 0%;
+    display: flex;
+    flex-direction: column;
 
         // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
         @media only screen and (min-width: 480px) and (max-width: 768px) {
             display: flex;
-            flex-direction: column;
-            margin: 0 auto;
+
         }
-    
         // Pour écrans entre 768px et 1024px (Tablette mode paysage)
         @media only screen and (min-width: 768px) and (max-width: 1024px) {
             width: 100%;
-            display: flex;
-            justify-content: space-around;
+            flex-direction: row;
+            justify-content: space-between;
         }
-    
+
         // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-    
         @media only screen and (min-width: 1024px) and (max-width: 1600px) {
             width: 100%;
-            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
         }
-    
+
         // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
         @media only screen and (min-width: 1600px) {
             width: 100%;
-            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
         }
 }
 // ***************************************
 // images:
 .col-2{
-    padding: 0 1vh
+    padding: 0;
+    display: flex;
+
+     // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+     @media only screen and (min-width: 480px) and (max-width: 768px) {
+
+    }
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        display: flex;
+        justify-content: center;
+    }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        display: flex;
+        justify-content: center;
+    }
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+        display: flex;
+        justify-content: center;
+    }
 }
 img {
     width: 3.5rem;
@@ -216,27 +243,41 @@ img {
 // ***************************************
 // Box title product and more,amount,less:
 .boxTitleAmount{
+    width: 100%;
+    margin-top: 3%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 
                 // Pour écrans entre 768px et 1024px (Tablette mode paysage)
                 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-                    width: 45%;
+                    width: 40%;
+                    margin-top: 0%;
                     display: flex;
                     justify-content: center;
+                    align-items: center;
                 }
                 // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
                 @media only screen and (min-width: 1024px) and (max-width: 1600px) {
                     width: 40%;
+                    margin-top: 0%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
                 }
             
                 // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
                 @media only screen and (min-width: 1600px) {
                     width: 40%;
+                    margin-top: 0%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
 }
 .modifyWidth{
     width: 50%;
+    padding: 0%;
     display: flex;
     justify-content: center;
 
@@ -246,17 +287,109 @@ img {
     }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
     @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-        
+
     }
 
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
     @media only screen and (min-width: 1600px) {
-        
+
     }
 }
 #title{
-    text-overflow: ellipsis;
-    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: medium;
+    
+    
+       // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+       @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        width: 100%;
+        padding: 0%;
+        margin: 0%;
+        display: flex;
+        justify-content: flex-start;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: medium;
+    }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        width: 100%;
+        padding: 0%;
+        margin: 0%;
+        display: flex;
+        justify-content: flex-start;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: medium;
+    }
+
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+        width: 100%;
+        padding: 0%;
+        margin: 0%;
+        display: flex;
+        justify-content: flex-start;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: medium;
+    }
+}
+.divUnitPrice{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+
+           // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+           @media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+        }
+        // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+
+        }
+
+        // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+
+        }
+}
+.boxDynamicPrice{
+    width: 100%;
+    margin-top: 5%;
+    display: flex;
+
+        // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            width: 35%;
+            margin-top: 0%;
+            justify-content: center;
+                    align-items: center;
+        }
+        // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            width: 35%;
+            margin-top: 0%;
+            justify-content: center;
+                    align-items: center;
+        }
+    
+        // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+            width: 35%;
+            margin-top: 0%;
+            justify-content: center;
+                    align-items: center;
+        }
+
 }
 #less, #more{
     color: #925df7
@@ -268,29 +401,86 @@ a {
     width: 27%;
     height: 28px;
 
-     
+}
+.price{
+    max-width: 50% !important;
+    padding: 0%;
+    display: flex;
+    justify-content: center;
+
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        padding: 0%;
+    }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+
+    }
+
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+
+    }
+}
+.divBoxDelete{
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: center;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+
+    }
+
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        margin: 0% !important;
+        width: 5%;
+        justify-content: center;
+                    align-items: center;
+    }
+
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        margin: 0% !important;
+        width: 5%;
+        justify-content: center;
+                    align-items: center;
+    }
+
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+        margin: 0% !important;
+        width: 5%;
+        justify-content: center;
+                    align-items: center;
+    }
 }
 #delete{
+    padding: 0%;
     color: #d88635;
 
                 // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
                 @media only screen and (min-width: 480px) and (max-width: 768px) {
 
                 }
-            
+
                 // Pour écrans entre 768px et 1024px (Tablette mode paysage)
                 @media only screen and (min-width: 768px) and (max-width: 1024px) {
                     margin: 0% !important;
+                    
                 }
-            
+
                 // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
                 @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-                    
+
                 }
-            
+
                 // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
                 @media only screen and (min-width: 1600px) {
-                    
+
                 }
 }
 
@@ -313,55 +503,20 @@ a {
                 width: 30%;
 
             }
-        
+
             // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-        
+
             @media only screen and (min-width: 1024px) and (max-width: 1600px) {
                 width: 40%;
             }
-        
+
             // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
             @media only screen and (min-width: 1600px) {
                 width: 40%;
             }
 }
 
-.price{
-    max-width: 50% !important;
-    display: flex;
-    justify-content: center;
 
-    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
-        padding: 0%;
-    }
-    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-        
-    }
-
-    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
-        
-    }
-}
-// ***************************************
-// delete:
-#delete{
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto;
-    font-size: 0.7rem;
-
-                // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-                @media only screen and (min-width: 768px) and (max-width: 1024px) {
-                    width: 20%;
-                    display: flex;
-                    justify-content: center;
-                }
-}
 
 //////////////////////////////////////////
 /////////// Pied de la carte /////////////

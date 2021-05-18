@@ -332,7 +332,6 @@ function displayPanier(productData) {
     let divRowMain = createTag('div')
     addClass(divRowMain, "row")
      addClass(divRowMain, "main")
-      addClass(divRowMain, "align-items-center")
        addClass(divRowMain, "border-bottom")
 
     // Col Image:
@@ -355,11 +354,20 @@ function displayPanier(productData) {
     addClass(divColTitleProduct, 'modifyWidth')
 
     // Titre du produit:
-    let divTitleProduct = createTag('div')
+    let divTitleProduct = createTag('h3')
     addClass(divTitleProduct, 'row')
      addClass(divTitleProduct, 'childrenCardProduct')
       divTitleProduct.setAttribute("id","title")
        divTitleProduct.setAttribute("data-idtitre",productData._id)
+
+    // Prix unitaire:
+    let divUnitPrice = createTag('div')
+    divUnitPrice.setAttribute("id", "unitPrice_"+ productData._id)
+    addClass(divUnitPrice, 'divUnitPrice')
+
+    // Box pour Div Price et Delete:
+    let boxDynamicPrice= createTag('div')
+    addClass(boxDynamicPrice, 'boxDynamicPrice')
 
     // Div amount:
     let divColAmount = createTag('div')
@@ -389,9 +397,6 @@ function displayPanier(productData) {
       more.innerHTML = "+"
        more.setAttribute("data-idproduct", productData._id )
 
-    // Box pour Div Price et Delete:
-    let boxPriceDelete= createTag('div')
-    addClass(boxPriceDelete, 'boxPriceDelete')
 
     //Div Price:
     let divPrice = createTag('div')
@@ -399,6 +404,10 @@ function displayPanier(productData) {
     addClass(divPrice, 'price')
      divPrice.setAttribute("id", "price_" + productData._id)
      //console.log(divPrice)
+
+    // Col delete:
+    let divBoxDelete = createTag('div')
+    addClass(divBoxDelete, "divBoxDelete")
 
     // Delete:
     let deleteProduct = createTag('a')
@@ -420,15 +429,19 @@ function displayPanier(productData) {
     // Image:
     divCol2.appendChild(img)
 
-    // Box pour col title et col div amount:
+    // Box pour col title et divUnitPrice::
     divRowMain.appendChild(boxTitleAmount)
     // Col Titre du produit:
     boxTitleAmount.appendChild(divColTitleProduct)
     // Titre du produit:
     divColTitleProduct.appendChild(divTitleProduct)
+    // Prix unitaire:
+    boxTitleAmount.appendChild(divUnitPrice)
 
+    // Box pour DivColAmount et divPrice:
+    divRowMain.appendChild(boxDynamicPrice)
     // Div amount:
-    boxTitleAmount.appendChild(divColAmount)
+    boxDynamicPrice.appendChild(divColAmount)
 
     // Less:
     divColAmount.appendChild(less)
@@ -437,13 +450,13 @@ function displayPanier(productData) {
     // More:
     divColAmount.appendChild(more)
 
-    // Box pour Div Price et Delete:
-    divRowMain.appendChild(boxPriceDelete)
     //Div Price:
-    boxPriceDelete.appendChild(divPrice)
+    boxDynamicPrice.appendChild(divPrice)
 
+    // Col delete:
+    divRowMain.appendChild(divBoxDelete)
     // Delete:
-    boxPriceDelete.appendChild(deleteProduct)
+    divBoxDelete.appendChild(deleteProduct)
 
     // Pied de la carte: //////////////////////////////////////
     // Div Back to shop:
@@ -475,6 +488,8 @@ function displayPanier(productData) {
     //Récupére le prix du produit:
     divPrice.innerHTML = productData.price + " €"
     //console.log(divPrice.innerHTML)
+
+    divUnitPrice.innerHTML = productData.price + " €"
 
 ///////////////////////////////////////////////////////////
 // Ecoute les +,- et * : //////////////////////////////////
@@ -891,7 +906,7 @@ totalPrice (productData)
 
     // Label name customer:
     let labelName = createTag('label')
-    labelName.setAttribute("for", "inputName")
+    labelName.setAttribute("for", "firstName")
     labelName.innerHTML = "Nom:"
 
     // Input name:
@@ -912,7 +927,7 @@ totalPrice (productData)
 
     // Label last name customer:
     let labelLastName = createTag('label')
-    labelLastName.setAttribute("for", "inputLastName")
+    labelLastName.setAttribute("for", "lastName")
     labelLastName.innerHTML = "Prénom:"
 
     // Input last name:
@@ -931,7 +946,7 @@ totalPrice (productData)
 
     // Label Email customer:
     let labelEmail = createTag('label')
-    labelEmail.setAttribute("for", "inputEmail")
+    labelEmail.setAttribute("for", "email")
     labelEmail.innerHTML = "E-mail:"
 
     // Input Email:
@@ -949,7 +964,7 @@ totalPrice (productData)
 
     // Label address customer:
     let labelAddress = createTag('label')
-    labelAddress.setAttribute("for", "inputAddress")
+    labelAddress.setAttribute("for", "address")
     labelAddress.innerHTML = "Adresse:"
 
     // Input address:
@@ -973,7 +988,7 @@ totalPrice (productData)
 
     // Label Location City:
     let labelCity = createTag('label')
-    labelCity.setAttribute("for", "inputCity")
+    labelCity.setAttribute("for", "city")
     labelCity.innerHTML = "Ville:"
 
     // Input city:
@@ -992,7 +1007,7 @@ totalPrice (productData)
 
     // Label zip:
     let labelZip = createTag('label')
-    labelZip.setAttribute("for", "inputZip")
+    labelZip.setAttribute("for", "codeZip")
     labelZip.innerHTML = "Code Postal:"
 
     // Input Zip:
@@ -1105,3 +1120,30 @@ divFormGroupButton.appendChild(buttonConfirmation)
 //var formName = document.forms["formValidation"]["inputName"]
 //console.log(formName)
 
+// Sélection du bouton "valider la commande":
+let btnValidateOrder = document.getElementById('buttonSubmit')
+
+let firstName = document.getElementById('inputName').value
+// Création de l'objet contact:
+
+
+// Ecoute le bouton "valider la commande":
+btnValidateOrder.addEventListener("click", (event) => {
+
+
+    
+    
+    // Récupération des données du formulaire pour envoyer dans LocalStorage:
+    localStorage.setItem("contact", document.getElementById('inputName').value)
+    console.log(document.getElementById('inputName').value)
+
+    let objectContact = {
+        firstName: firstName
+       //lastName: lastName,
+        //email: email,
+        //address: address,
+        //city: city,
+        //codeZip: codeZip
+    }
+    console.log(objectContact)
+})

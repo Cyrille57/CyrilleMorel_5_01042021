@@ -10462,38 +10462,66 @@ header {
   }
 }
 .divRowArticle {
+  height: auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+}
+.main {
+  width: 100%;
+  height: auto;
+  margin: 0%;
+  display: flex;
+  flex-direction: column;
 }
 @media only screen and (min-width: 480px) and (max-width: 768px) {
   .main {
     display: flex;
-    flex-direction: column;
-    margin: 0 auto;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .main {
     width: 100%;
-    display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 @media only screen and (min-width: 1024px) and (max-width: 1600px) {
   .main {
     width: 100%;
-    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 @media only screen and (min-width: 1600px) {
   .main {
     width: 100%;
-    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 
 .col-2 {
-  padding: 0 1vh;
+  padding: 0;
+  display: flex;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .col-2 {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .col-2 {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .col-2 {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 img {
@@ -10510,29 +10538,42 @@ img {
   }
 }
 .boxTitleAmount {
+  width: 100%;
+  margin-top: 3%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .boxTitleAmount {
-    width: 45%;
+    width: 40%;
+    margin-top: 0%;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 }
 @media only screen and (min-width: 1024px) and (max-width: 1600px) {
   .boxTitleAmount {
     width: 40%;
+    margin-top: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 @media only screen and (min-width: 1600px) {
   .boxTitleAmount {
     width: 40%;
+    margin-top: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
 .modifyWidth {
   width: 50%;
+  padding: 0%;
   display: flex;
   justify-content: center;
 }
@@ -10542,8 +10583,87 @@ img {
   }
 }
 #title {
-  text-overflow: ellipsis;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: medium;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #title {
+    width: 100%;
+    padding: 0%;
+    margin: 0%;
+    display: flex;
+    justify-content: flex-start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: medium;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  #title {
+    width: 100%;
+    padding: 0%;
+    margin: 0%;
+    display: flex;
+    justify-content: flex-start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: medium;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  #title {
+    width: 100%;
+    padding: 0%;
+    margin: 0%;
+    display: flex;
+    justify-content: flex-start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: medium;
+  }
+}
+
+.divUnitPrice {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+.boxDynamicPrice {
+  width: 100%;
+  margin-top: 5%;
+  display: flex;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .boxDynamicPrice {
+    width: 35%;
+    margin-top: 0%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .boxDynamicPrice {
+    width: 35%;
+    margin-top: 0%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .boxDynamicPrice {
+    width: 35%;
+    margin-top: 0%;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 #less, #more {
@@ -10559,7 +10679,51 @@ a {
   height: 28px;
 }
 
+.price {
+  max-width: 50% !important;
+  padding: 0%;
+  display: flex;
+  justify-content: center;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .price {
+    padding: 0%;
+  }
+}
+.divBoxDelete {
+  width: 100%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  display: flex;
+  justify-content: center;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .divBoxDelete {
+    margin: 0% !important;
+    width: 5%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .divBoxDelete {
+    margin: 0% !important;
+    width: 5%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .divBoxDelete {
+    margin: 0% !important;
+    width: 5%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 #delete {
+  padding: 0%;
   color: #d88635;
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
@@ -10587,32 +10751,6 @@ a {
 @media only screen and (min-width: 1600px) {
   .boxPriceDelete {
     width: 40%;
-  }
-}
-
-.price {
-  max-width: 50% !important;
-  display: flex;
-  justify-content: center;
-}
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .price {
-    padding: 0%;
-  }
-}
-#delete {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: auto;
-  font-size: 0.7rem;
-}
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-  #delete {
-    width: 20%;
-    display: flex;
-    justify-content: center;
   }
 }
 
