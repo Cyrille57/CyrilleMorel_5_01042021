@@ -4,20 +4,14 @@
 
 
 // 1) ////////////////////////////////////////////////////////
-/**
- * Récupére l'id de l'url
- * avec la propriété .search de window.location:
- */
+// Récupére l'id de l'url avec la propriété .search de window.location:
 const getIdUrl = window.location.search;
 //console.log(getIdUrl)
 // réponse : ?id=XXXXXXXX
 
-
 // 2) /////////////////////////////////////////////////////////
-/**
- *  Purge getIdUrl de ?id= et recupere uniquement l'id
- *  avec la méthode getUrlParams:
- */
+// Purge getIdUrl de ?id= et recupere uniquement l'id avec la méthode getUrlParams:
+
 // Analyser les paramètres de la chaîne de requête:
 const getUrlParams = new URLSearchParams(getIdUrl);
 
@@ -303,10 +297,6 @@ async function displayProduct(result2) {
      * Récupération des donneés de l'article selectionné par le client
      * et création de l'objet du produit:
      */
-    
-
-
-
 
     sendCaddy(result2._id)
 

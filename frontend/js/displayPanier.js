@@ -17,7 +17,7 @@ console.log(productLocalStorage.length)
 let productData = ''
 
 // 2) ////////////////////////////////////////////////////////
-// Récupére l'id un a un: ////////////////////////////////////
+// Récupére l'id un à un et les affecte a l'url: /////////////
 let idProductPanier = ""
 function getId (productLocalStorage) {
     for (var i = 0; i < productLocalStorage.length; i++) {
@@ -25,32 +25,22 @@ function getId (productLocalStorage) {
         let idProductPanier = productLocalStorage[i].idProduct
         console.log(idProductPanier)
         // Réponse 1 seul id par produit
-        assemblyId(idProductPanier)
-        
+
+        // Concaténe l'url de l'API avec l'id récupéré: ///////////////
+        const url = "http://localhost:3000/api/teddies";
+        const urlProduct = url + "/" + idProductPanier;
+        //console.log(urlProduct)
+     // reponse http://localhost:3000/api/teddies/5beaaa8f1c9d440000a57d95
+
+    takeProductInPanier(urlProduct, productLocalStorage[i])
     }
 }
 getId (productLocalStorage)
 
 
 // 3) /////////////////////////////////////////////////////////
-// Concaténe l'url de l'API avec l'id récupéré: ///////////////
-async function assemblyId(idProductPanier) {
-   //console.log(idProductPanier)
-    //réponse : 5beaaa8f1c9d440000a57d95
-
-    // Déclaration des variables:
-    const url = "http://localhost:3000/api/teddies";
-    const urlProduct = url + "/" + idProductPanier;
-    //console.log(urlProduct)
-    // reponse http://localhost:3000/api/teddies/5beaaa8f1c9d440000a57d95
-
-    takeProductInPanier(urlProduct);
-}
-
-
-// 4) /////////////////////////////////////////////////////////
 // XMLHttpRequest se connecte avec l'url?récupére les données:/
-async function takeProductInPanier(urlProduct) {
+async function takeProductInPanier(urlProduct, productLocalStorage) {
     //console.log(urlProduct)
     // reponse http://localhost:3000/api/teddies/5beaaa8f1c9d440000a57d95
 
@@ -62,12 +52,13 @@ async function takeProductInPanier(urlProduct) {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
             // Envoie terminé et contenu bien recue et convertit en Json:
             var productData = JSON.parse(this.responseText);
-            //console.log(productData);
+            console.log(productData);
 
             // envoie le productData a la fonction displayPanier:
-            displayPanier(productData)
-            countArticle (productData)
-            totalPrice (productData)
+            displayPanier(productData, productLocalStorage)
+            countArticle (productLocalStorage.quantityProduct)
+            totalPrice (productLocalStorage.quantityProduct * productData.price)
+            sendOrder (productData)
 
             //console.log(displayPanier)
         } else if (this.readyState == XMLHttpRequest.DONE && this.status == 500) {
@@ -83,7 +74,8 @@ async function takeProductInPanier(urlProduct) {
     xhr.send();
 }
 
-// 5) ////////////////////////////////////////////////////////
+
+// 4) ////////////////////////////////////////////////////////
 // Affichage html ////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////
@@ -149,12 +141,6 @@ async function takeProductInPanier(urlProduct) {
 
 
 ///////////////////////////////////////////////////////////
-// ESSAIE: ************************************************
-
-
-
-
-///////////////////////////////////////////////////////////
 // I) D) Pied de la carte: ********************************
     // Div Back to shop:
     let divBackShop = createTag('div')
@@ -192,7 +178,6 @@ async function takeProductInPanier(urlProduct) {
     addClass(textDeleteAll, 'text-muted')
     textDeleteAll.innerHTML = "Vider le panier"
 
-    
 
 ///////////////////////////////////////////////////////////
 // I) E) Récapitulatif: ***********************************
@@ -219,12 +204,14 @@ async function takeProductInPanier(urlProduct) {
     let divBoxItemRecap = createTag('div')
     addClass(divBoxItemRecap, 'row')
     addClass(divBoxItemRecap, 'divBoxItemRecap')
+    divBoxItemRecap.innerHTML= "Nombre d'article(s):  "
 
     // Div Item recapitulatif:
     let divItemRecap = createTag('div')
     //addClass(divItemRecap, 'col')
     divItemRecap.setAttribute("id", "numberArticle")
       //divItemRecap.innerHTML = "items 3"
+      divItemRecap.innerHTML = 0
 
     // Price recapitulatif:
     let divPriceRecap = createTag('div')
@@ -247,6 +234,7 @@ async function takeProductInPanier(urlProduct) {
     let divPriceTotal = createTag('div')
     addClass(divPriceTotal, 'col')
      divPriceTotal.setAttribute("id", "total")
+     divPriceTotal.innerHTML = 0 
 
     // button valider la commande:
     let buttonConfirm = createTag('button')
@@ -307,17 +295,9 @@ async function takeProductInPanier(urlProduct) {
     divBoxRecap.appendChild(buttonConfirm)
 
 
-
-///////////////////////////////////////////////////////////
-
-
-
-///////////////////////////////////////////////////////////
-
-
-
-
-function displayPanier(productData) {
+//////////////////////////////////////////////////////////
+// Fonction qui affiche les élément du panier: ///////////
+function displayPanier(productData, productLocalStorage) {
 
 
     ///////////////////////////////////////////////////////////
@@ -362,8 +342,9 @@ function displayPanier(productData) {
 
     // Prix unitaire:
     let divUnitPrice = createTag('div')
-    divUnitPrice.setAttribute("id", "unitPrice_"+ productData._id)
     addClass(divUnitPrice, 'divUnitPrice')
+    divUnitPrice.setAttribute("id", "unitPrice_"+ productData._id)
+    divUnitPrice.setAttribute("price", productData.price)
 
     // Box pour Div Price et Delete:
     let boxDynamicPrice= createTag('div')
@@ -387,7 +368,7 @@ function displayPanier(productData) {
     addClass(inputAmount, 'inputAmount')
     addClass(inputAmount, 'text-center')
      inputAmount.setAttribute("id", "amount_" + productData._id)
-      inputAmount.setAttribute("value", "1")
+      inputAmount.setAttribute("value", productLocalStorage.quantityProduct)
       inputAmount.setAttribute("data-inputamount", productData._id )
 
     // More:
@@ -486,28 +467,37 @@ function displayPanier(productData) {
     //console.log(productData.name)
 
     //Récupére le prix du produit:
-    divPrice.innerHTML = productData.price + " €"
+    divPrice.innerHTML = productData.price * productLocalStorage.quantityProduct + " €" 
     //console.log(divPrice.innerHTML)
 
     divUnitPrice.innerHTML = productData.price + " €"
+
+
 
 ///////////////////////////////////////////////////////////
 // Ecoute les +,- et * : //////////////////////////////////
 
         // Ecoute le boutton -:
-         less.addEventListener('click', (event) => {
+        less.addEventListener('click', (event) => {
+            event.preventDefault();
             //console.log(event)
             // Cible l'id du less utilisé:
             let idProduct = event.target.getAttribute('data-idproduct')
             console.log(idProduct)
 
-            //
+            // Sélectionne la div du prix unitaire, récupére le price du productData et le multiplie par -1
+            let getPriceUnit = document.getElementById('unitPrice_'+ idProduct).getAttribute ("price") * -1 
+
+            // Envoie de parametre a la fonction ModifyQuantity:
             getValue = modifyQuantity(idProduct, -1)
             console.log(getValue)
 
-           // Envoie idProduct et getValue à la fonction modifyPrice:
+           // Envoie des paramétre aux fonctions suivantes:
            modifyPrice(idProduct,getValue)
-           countArticle (getValue)
+           countArticle (-1)
+           totalPrice(getPriceUnit)
+
+           modifyQuantityProductInLocalStorage (idProduct,getValue)
 
            // Envoie idProduct à la fonction deleteProduct:
            //deleteProduct(idProduct)
@@ -516,29 +506,38 @@ function displayPanier(productData) {
 
         // Ecoute le boutton +:
         more.addEventListener('click', (event) => {
+            event.preventDefault();
             console.log(event)
             // Cible l'id du more utilisé:
             let idProduct = event.target.getAttribute('data-idproduct')
             console.log(idProduct)
-            //
+
+            // Sélectionne la div du prix unitaire, récupére le price du productData et le multiplie par 1
+            let getPriceUnit = document.getElementById('unitPrice_'+ idProduct).getAttribute ("price") * 1
+            console.log(getPriceUnit)
+
+            // Envoie de parametre a la fonction ModifyQuantity:
             getValue = modifyQuantity(idProduct, 1)
             console.log(getValue)
 
-            // Envoie idProduct et getValue à la fonction modifyPrice
+            // Envoie des paramétre aux fonctions suivantes:
             modifyPrice(idProduct,getValue)
-            countArticle (getValue)
-        })
+            countArticle (1)
+            totalPrice(getPriceUnit)
+            modifyQuantityProductInLocalStorage (idProduct,getValue)
 
+        })
 
         // Ecoute le boutton delete:
         deleteProduct.addEventListener('click', (event) => {
+            event.preventDefault();
             console.log(event)
             // Cible l'id du delete utilisé:
             let idDelete = event.target.getAttribute('data-iddelete')
             console.log(idDelete)
             location.reload()
 
-            // Envoie idDelete (l'id) aux fonctions:
+            // Envoie des paramétre aux fonctions suivantes:
             deleteRowProduct(idDelete)
             deleteProductLocalStorage(idDelete)
         })
@@ -556,6 +555,7 @@ function displayPanier(productData) {
             // window.location.href = "./"
         })
 }
+
 
 ///////////////////////////////////////////////////////////
 // Modifie les quantité: //////////////////////////////////
@@ -578,6 +578,7 @@ function modifyQuantity(idProduct, nQuantity) {
     if (getValue >= 0) {
     // Modifie la valeur de l'element:
     document.getElementById('amount_' + idProduct).value = getValue
+    console.log(getValue)
     return getValue
    }
    //console.log(getValue)
@@ -595,7 +596,7 @@ function modifyPrice(idProduct, getValue) {
     // Réponse: 2
 
     // Récupére la valeur de l'element et l'initialise:
-    let getPrice = parseInt(document.getElementById('price_' + idProduct).innerHTML)
+    let getPrice = parseInt(document.getElementById('unitPrice_' + idProduct).innerHTML)
     //console.log(getPrice)
 
     //getPrice = getValue * getPrice
@@ -611,11 +612,13 @@ function modifyPrice(idProduct, getValue) {
 
 }
 
+
 ///////////////////////////////////////////////////////////
 // Suprime la ligne de l' article: ////////////////////////
 function deleteRowProduct(idDelete) {
-///////////////////////////////////////////////////////////
-// Supprime la ligne coté client: /////////////////////////
+
+    ///////////////////////////////////////////////////////////
+    // Supprime la ligne coté client: /////////////////////////
     console.log(idDelete)
     // Réponse : l'id du delete sélectionner
 
@@ -627,13 +630,40 @@ function deleteRowProduct(idDelete) {
     getDelete.remove(idDelete)
 }
 
+
+///////////////////////////////////////////////////////////
+// Ajoute ou enleve un produit coté localStorage: /////////
+function modifyQuantityProductInLocalStorage (idProduct,getValue){
+
+    // Récupére le local storage:
+    let arrayNbProductLocalStorage = JSON.parse(localStorage.getItem("product"))
+    console.log(arrayNbProductLocalStorage)
+
+    // Récupère l'index de l'objet avec l'id (idProduct)
+    var getIndex = arrayNbProductLocalStorage.map(function(item) { return item.idProduct; }).indexOf(idProduct);
+    console.log(getIndex)
+    // Réponse: retourne l'index de l'objet du tableau
+
+    // Récupére la valeur de quantityProduct
+    let getQuantityProduct = arrayNbProductLocalStorage[getIndex].quantityProduct
+    console.log(getQuantityProduct) // 1
+
+    // Modifie la valeur de quantityProduct:
+    let newQuantityProduct = arrayNbProductLocalStorage[getIndex].quantityProduct=(getValue)
+    console.log(arrayNbProductLocalStorage)
+    console.log(newQuantityProduct)
+
+    //Renvoie le tableau dans LocalStorage:
+    localStorage.setItem("product", JSON.stringify(arrayNbProductLocalStorage))
+
+}
+
+
 ///////////////////////////////////////////////////////////
 // Supprime la ligne coté localStorage: ///////////////////
 function deleteProductLocalStorage (idDelete) {
 
-    //console.log(productLocalStorage)
-    // Réponse : tableu des objet
-
+    // Récupére le local storage:
     let arrayproductLocalStorage = JSON.parse(localStorage.getItem("product"))
     console.log(arrayproductLocalStorage)
 
@@ -645,182 +675,48 @@ function deleteProductLocalStorage (idDelete) {
     // Supprime l'objet grace à son index:
     arrayproductLocalStorage.splice(removeIndex, 1)
     console.log(arrayproductLocalStorage)
-
     // Réponse: retourne le tableau avec les objet restant
+
+    //Renvoie le tableau dans LocalStorage:
     localStorage.setItem("product", JSON.stringify(arrayproductLocalStorage))
 
 }
 
 
-// 2) /////////////////////////////////////////////////////////
-// Affiche le nombre d'article: ///////////////////////////////
-
-
-function countArticle (getValue) {
+///////////////////////////////////////////////////////////
+// Affiche le nombre d'article: ///////////////////////////
+function countArticle (quantityProduct) {
 
     // selectionne l'élément ou inscrire le résultat:
     let numberRecap = document.getElementById("numberArticle")
     //console.log(numberRecap)
 
-    //console.log(getValue)
-    //console.log(productLocalStorage)
-    //console.log(productLocalStorage.lenght)
+    let displayCount = numberRecap.innerHTML = parseInt(numberRecap.innerHTML) + quantityProduct
+    console.log(displayCount)
 
-    let nbProductLocalStorage = productLocalStorage.length
-    //console.log(nbProductLocalStorage)
+    sendOrder (displayCount)
 
-    //********************************************************** */
-    //*********************** EN COURS ************************* */
-    //********************************************************** */
-    // Sélectionne tout les input amount :
-    let getValueAmount = document.querySelectorAll('[data-inputamount]')
-    //console.log(getValueAmount)
-    // Convertit getValueAmount en tableau:
-    //let getValueAmountInTab = Array.from(getValueAmount)
-    //console.log(getValueAmountInTab)
-/*
-    for (let i=0; i<getValueAmountInTab.length; i++){
-        console.log(getValueAmountInTab[i].value)
-        let totalValueAmount = getValueAmountInTab[i].value
-        console.log(totalValueAmount)
-    }
-*/
-    let nb2 = getValue + nbProductLocalStorage -1
-    //console.log(nb2)
-
-
-    if (getValue>1 && productLocalStorage.length>1) {
-        // Si productLocalStorage et getValue supérieure à 1 mettre au pluriel et rajouter getValue:
-        numberRecap.innerHTML = "Nombre d'articles:  " + nb2
-    }else if (productLocalStorage.length>1) {
-        // Si productLocalStorage supérieure à 1 mettre au pluriel:
-        numberRecap.innerHTML = "Nombre d'articles:  " + productLocalStorage.length
-    }else {
-        // Si productLocalStorage inférieuree à 1 mettre au singulier:
-        numberRecap.innerHTML = "Nombre d'article:  " + productLocalStorage.length
-    }
-
-
-
- }
-countArticle ()
+}
 
 
 ///////////////////////////////////////////////////////////
-// Prix total: ////////////
+// Affiche le Prix total: /////////////////////////////////
 
 // Crér un tableau:
 let pushPriceTab = []
 
-// Selectionne le prix:
-function totalPrice (productData){
-    //console.log(productLocalStorage)
-    console.log(productData)
-    console.log(productData.price)
-    console.log(typeof(productData.price))
-
-    // Pousse les objet dans un tableau
-    pushPriceTab.push(productData)
-
-    // Crér un tableau:
-    let getPriceInTab = []
-
-    // Récupére le prix de chaque objet:
-    for (let i = 0; i<pushPriceTab.length; i++){
-        getPriceInTab.push(pushPriceTab[i].price)
-        console.log(getPriceInTab)
-    }
-
-    // Additionne avec la méthode .reduce:
-    const reducer = (accumulator, currentValue) => accumulator + currentValue
-    const totalPrice = getPriceInTab.reduce(reducer, 0)
-    console.log(typeof(totalPrice))
-
-    // Sélectionne la div ou le total vas s'afficher:
-    let sommeTotale = document.getElementById("total")
-    //console.log(sommeTotale)
-
-    // Affiche le résultat sur la page html:
-    sommeTotale.innerHTML = totalPrice
+function totalPrice (price){
+    // Selectionne le prix:
+    let someTotale = document.getElementById('total')
+    someTotale.innerHTML = parseInt(someTotale.innerHTML) + price + " €"
 
 }
-totalPrice (productData)
 
-
-
-/*
-   for (let entry of getPrice.entries()) {
-       console.log(entry)
-       //console.log(entry[1].innerHTML)
-
-       // Sélectionne les prix des NodeList au format string:
-       let allPrice = entry[1].innerHTML
-       //console.log(typeof allPrice)
-       // Réponse : retourne les prix en string
-
-       // Selectionne l'index de €:
-       let allPriceIndexEuro = allPrice.indexOf('€')
-       //console.log(allPriceIndexEuro)
-       // Réponse : retourne l'index
-
-       // Enleve le €:
-       let allPriceWithoutEuro = allPrice.slice(0,5)
-       //console.log(allPriceWithoutEuro)
-       // Réponse : retourne le string sans €
-
-       // Convertit le srting en number:
-       let allPriceNumber = parseInt(allPriceWithoutEuro, 10)
-       console.log(allPriceNumber)
-
-//**************************************************************
-///////////////////// En cours /////////////////////////////////
-
-       // Renvoie les number dans un tableau: 
-       for (let i = 0; i<getPrice.length ; i++){
-           asx = allPriceNumber
-           //asx.push(allPriceNumber)
-           console.log(asx)
-       }
-
-
-       // Créer un tableau avec les number:
-       let tabOfNumbers = []
-       tabOfNumbers.push(allPriceNumber)
-       console.log(tabOfNumbers)
-
-       for ( let i = 0; i< allPriceNumber.length; i++){
-        //let tab = tabOfNumbers.concat(tabOfNumbers[i])
-       console.log(allPriceNumber.length)
-       }
-
-       /*
-       // Adittionne les tarifs:
-       for (let i = 0; i<allPriceNumber.length; i++){
-           console.log(allPriceNumber.length)
-           let sumPrice = allPriceNumber + allPriceNumber[i]
-            console.log(sumPrice)
-       }
-
-
-
-   }
-*/
-
-
-
-
+// 5) ////////////////////////////////////////////////////////
+// Affichage Formulaire //////////////////////////////////////
 
 ///////////////////////////////////////////////////////////
-// II) Création Formulaire: ///////////////////////////////
-
-///////////////////////////////////////////////////////////
-// I) Sélectionne le Parent: ******************************
-    //Selectionne l'id parent:
-    //let main = document.querySelector('main')
-    //console.log(main)
-
-///////////////////////////////////////////////////////////
-// II) A) Création des éléments de base enfants: **********
+// I) A) Création des éléments de base enfants: ///////////
     // Container:
 
     let divContainer = createTag('div')
@@ -842,7 +738,7 @@ totalPrice (productData)
     addClass(divColPrincipale, 'col-12')
 
 ///////////////////////////////////////////////////////////
-// II) B) Création intérieur box: **************************
+// I) B) Création intérieur box: //////////////////////////
     // Formulaire:
     divForm = createTag('section')
     addClass(divForm, 'section--modify')
@@ -876,7 +772,7 @@ totalPrice (productData)
     addClass(divBoxRecapLeft, 'bg-gradient')
 
     ///////////////////////////////////////////////////////////
-    // Ajout des élément de base:
+    // Ajout des élément de base: /////////////////////////////
     main.appendChild(divContainer)
     main.appendChild(divForm)
     divForm.appendChild(divContainer)
@@ -891,15 +787,15 @@ totalPrice (productData)
     // Div Form:
     let formCheckOut = createTag('form')
     formCheckOut.setAttribute("id", "formValidation")
-    formCheckOut.setAttribute("action", "../confirmation.html")
-    formCheckOut.setAttribute("method", "post")
+    formCheckOut.setAttribute("action", "../../frontend/confirmation.html")
+    formCheckOut.setAttribute("method", "POST")
 
     // Form Row:
     let formRow = createTag('div')
     addClass(formRow, 'form-row')
 
     ///////////////////////////////////////////////////////////
-    // Form group name:
+    // Form group name: ///////////////////////////////////////
     let formGroupName = createTag('div')
     addClass(formGroupName, 'form-group')
     addClass(formGroupName, 'col-md-6')
@@ -917,10 +813,10 @@ totalPrice (productData)
     inputName.setAttribute("name", "inputName")
     inputName.setAttribute("style", "margin:0%;")
     inputName.setAttribute("maxlength", "30")
-    inputName.required = true;
+    //inputName.required = true;
 
     ///////////////////////////////////////////////////////////
-    // Form group last name:
+    // Form group last name: //////////////////////////////////
     let formGroupLastName = createTag('div')
     addClass(formGroupLastName, 'form-group')
     addClass(formGroupLastName, 'col-md-6')
@@ -940,7 +836,7 @@ totalPrice (productData)
 
 
     ///////////////////////////////////////////////////////////
-    // Form group Email:
+    // Form group Email: //////////////////////////////////////
     let formGroupEmail = createTag('div')
     addClass(formGroupEmail, 'form-group')
 
@@ -955,10 +851,10 @@ totalPrice (productData)
     inputEmail.setAttribute("id", "inputEmail")
     inputEmail.setAttribute("type", "email")
     inputEmail.setAttribute("name", "inputEmail")
-    inputEmail.required = true;
+    //inputEmail.required = true;
 
     ///////////////////////////////////////////////////////////
-    // Form group adresse:
+    // Form group adresse: ////////////////////////////////////
     let formGroupAddress = createTag('div')
     addClass(formGroupAddress, 'form-group')
 
@@ -975,12 +871,12 @@ totalPrice (productData)
     inputAddress.setAttribute("name", "inputAddress")
 
     ///////////////////////////////////////////////////////////
-    // Div form row location
+    // Div form row location //////////////////////////////////
     let divFormRowLocation = createTag('div')
     addClass(divFormRowLocation, 'form-row')
 
     ///////////////////////////////////////////////////////////
-    // Div form group city:
+    // Div form group city: ///////////////////////////////////
     let divFormGroupLocation = createTag('div')
     addClass(divFormGroupLocation, 'form-group')
     addClass(divFormGroupLocation, 'divFormGroupLocation')
@@ -999,7 +895,7 @@ totalPrice (productData)
     inputLocationCity.setAttribute("name", "inputLocationCity")
 
     ///////////////////////////////////////////////////////////
-    // Div form group zip:
+    // Div form group zip: ////////////////////////////////////
     let divFormGroupzip = createTag('div')
     addClass(divFormGroupzip, 'form-group')
     addClass(divFormGroupzip, 'divFormGroupzip')
@@ -1018,35 +914,35 @@ totalPrice (productData)
     inputZip.setAttribute("name", "inputZip")
 
     ///////////////////////////////////////////////////////////
-    // Div form group bouton:
+    // Div form group bouton: /////////////////////////////////
     let divFormGroupButton = createTag('div')
     addClass(divFormGroupButton, 'form-group')
     addClass(divFormGroupButton, 'boxSubmit')
 
     // bouton:
-    let buttonConfirmation = createTag ('button')
-    addClass(buttonConfirmation, 'btn')
-    addClass(buttonConfirmation, 'submit')
-    addClass(buttonConfirmation, 'rounded-pill')
-    addClass(buttonConfirmation, 'bg-gradient')
-    addClass(buttonConfirmation, 'justify-content-center')
-    
-    buttonConfirmation.setAttribute("id", "buttonSubmit")
-    buttonConfirmation.setAttribute("type", "submit")
-    buttonConfirmation.setAttribute("href", "../confirmation.html")
-    buttonConfirmation.setAttribute("border", "transparent")
-    buttonConfirmation.innerHTML = "Valider la commande"
+    let buttonConfirmationPanier = createTag ('button')
+    addClass(buttonConfirmationPanier, 'btn')
+    addClass(buttonConfirmationPanier, 'submit')
+    addClass(buttonConfirmationPanier, 'rounded-pill')
+    addClass(buttonConfirmationPanier, 'bg-gradient')
+    addClass(buttonConfirmationPanier, 'justify-content-center')
+
+    buttonConfirmationPanier.setAttribute("id", "buttonConfirmationPanier")
+    buttonConfirmationPanier.setAttribute("type", "submit")
+    buttonConfirmationPanier.setAttribute("href", "../../frontend/confirmation.html")
+    buttonConfirmationPanier.setAttribute("border", "transparent")
+    buttonConfirmationPanier.innerHTML = "Valider la commande"
 
 
 ///////////////////////////////////////////////////////////
-// Div Form:
+// Div Form: //////////////////////////////////////////////
 divCol2.appendChild(formCheckOut)
 
 // Form Row:
 formCheckOut.appendChild(formRow)
 
 ///////////////////////////////////////////////////////////
-// Form group name:
+// Form group name: ///////////////////////////////////////
 formRow.appendChild(formGroupName)
 
 // Label name customer:
@@ -1056,7 +952,7 @@ formGroupName.appendChild(labelName)
 formGroupName.appendChild(inputName)
 
 ///////////////////////////////////////////////////////////
-// Form group last name:
+// Form group last name: //////////////////////////////////
 formRow.appendChild(formGroupLastName)
 
 // Label last name customer:
@@ -1066,7 +962,7 @@ formGroupLastName.appendChild(labelLastName)
 formGroupLastName.appendChild(inputLastName)
 
 ///////////////////////////////////////////////////////////
-// Form group email:
+// Form group email: //////////////////////////////////////
 formCheckOut.appendChild(formGroupEmail)
 
 // Label Email customer:
@@ -1076,7 +972,7 @@ formGroupEmail.appendChild(labelEmail)
 formGroupEmail.appendChild(inputEmail)
 
 ///////////////////////////////////////////////////////////
-// Form group adresse:
+// Form group adresse: ////////////////////////////////////
 formCheckOut.appendChild(formGroupAddress)
 
 // Label address customer:
@@ -1086,11 +982,11 @@ formGroupAddress.appendChild(labelAddress)
 formGroupAddress.appendChild(inputAddress)
 
 ///////////////////////////////////////////////////////////
-// Div form row location
+// Div form row location: /////////////////////////////////
 formCheckOut.appendChild(divFormRowLocation)
 
 ///////////////////////////////////////////////////////////
-// Div form group location:
+// Div form group location: ///////////////////////////////
 divFormRowLocation.appendChild(divFormGroupLocation)
 
 // Label Location City:
@@ -1100,7 +996,7 @@ divFormGroupLocation.appendChild(labelCity)
 divFormGroupLocation.appendChild(inputLocationCity)
 
 ///////////////////////////////////////////////////////////
-// Div form group zip:
+// Div form group zip: ////////////////////////////////////
 divFormRowLocation.appendChild(divFormGroupzip)
 
 // Label zip:
@@ -1110,40 +1006,73 @@ divFormGroupzip.appendChild(labelZip)
 divFormGroupzip.appendChild(inputZip)
 
 ///////////////////////////////////////////////////////////
-// Button:
+// Button: ////////////////////////////////////////////////
 divFormRowLocation.appendChild(divFormGroupButton)
 
 // bouton:
-divFormGroupButton.appendChild(buttonConfirmation)
+divFormGroupButton.appendChild(buttonConfirmationPanier)
+
+//////////////////////////////////////////////////////////
+// Fonction qui envoie la commande dans localStorage et serveur:
+function sendOrder (displayCount) {
+
+    // Sélection du bouton "valider la commande":
+    let btnValidateOrder = document.getElementById('buttonConfirmationPanier')
+
+    btnValidateOrder.addEventListener("click", (event) => {
+
+        // Récupére dans un tableau les id des produits séléctionner:
+       const id = productLocalStorage.map(productLocalStorages => productLocalStorages.idProduct)
+       console.log(id)
+
+        // Création de l'objet;
+        let orderTeddies = {
+
+            "contact": {
+                firstName: document.getElementById('inputName').value,
+                lastName: document.getElementById('inputLastName').value,
+                address: document.getElementById('inputAddress').value,
+                city: document.getElementById('inputCity').value,
+                email: document.getElementById('inputEmail').value,
+                //codeZip: document.getElementById('inputZip').value
+            },
+
+            "products" : id
+        }
+        //console.log(orderTeddies)
+
+        // Crée la clef, convertit l'objet en chaine de caractére et l'envoie dans localStorage:
+        localStorage.setItem("orderTeddies", JSON.stringify(orderTeddies))
+
+        // Envoie sur le serveur avec la méthode fetch
+        // Variable contenant l'adresse du serveur
+        const urlPost = 'http://localhost:3000/api/teddies/order'
+
+        // Objet contenant les options en second paramétre de fetch:
+        var myInit = {
+            method:     'POST',
+            headers:    new Headers({ 'Content-Type':  'application/json;charset=UTF-8'}),
+            body :      JSON.stringify(orderTeddies),
+            mode:       'cors',
+            cache:      'default'
+        };
+
+        // Fetch à laquelle on donne en paramétres l'url et options:
+        fetch( urlPost, myInit)
+        .then(response => response.json())
+        // Quand la promesse est tenue, elle est parsée au format Json
+            .then(json_object => {
+                // Quand la promesse est tenue, crée une varaiable qui contient l'objet:
+                let getOrder = json_object
+                // Crée la clef, convertit l'objet en chaine de caractére et l'envoie dans localStorage:
+                localStorage.setItem("getOrder", JSON.stringify(getOrder))
+            })
+    })
+}
+sendOrder ()
 
 
-//var formName = document.forms["formValidation"]["inputName"]
-//console.log(formName)
-
-// Sélection du bouton "valider la commande":
-let btnValidateOrder = document.getElementById('buttonSubmit')
-
-let firstName = document.getElementById('inputName').value
-// Création de l'objet contact:
 
 
-// Ecoute le bouton "valider la commande":
-btnValidateOrder.addEventListener("click", (event) => {
 
 
-    
-    
-    // Récupération des données du formulaire pour envoyer dans LocalStorage:
-    localStorage.setItem("contact", document.getElementById('inputName').value)
-    console.log(document.getElementById('inputName').value)
-
-    let objectContact = {
-        firstName: firstName
-       //lastName: lastName,
-        //email: email,
-        //address: address,
-        //city: city,
-        //codeZip: codeZip
-    }
-    console.log(objectContact)
-})

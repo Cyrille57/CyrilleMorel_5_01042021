@@ -1,0 +1,222 @@
+
+
+.containerRecapOrder{
+    width: 90%;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+        max-width: 700px;
+
+    }
+
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    }
+
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+
+    }
+
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+
+    }
+}
+
+.box__recapOrder {
+    width: auto;
+    height: 800px;
+    margin-top: 5%;
+    margin-bottom: 20%;
+
+    border: 1px solid #e9ecef;
+
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    box-shadow: -1px 2px 10px 3px #e9ecef inset;
+
+        // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+            height: 600px;
+            width: 100%;
+            margin: 0% !important;
+            margin-bottom: 20% !important;
+            display: flex;
+            justify-content: center;
+        }
+
+        // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5% !important;
+            }
+
+        // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5% !important;
+            }
+
+        // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5% !important;
+            }
+}
+
+#divCardOrder{
+    
+    margin: 0%;
+    background-color: #e9ecef;
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+        width: 95%;
+        height: 500px;
+        margin: 0%;
+        display: flex;
+        justify-content: center;
+    }
+
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        margin: 0%;
+        display: flex;
+        justify-content: center;
+        }
+
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        margin: 0%;
+        display: flex;
+        justify-content: center;
+        }
+
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+        margin: 0%;
+        display: flex;
+        justify-content: center;
+        }
+}
+
+#divCardBodyOrder{
+
+}
+
+.coordinatesReminder{
+    margin-top: 10%;
+}
+// Box firstName:
+.boxFirstName{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+// Texte firstName:
+.nameReminder{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+// Affiche firstName:
+.displayNameReminder{
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+// box lastName:
+.boxLastName{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+// Texte lastName:
+.lastNameReminder{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+
+}
+// Affiche lastName:
+.displayLastNameReminder{
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+// box adresse:
+.boxAddress{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+// Texte adresse:
+.addressReminder{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+// Affiche adresse:
+.displayAddressReminder{
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+// box city:
+.boxCity{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+// Texte city:
+.cityReminder{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+// Affiche city:
+.displayCityReminder{
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+// Texte rappel adresse de contact :
+.addressContactReminder{
+    margin-top: 10%;
+}
+
+// box adresse de contact:
+.boxEmail{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+// Texte adresse de contact:
+.emailReminder{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+// Affiche adresse de contact:
+.displayMailReminder{
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+}

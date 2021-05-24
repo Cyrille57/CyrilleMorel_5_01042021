@@ -8,7 +8,6 @@
  * Fonction pour ajouter au panier:
  */
 function sendCaddy(idProduct) {
-
     // Selectionne le bouton envoyer au panier:
     let btn_panier = document.querySelector("a.btn")
 
@@ -33,7 +32,7 @@ function sendCaddy(idProduct) {
         // Fonction pour ajouté un produit selectionné dans le localstorage:
         const addProduct = () => {
             productLocalStorage = verificationIdProductLocalStorage(idProduct, productLocalStorage)
-            
+
             // Envoie dans local storage avec la méthode setItem dans le format json:
             localStorage.setItem("product", JSON.stringify(productLocalStorage))
         }
@@ -59,22 +58,27 @@ function sendCaddy(idProduct) {
     })
 }
 
-function verificationIdProductLocalStorage (idProduct, productLocalStorage) {
+// Vérifie si l'id du produit est déja dans le LocalStorage:
+function verificationIdProductLocalStorage (idProduct, productLocalStorage, getValue) {
 
-    var removeIndex = productLocalStorage.map(function(item) { return item.idProduct; }).indexOf(idProduct);
-    if (removeIndex > 0){
-        console.log(removeIndex)
+    console.log(idProduct)
+    console.log(productLocalStorage)
+    var indexIdProduct = productLocalStorage.map(function(item) { return item.idProduct; }).indexOf(idProduct);
+    // Si a une position on vas ajouter 1 quantité sinon on crée l'objet
+    if (indexIdProduct >= 0){
+       productLocalStorage[indexIdProduct].quantityProduct++
     }else{
+
         let objectProduct = {
 
-            quantityProduct: 1,
+            quantityProduct: 1 ,
             idProduct: idProduct,
 
         }
+
         // Pousse l'objet produit dans le tableau:
         productLocalStorage.push(objectProduct)
-
-        return productLocalStorage
     }
 
+    return productLocalStorage
 }
