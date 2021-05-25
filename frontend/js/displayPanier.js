@@ -111,6 +111,7 @@ async function takeProductInPanier(urlProduct, productLocalStorage) {
     //  Title:
     let divHeadCardTitle = createTag('div')
     addClass(divHeadCardTitle, 'title')
+    
 
     // Row:
     let divRowTitle = createTag('div')
@@ -120,6 +121,7 @@ async function takeProductInPanier(urlProduct, productLocalStorage) {
     let divColTitle = createTag('div')
     addClass(divColTitle, 'col')
     addClass(divColTitle, 'divColTitle')
+    addClass(divColTitle, 'text-center')
 
     // H2:
     let divSubTitle = createTag('h2')
@@ -787,7 +789,7 @@ function totalPrice (price){
     // Div Form:
     let formCheckOut = createTag('form')
     formCheckOut.setAttribute("id", "formValidation")
-    formCheckOut.setAttribute("action", "../../frontend/confirmation.html")
+    formCheckOut.setAttribute("action", "")
     formCheckOut.setAttribute("method", "POST")
 
     // Form Row:
@@ -812,8 +814,15 @@ function totalPrice (price){
     inputName.setAttribute("type", "text")
     inputName.setAttribute("name", "inputName")
     inputName.setAttribute("style", "margin:0%;")
+    inputName.setAttribute("minlength", "3")
     inputName.setAttribute("maxlength", "30")
-    //inputName.required = true;
+    inputName.required = true;
+
+    // Span erreur:
+    let spanErrorFirstName = createTag('span')
+    addClass(spanErrorFirstName, 'spanError')
+    spanErrorFirstName.setAttribute("id", "spanErrorFirstName")
+
 
     ///////////////////////////////////////////////////////////
     // Form group last name: //////////////////////////////////
@@ -832,8 +841,14 @@ function totalPrice (price){
     inputLastName.setAttribute("id", "inputLastName")
     inputLastName.setAttribute("type", "text")
     inputLastName.setAttribute("name", "inputLastName")
+    inputLastName.setAttribute("minlength", "3")
     inputLastName.setAttribute("maxlength", "30")
+    inputLastName.required = true;
 
+    // Span erreur:
+    let spanErrorLastName = createTag('span')
+    addClass(spanErrorLastName, 'spanError')
+    spanErrorLastName.setAttribute("id", "spanErrorLastName")
 
     ///////////////////////////////////////////////////////////
     // Form group Email: //////////////////////////////////////
@@ -851,7 +866,12 @@ function totalPrice (price){
     inputEmail.setAttribute("id", "inputEmail")
     inputEmail.setAttribute("type", "email")
     inputEmail.setAttribute("name", "inputEmail")
-    //inputEmail.required = true;
+    inputEmail.required = true;
+
+    // Span erreur:
+    let spanErrorEmail = createTag('span')
+    addClass(spanErrorEmail, 'spanError')
+    spanErrorEmail.setAttribute("id", "spanErrorEmail")
 
     ///////////////////////////////////////////////////////////
     // Form group adresse: ////////////////////////////////////
@@ -869,6 +889,12 @@ function totalPrice (price){
     inputAddress.setAttribute("id", "inputAddress")
     inputAddress.setAttribute("type", "text")
     inputAddress.setAttribute("name", "inputAddress")
+    inputAddress.required = true;
+
+    // Span erreur:
+    let spanErrorAddress = createTag('span')
+    addClass(spanErrorAddress, 'spanError')
+    spanErrorAddress.setAttribute("id", "spanErrorAddress")
 
     ///////////////////////////////////////////////////////////
     // Div form row location //////////////////////////////////
@@ -893,6 +919,12 @@ function totalPrice (price){
     inputLocationCity.setAttribute("id", "inputCity")
     inputLocationCity.setAttribute("type", "text")
     inputLocationCity.setAttribute("name", "inputLocationCity")
+    inputLocationCity.required = true;
+
+    // Span erreur:
+    let spanErrorCity = createTag('span')
+    addClass(spanErrorCity, 'spanError')
+    spanErrorCity.setAttribute("id", "spanErrorCity")
 
     ///////////////////////////////////////////////////////////
     // Div form group zip: ////////////////////////////////////
@@ -912,6 +944,12 @@ function totalPrice (price){
     inputZip.setAttribute("type", "texte")
     inputZip.setAttribute("id", "inputZip")
     inputZip.setAttribute("name", "inputZip")
+    inputZip.required = true;
+
+    // Span erreur:
+    let spanErrorZip = createTag('span')
+    addClass(spanErrorZip, 'spanError')
+    spanErrorZip.setAttribute("id", "spanErrorZip")
 
     ///////////////////////////////////////////////////////////
     // Div form group bouton: /////////////////////////////////
@@ -951,6 +989,9 @@ formGroupName.appendChild(labelName)
 // Input name:
 formGroupName.appendChild(inputName)
 
+// Span Error FirstName:
+formGroupName.appendChild(spanErrorFirstName)
+
 ///////////////////////////////////////////////////////////
 // Form group last name: //////////////////////////////////
 formRow.appendChild(formGroupLastName)
@@ -960,6 +1001,9 @@ formGroupLastName.appendChild(labelLastName)
 
 // Input last name:
 formGroupLastName.appendChild(inputLastName)
+
+// Span Error LastName:
+formGroupLastName.appendChild(spanErrorLastName)
 
 ///////////////////////////////////////////////////////////
 // Form group email: //////////////////////////////////////
@@ -971,6 +1015,9 @@ formGroupEmail.appendChild(labelEmail)
 // Input Email:
 formGroupEmail.appendChild(inputEmail)
 
+// Span Error Email:
+formGroupEmail.appendChild(spanErrorEmail)
+
 ///////////////////////////////////////////////////////////
 // Form group adresse: ////////////////////////////////////
 formCheckOut.appendChild(formGroupAddress)
@@ -980,6 +1027,9 @@ formGroupAddress.appendChild(labelAddress)
 
 // Input address:
 formGroupAddress.appendChild(inputAddress)
+
+// Span Error Address:
+formGroupAddress.appendChild(spanErrorAddress)
 
 ///////////////////////////////////////////////////////////
 // Div form row location: /////////////////////////////////
@@ -995,6 +1045,9 @@ divFormGroupLocation.appendChild(labelCity)
 // Input city:
 divFormGroupLocation.appendChild(inputLocationCity)
 
+// Span Error City
+divFormGroupLocation.appendChild(spanErrorCity)
+
 ///////////////////////////////////////////////////////////
 // Div form group zip: ////////////////////////////////////
 divFormRowLocation.appendChild(divFormGroupzip)
@@ -1004,6 +1057,9 @@ divFormGroupzip.appendChild(labelZip)
 
 // Input Zip:
 divFormGroupzip.appendChild(inputZip)
+
+// Span Error Zip:
+divFormGroupzip.appendChild(spanErrorZip)
 
 ///////////////////////////////////////////////////////////
 // Button: ////////////////////////////////////////////////
@@ -1021,9 +1077,10 @@ function sendOrder (displayCount) {
 
     btnValidateOrder.addEventListener("click", (event) => {
 
+        event.preventDefault()
         // Récupére dans un tableau les id des produits séléctionner:
        const id = productLocalStorage.map(productLocalStorages => productLocalStorages.idProduct)
-       console.log(id)
+       //console.log(id)
 
         // Création de l'objet;
         let orderTeddies = {
@@ -1041,32 +1098,164 @@ function sendOrder (displayCount) {
         }
         //console.log(orderTeddies)
 
-        // Crée la clef, convertit l'objet en chaine de caractére et l'envoie dans localStorage:
-        localStorage.setItem("orderTeddies", JSON.stringify(orderTeddies))
+        // Vérification saisie utilisateur
 
-        // Envoie sur le serveur avec la méthode fetch
-        // Variable contenant l'adresse du serveur
-        const urlPost = 'http://localhost:3000/api/teddies/order'
+        // Modéle regex pour firstname, lastname et city:
+        const regExNameCity = (value) => {
+            // Contient que des lettres majuscules ou minuscule entre 3 et 30 caratéres:
+            return /^[A-Za-z]{3,30}$/.test(value)
+        }
 
-        // Objet contenant les options en second paramétre de fetch:
-        var myInit = {
-            method:     'POST',
-            headers:    new Headers({ 'Content-Type':  'application/json;charset=UTF-8'}),
-            body :      JSON.stringify(orderTeddies),
-            mode:       'cors',
-            cache:      'default'
-        };
+        // Modéle regex pour email:
+        const regExEmail = (value) => {
+            // Contient des lettres, majuscules ou minuscule, des chiifres, ., _, - avec @
+            // puis une séquence de lettre, majuscule ou minuscule, de chiifres, ., -, avec un minimum de 2
+            // enfin apres le point, des lettres, majuscules ou minuscule entre 2 et 4 caractéres
+            return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]{2,}\.[a-zA-Z]{2,4}$/.test(value)
+        }
 
-        // Fetch à laquelle on donne en paramétres l'url et options:
-        fetch( urlPost, myInit)
-        .then(response => response.json())
-        // Quand la promesse est tenue, elle est parsée au format Json
+        // Modéle regex pour adresse:
+        const regExAddress = (value) => {
+            // Contient que des lettres, majuscules ou minuscule, des chiifres et espacement entre 3 et 50 caratéres:
+            return /^[A-Za-z0-9\s]{3,50}$/.test(value)
+        }
+
+        /*
+        // Modéle regex pour code zip:
+        const regExCodeZip = (value) => {
+            // Contient uniquement 5 chiffres:
+            return /^\d{5}$/.test(value)
+        }
+        */
+
+        // Fonction qui vérifie la validité du firstname::
+        function verifyFirstName () {
+
+            // Sélectionne la vaeur de l'input first name:
+            const firstName = document.getElementById('inputName').value
+
+            if (regExNameCity(firstName))  {
+                document.getElementById('spanErrorFirstName').textContent = ""
+                return true
+            } else {
+                document.getElementById('spanErrorFirstName').textContent = "Champ incorrect"
+                return false
+            }
+        }
+
+        // Fonction qui vérifie la validité du last name::
+        function verifyLastName () {
+
+            // Sélectionne la vaeur de l'input first name:
+            const lastName = document.getElementById('inputLastName').value
+
+            if (regExNameCity(lastName))  {
+                document.getElementById('spanErrorLastName').textContent = ""
+                return true
+            } else {
+                document.getElementById('spanErrorLastName').textContent = "Champ incorrect"
+                return false
+            }
+        }
+
+        // Fonction qui vérifie la validité du email:
+        function verifyEmail () {
+
+            // Sélectionne la vaeur de l'input code zip:
+            const email = document.getElementById('inputEmail').value
+
+            if (regExEmail(email))  {
+                document.getElementById('spanErrorEmail').textContent = ""
+                return true
+            } else {
+                document.getElementById('spanErrorEmail').textContent = "Champ incorrect"
+                return false
+            }
+        }
+
+        // Fonction qui vérifie la validité de l'adresse:
+        function verifyAddress () {
+
+            // Sélectionne la vaeur de l'input first name:
+            const address = document.getElementById('inputAddress').value
+
+            if (regExAddress(address))  {
+                document.getElementById('spanErrorAddress').textContent = ""
+                return true
+            } else {
+                document.getElementById('spanErrorAddress').textContent = "Champ incorrect"
+                return false
+            }
+        }
+
+        // Fonction qui vérifie la validité de l'adresse:
+        function verifyCity () {
+
+            // Sélectionne la vaeur de l'input first name:
+            const city = document.getElementById('inputCity').value
+
+            if (regExNameCity(city))  {
+                document.getElementById('spanErrorCity').textContent = ""
+                return true
+            } else {
+                document.getElementById('spanErrorCity').textContent = "Champ incorrect"
+                return false
+            }
+        }
+
+        /*
+        // Fonction qui vérifie la validité du code zip::
+        function verifyCodeZip () {
+
+            // Sélectionne la vaeur de l'input code zip:
+            const codeZip = document.getElementById('inputZip').value
+
+            if (regExCodeZip(codeZip))  {
+                document.getElementById('spanErrorZip').textContent = ""
+                return true
+            } else {
+                document.getElementById('spanErrorZip').textContent = "Champ incorrect"
+                return false
+            }
+        }
+        */
+
+        // Si tout les input vérifié sont validé, envoie l'objet dans localStorage:
+        if (verifyFirstName() && verifyLastName() && verifyAddress() && verifyCity() && verifyEmail() /*&& verifyCodeZip()*/  ) {
+
+            // Crée la clef, convertit l'objet en chaine de caractére et l'envoie dans localStorage:
+            localStorage.setItem("orderTeddies", JSON.stringify(orderTeddies))
+
+            // Envoie sur le serveur avec la méthode fetch
+            // Variable contenant l'adresse du serveur
+            const urlPost = 'http://localhost:3000/api/teddies/order'
+
+            // Objet contenant les options en second paramétre de fetch:
+            var myInit = {
+                method:'POST',
+                headers:new Headers({'Content-Type':'application/json;charset=UTF-8'}),
+                body:JSON.stringify(orderTeddies),
+                mode:'cors',
+                cache:'default'
+            };
+
+            // Fetch à laquelle on donne en paramétres l'url et options:
+            fetch(urlPost, myInit)
+            .then(response => response.json())
+            // Quand la promesse est tenue, elle est parsée au format Json
             .then(json_object => {
                 // Quand la promesse est tenue, crée une varaiable qui contient l'objet:
                 let getOrder = json_object
                 // Crée la clef, convertit l'objet en chaine de caractére et l'envoie dans localStorage:
                 localStorage.setItem("getOrder", JSON.stringify(getOrder))
+                window.location = "../../frontend/confirmation.html"
             })
+
+        } else {
+
+        }
+
+
     })
 }
 sendOrder ()

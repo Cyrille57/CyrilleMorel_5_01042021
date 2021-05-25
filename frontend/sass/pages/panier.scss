@@ -2,30 +2,9 @@
 // ************ Panier.html **************
 // ***************************************
 
-// Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
-    @media only screen and (min-width: 480px) and (max-width: 768px) {
-
-    }
-
-// Pour écrans entre 768px et 1024px (Tablette mode paysage)
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
-
-    }
-
-// Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-
-    }
-
-// Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
-
-    }
-
-
 //////////////////////////////////////////
-/////////////// En téte //////////////////
+//////////////// Header //////////////////
+
 header {
     margin-bottom: 10%;
 }
@@ -34,37 +13,42 @@ header {
 }
 
 //////////////////////////////////////////
-/////////// Elément enfant ///////////////
+///////////////// Main ///////////////////
+
+//////////////////////////////////////////
+//////////// Section Panier //////////////
 
 .divCardPanier{
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-        width: 80% !important;
-    }
 
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            width: 80% !important;
+        }
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
-        width: 60% !important;
-    }
+        @media only screen and (min-width: 1600px) {
+            width: 60% !important;
+        }
 }
+
 .divRow{
     width: 100%;
 }
+
 #parentCardProduct{
     width: 100%;
 
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-        width: 30%;
-    }
-
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            width: 30%;
+        }
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
-        width: 30%;
-    }
+        @media only screen and (min-width: 1600px) {
+            width: 30%;
+        }
 }
+
 //////////////////////////////////////////
-//// Element commun panier/formulaire ////
+///////// Element Commun Section /////////
 
 .card {
     height: auto;
@@ -82,61 +66,60 @@ header {
     border-radius: 1rem;
     border: transparent;
 
-    @media(max-width:767px) {
-        .card {
-            margin: 3vh auto
+        @media(max-width:767px) {
+            .card {
+                margin: 3vh auto
+            }
         }
-    }
 }
 
 .cart {
     height: 100%;
     width: 90%;
     margin-top: 0%;
-    background-color: #fff;
     padding: 4vh 5vh;
+
+    background-color: #fff;
+
     border-bottom-left-radius: 1rem;
     border-top-left-radius: 1rem;
 
-    @media(max-width:767px) {
-        .cart {
-            padding: 4vh;
-            border-bottom-left-radius: unset;
-            border-top-right-radius: 1rem
+        @media(max-width:767px) {
+            .cart {
+                padding: 4vh;
+                border-bottom-left-radius: unset;
+                border-top-right-radius: 1rem
+            }
         }
-    }
 }
 
 
 //////////////////////////////////////////
 ////////// En tete de la carte ///////////
 
+
 .title {
     margin-bottom: 3vh;
+    display: flex;
+    justify-content: center;
 
     // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
-    @media only screen and (min-width: 480px) and (max-width: 768px) {
-        display: flex;
-        justify-content: center;
-    }
-
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+            display: flex;
+            justify-content: center;
+        }
     // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
 
-    }
-
+        }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
 
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-
-    }
-
+        }
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
+        @media only screen and (min-width: 1600px) {
 
-    }
-
-
+        }
 }
 //////////////////////////////////////////
 //////////////// Corps ///////////////////
@@ -148,26 +131,23 @@ header {
     justify-content: center;
 
     // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
-    @media only screen and (min-width: 480px) and (max-width: 768px) {
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
 
-    }
-
+        }
     // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
 
-    }
-
+        }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
 
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-
-    }
-
+        }
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
+        @media only screen and (min-width: 1600px) {
 
-    }
+        }
 }
+
 .main{
     width: 100%;
     height: auto;
@@ -175,26 +155,24 @@ header {
     display: flex;
     flex-direction: column;
 
-        // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
         @media only screen and (min-width: 480px) and (max-width: 768px) {
             display: flex;
 
         }
-        // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
         @media only screen and (min-width: 768px) and (max-width: 1024px) {
             width: 100%;
             flex-direction: row;
             justify-content: space-between;
         }
-
-        // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
         @media only screen and (min-width: 1024px) and (max-width: 1600px) {
             width: 100%;
             flex-direction: row;
             justify-content: space-between;
         }
-
-        // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
         @media only screen and (min-width: 1600px) {
             width: 100%;
             flex-direction: row;
@@ -207,38 +185,37 @@ header {
     padding: 0;
     display: flex;
 
-     // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
-     @media only screen and (min-width: 480px) and (max-width: 768px) {
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
 
-    }
+        }
     // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
-        display: flex;
-        justify-content: center;
-    }
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            display: flex;
+            justify-content: center;
+        }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-        display: flex;
-        justify-content: center;
-    }
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            display: flex;
+            justify-content: center;
+        }
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
-        display: flex;
-        justify-content: center;
-    }
+        @media only screen and (min-width: 1600px) {
+            display: flex;
+            justify-content: center;
+        }
 }
 img {
     width: 3.5rem;
 }
 .hidden-mobile {
     visibility: hidden;
-}
 
-@media screen and (min-width: 768px) {
-    .hidden-mobile {
+    @media screen and (min-width: 768px) {
         visibility: visible
     }
 }
+
 
 // ***************************************
 // Box title product and more,amount,less:
@@ -248,32 +225,30 @@ img {
     display: flex;
     justify-content: space-between;
 
-                // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-                @media only screen and (min-width: 768px) and (max-width: 1024px) {
-                    width: 40%;
-                    margin-top: 0%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-                // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-                @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-                    width: 40%;
-                    margin-top: 0%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-
-                }
-            
-                // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-                @media only screen and (min-width: 1600px) {
-                    width: 40%;
-                    margin-top: 0%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            width: 40%;
+            margin-top: 0%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            width: 40%;
+            margin-top: 0%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+            width: 40%;
+            margin-top: 0%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 }
 .modifyWidth{
     width: 50%;
@@ -282,82 +257,78 @@ img {
     justify-content: center;
 
     // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
-        padding: 0%;
-    }
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            padding: 0%;
+        }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
 
-    }
-
+        }
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
+        @media only screen and (min-width: 1600px) {
 
-    }
+        }
 }
 #title{
     width: 100%;
     display: flex;
     justify-content: center;
     white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        font-size: medium;
-    
-    
-       // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-       @media only screen and (min-width: 768px) and (max-width: 1024px) {
-        width: 100%;
-        padding: 0%;
-        margin: 0%;
-        display: flex;
-        justify-content: flex-start;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        font-size: medium;
-    }
-    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-        width: 100%;
-        padding: 0%;
-        margin: 0%;
-        display: flex;
-        justify-content: flex-start;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        font-size: medium;
-    }
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: medium;
 
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+       @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            width: 100%;
+            padding: 0%;
+            margin: 0%;
+            display: flex;
+            justify-content: flex-start;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: medium;
+        }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            width: 100%;
+            padding: 0%;
+            margin: 0%;
+            display: flex;
+            justify-content: flex-start;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: medium;
+        }
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
-        width: 100%;
-        padding: 0%;
-        margin: 0%;
-        display: flex;
-        justify-content: flex-start;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        font-size: medium;
-    }
+        @media only screen and (min-width: 1600px) {
+            width: 100%;
+            padding: 0%;
+            margin: 0%;
+            display: flex;
+            justify-content: flex-start;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: medium;
+        }
 }
 .divUnitPrice{
     width: 50%;
     display: flex;
     justify-content: center;
 
-           // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-           @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
 
         }
-        // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
         @media only screen and (min-width: 1024px) and (max-width: 1600px) {
 
         }
-
-        // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
         @media only screen and (min-width: 1600px) {
 
         }
@@ -367,29 +338,27 @@ img {
     margin-top: 5%;
     display: flex;
 
-        // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
         @media only screen and (min-width: 768px) and (max-width: 1024px) {
             width: 35%;
             margin-top: 0%;
             justify-content: center;
-                    align-items: center;
+            align-items: center;
         }
-        // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
         @media only screen and (min-width: 1024px) and (max-width: 1600px) {
             width: 35%;
             margin-top: 0%;
             justify-content: center;
-                    align-items: center;
+            align-items: center;
         }
-    
-        // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
         @media only screen and (min-width: 1600px) {
             width: 35%;
             margin-top: 0%;
             justify-content: center;
-                    align-items: center;
+            align-items: center;
         }
-
 }
 #less, #more{
     color: #925df7
@@ -400,7 +369,6 @@ a {
 .inputAmount {
     width: 27%;
     height: 28px;
-
 }
 .price{
     max-width: 50% !important;
@@ -409,18 +377,17 @@ a {
     justify-content: center;
 
     // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
-        padding: 0%;
-    }
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            padding: 0%;
+        }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
 
-    }
-
+        }
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
+        @media only screen and (min-width: 1600px) {
 
-    }
+        }
 }
 .divBoxDelete{
     width: 100%;
@@ -430,58 +397,51 @@ a {
     justify-content: center;
 
     // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
-    @media only screen and (min-width: 480px) and (max-width: 768px) {
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
 
-    }
-
+        }
     // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
-        margin: 0% !important;
-        width: 5%;
-        justify-content: center;
-                    align-items: center;
-    }
-
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            margin: 0% !important;
+            width: 5%;
+            justify-content: center;
+            align-items: center;
+        }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-        margin: 0% !important;
-        width: 5%;
-        justify-content: center;
-                    align-items: center;
-    }
-
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            margin: 0% !important;
+            width: 5%;
+            justify-content: center;
+            align-items: center;
+        }
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
-        margin: 0% !important;
-        width: 5%;
-        justify-content: center;
-                    align-items: center;
-    }
+        @media only screen and (min-width: 1600px) {
+            margin: 0% !important;
+            width: 5%;
+            justify-content: center;
+            align-items: center;
+        }
 }
 #delete{
     padding: 0%;
     color: #d88635;
 
-                // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
-                @media only screen and (min-width: 480px) and (max-width: 768px) {
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
 
-                }
+        }
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            margin: 0% !important;
+        }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
 
-                // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-                @media only screen and (min-width: 768px) and (max-width: 1024px) {
-                    margin: 0% !important;
-                    
-                }
+        }
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
 
-                // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-                @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-
-                }
-
-                // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-                @media only screen and (min-width: 1600px) {
-
-                }
+        }
 }
 
 // ***************************************
@@ -493,29 +453,23 @@ a {
     display: flex;
     justify-content: center;
 
-            // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
-            @media only screen and (min-width: 480px) and (max-width: 768px) {
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
 
-            }
-        
-            // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-            @media only screen and (min-width: 768px) and (max-width: 1024px) {
-                width: 30%;
-
-            }
-
-            // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-
-            @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-                width: 40%;
-            }
-
-            // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-            @media only screen and (min-width: 1600px) {
-                width: 40%;
-            }
+        }
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            width: 30%;
+        }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            width: 40%;
+        }
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+            width: 40%;
+        }
 }
-
 
 
 //////////////////////////////////////////
@@ -538,57 +492,48 @@ a {
     margin-top: 5%;
 }
 
+
 //////////////////////////////////////////
 //////////// Récapitulatif ///////////////
-
 .summary {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*background-color: #e9ecef;*/
     background: linear-gradient(124deg, rgba(220, 136, 43, 1) 0%, rgba(143, 91, 254, 1) 100%) 30;
-    ;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     padding: 2vh;
-    /*color: rgb(65, 65, 65)*/
     color: #fff;
 
-
-
     // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
-    @media only screen and (min-width: 480px) and (max-width: 768px) {
-        border-top-right-radius: unset;
-        border-bottom-left-radius: 1rem;
-
-    }
-
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+            border-top-right-radius: unset;
+            border-bottom-left-radius: 1rem;
+        }
     // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
-        border-top-right-radius: 1rem;
-        border-bottom-left-radius: 0rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            border-top-right-radius: 1rem;
+            border-bottom-left-radius: 0rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-        border-top-right-radius: 1rem;
-        border-bottom-left-radius: 0rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            border-top-right-radius: 1rem;
+            border-bottom-left-radius: 0rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
-        border-top-right-radius: 1rem;
-        border-bottom-left-radius: 0rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
+        @media only screen and (min-width: 1600px) {
+            border-top-right-radius: 1rem;
+            border-bottom-left-radius: 0rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
 }
 
 .summary .col-2 {
@@ -638,6 +583,7 @@ hr {
     margin-top: 10%;
 }
 
+
 //////////////////////////////////////////
 ////////////// Formulaire ////////////////
 
@@ -661,29 +607,25 @@ hr {
 
     box-shadow: -1px 2px 10px 3px #e9ecef inset;
 
-        // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
         @media only screen and (min-width: 480px) and (max-width: 768px) {
-        
 
         }
-    
-        // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
         @media only screen and (min-width: 768px) and (max-width: 1024px) {
             height: 650px;
             margin-bottom: 10%;
             display: flex;
             justify-content: center;
         }
-    
-        // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
         @media only screen and (min-width: 1024px) and (max-width: 1600px) {
             height: 650px;
             margin-bottom: 10%;
             display: flex;
             justify-content: center;
         }
-    
-        // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
         @media only screen and (min-width: 1600px) {
             height: 650px;
             margin-bottom: 10%;
@@ -701,25 +643,21 @@ hr {
     align-self: center;
 
     // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
-    @media only screen and (min-width: 480px) and (max-width: 768px) {
-        
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
 
-    }
-
+        }
     // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
-        margin-top: 0%;
-    }
-
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            margin-top: 0%;
+        }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-        margin-top: 0%;
-    }
-
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            margin-top: 0%;
+        }
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
-        margin-top: 0%;
-    }
+        @media only screen and (min-width: 1600px) {
+            margin-top: 0%;
+        }
 }
 
 form {
@@ -736,25 +674,21 @@ form {
     align-content: center;
 
     // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
-    @media only screen and (min-width: 480px) and (max-width: 768px) {
-        
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
 
-    }
-
+        }
     // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
-        height: 550px;
-    }
-
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            height: 550px;
+        }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-        height: 550px;
-    }
-
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            height: 550px;
+        }
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
-        height: 550px;
-    }
+        @media only screen and (min-width: 1600px) {
+            height: 550px;
+        }
 }
 
 .cart--modify {
@@ -766,23 +700,19 @@ form {
     flex-direction: column;
     justify-content: space-around;
 
-        // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
         @media only screen and (min-width: 480px) and (max-width: 768px) {
-        
 
         }
-    
-        // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
         @media only screen and (min-width: 768px) and (max-width: 1024px) {
             height: 500px;
         }
-    
-        // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
         @media only screen and (min-width: 1024px) and (max-width: 1600px) {
             height: 500px;
         }
-    
-        // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
         @media only screen and (min-width: 1600px) {
             height: 500px;
         }
@@ -795,25 +725,21 @@ form {
     flex-direction: column;
 
     // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
-    @media only screen and (min-width: 480px) and (max-width: 768px) {
-        
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
 
-    }
-
+        }
     // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
-        height: 500px;
-    }
-
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            height: 500px;
+        }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-        height: 500px;
-    }
-
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            height: 500px;
+        }
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
-        height: 500px;
-    }
+        @media only screen and (min-width: 1600px) {
+            height: 500px;
+        }
 }
 .form-row{
     height: auto;
@@ -823,35 +749,27 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    
 }
-.divFormGroupLocation{
 
-}
 .divFormGroupzip{
     margin-bottom: 20%;
 
     // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
-    @media only screen and (min-width: 480px) and (max-width: 768px) {
-        margin-bottom: 15%;
-    }
-
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+            margin-bottom: 15%;
+        }
     // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
-        margin-bottom: 3%;
-    }
-
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            margin-bottom: 3%;
+        }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-        margin-bottom: 2.3%;
-    }
-
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            margin-bottom: 2.3%;
+        }
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
-        margin-bottom: 2%;
-    }
+        @media only screen and (min-width: 1600px) {
+            margin-bottom: 2%;
+        }
 }
 
 
@@ -883,29 +801,24 @@ form {
     width: 80% !important;
 
     // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
-    @media only screen and (min-width: 480px) and (max-width: 768px) {
-        width: 60% !important;
-    }
-
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+            width: 60% !important;
+        }
     // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
-        width: 40% !important;
-        margin-top: 5%;
-    }
-
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            width: 40% !important;
+            margin-top: 5%;
+        }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-        width: 40% !important;
-        margin-top: 5%;
-    }
-
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            width: 40% !important;
+            margin-top: 5%;
+        }
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
-        width: 40% !important;
-        margin-top: 5%;
-    }
-
+        @media only screen and (min-width: 1600px) {
+            width: 40% !important;
+            margin-top: 5%;
+        }
 }
 
 

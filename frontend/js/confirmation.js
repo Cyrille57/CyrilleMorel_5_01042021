@@ -25,10 +25,12 @@ console.log(getOrderInLocalStorage)
     // Row:
     let divRow = createTag('div')
     addClass(divRow, 'row')
+    addClass(divRow, 'divRowOrder')
 
     // Col-12
     let divCol = createTag('div')
     addClass(divCol, 'col-12')
+    addClass(divCol, 'col-12-Order')
 
     ///////////////////////////////////////////////////////////
     /**
@@ -37,8 +39,9 @@ console.log(getOrderInLocalStorage)
     // Box:
     let divBox = createTag('div')
     addClass(divBox, 'box')
+    addClass(divBox, 'boxOrder')
 
-    // BoxProduct
+    // Box Recap Order:
     let divBoxRecapOrder = createTag('div')
     addClass(divBoxRecapOrder, 'box__recapOrder')
 
@@ -53,10 +56,10 @@ console.log(getOrderInLocalStorage)
     addClass(divCardOrder, 'text-center')
 
     // Card-body:
-    let divCardBody = createTag('div')
-    divCardBody.setAttribute("id", "divCardBodyOrder")
-    addClass(divCardBody, 'card-body')
-    addClass(divCardBody, 'card-body-product')
+    let divCardBodyOrder = createTag('div')
+    divCardBodyOrder.setAttribute("id", "divCardBodyOrder")
+    addClass(divCardBodyOrder, 'card-body')
+    addClass(divCardBodyOrder, 'card-body-product')
 
     // Titre du recap de commande
     let titleOrder = createTag('h3')
@@ -95,7 +98,7 @@ console.log(getOrderInLocalStorage)
 
     // Séparation :
     let divSeparationOrder = createTag('div')
-    addClass(divSeparationOrder, 'separation')
+    addClass(divSeparationOrder, 'divSeparationOrder')
 
     // Texte rappel adresse de facturation :
     let coordinatesReminder = createTag('p')
@@ -146,7 +149,7 @@ console.log(getOrderInLocalStorage)
     addClass(boxCity, 'boxCity')
     // Texte city:
     let cityReminder = createTag('p')
-    addClass(cityReminder, 'addressReminder')
+    addClass(cityReminder, 'cityReminder')
     cityReminder.innerHTML = 'Ville : '
     // Affiche city:
     let displayCityReminder = createTag('p')
@@ -156,7 +159,7 @@ console.log(getOrderInLocalStorage)
 
     // Séparation :
     let div2SeparationOrder = createTag('div')
-    addClass(div2SeparationOrder, 'separation')
+    addClass(div2SeparationOrder, 'divSeparationOrder')
 
     // Texte rappel adresse de contact :
     let addressContactReminder = createTag('p')
@@ -193,61 +196,61 @@ console.log(getOrderInLocalStorage)
 
     // Ajout de la carte produit:
     divBoxRecapOrder.appendChild(divCardOrder)
-    divCardOrder.appendChild(divCardBody)
+    divCardOrder.appendChild(divCardBodyOrder)
 
     // Ajout du h3:
-    divCardBody.appendChild(titleOrder)
+    divCardBodyOrder.appendChild(titleOrder)
     // Ajout du texte numéro de commande:
-    divCardBody.appendChild(numberOrder)
+    divCardBodyOrder.appendChild(numberOrder)
     // Affiche le numéro de commande:
-    divCardBody.appendChild(displayNumberOrder)
+    divCardBodyOrder.appendChild(displayNumberOrder)
     // Ajout du texte somme total:
-    divCardBody.appendChild(priceTotal)
+    divCardBodyOrder.appendChild(priceTotal)
     // Affiche le prix total:
-    divCardBody.appendChild(displayPriceTotal)
+    divCardBodyOrder.appendChild(displayPriceTotal)
 
     // Affiche le trait de séparation:
-    divCardBody.appendChild(divSeparationOrder)
+    divCardBodyOrder.appendChild(divSeparationOrder)
 
     // Ajout du texte Adresse de facturation
-    divCardBody.appendChild(coordinatesReminder)
+    divCardBodyOrder.appendChild(coordinatesReminder)
 
     // Box firstName:
-    divCardBody.appendChild(boxFirstName)
+    divCardBodyOrder.appendChild(boxFirstName)
     // Texte nom:
     boxFirstName.appendChild(nameReminder)
     // Affiche nom:
     boxFirstName.appendChild(displayNameReminder)
 
     // Box lastName:
-    divCardBody.appendChild(boxLastName)
+    divCardBodyOrder.appendChild(boxLastName)
     // Texte prénom:
     boxLastName.appendChild(lastNameReminder)
     // Affiche prénom:
     boxLastName.appendChild(displayLastNameReminder)
 
     // Box address:
-    divCardBody.appendChild(boxAddress)
+    divCardBodyOrder.appendChild(boxAddress)
     // Texte address:
     boxAddress.appendChild(addressReminder)
     // Affiche address:
     boxAddress.appendChild(displayAddressReminder)
 
     // Box city:
-    divCardBody.appendChild(boxCity)
+    divCardBodyOrder.appendChild(boxCity)
     // Texte city:
     boxCity.appendChild(cityReminder)
     // Affiche city:
     boxCity.appendChild(displayCityReminder)
 
     // Affiche le trait de séparation:
-    divCardBody.appendChild(div2SeparationOrder)
+    divCardBodyOrder.appendChild(div2SeparationOrder)
 
     // Texte rappel adresse de contact :
-    divCardBody.appendChild(addressContactReminder)
+    divCardBodyOrder.appendChild(addressContactReminder)
 
     // Box adresse de contact:
-    divCardBody.appendChild(boxEmail)
+    divCardBodyOrder.appendChild(boxEmail)
     // Texte adresse de contact:
     boxEmail.appendChild(emailReminder)
     // Affiche adresse de contact:

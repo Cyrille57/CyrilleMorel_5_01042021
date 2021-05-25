@@ -10378,6 +10378,7 @@ h2 {
 .panier:nth-child(1) {
   padding-bottom: 5%;
 }
+
 header {
   margin-bottom: 10%;
 }
@@ -10438,8 +10439,8 @@ header {
   height: 100%;
   width: 90%;
   margin-top: 0%;
-  background-color: #fff;
   padding: 4vh 5vh;
+  background-color: #fff;
   border-bottom-left-radius: 1rem;
   border-top-left-radius: 1rem;
 }
@@ -10453,6 +10454,8 @@ header {
 
 .title {
   margin-bottom: 3vh;
+  display: flex;
+  justify-content: center;
 }
 @media only screen and (min-width: 480px) and (max-width: 768px) {
   .title {
@@ -10530,12 +10533,12 @@ img {
 .hidden-mobile {
   visibility: hidden;
 }
-
 @media screen and (min-width: 768px) {
   .hidden-mobile {
     visibility: visible;
   }
 }
+
 .boxTitleAmount {
   width: 100%;
   margin-top: 3%;
@@ -10777,12 +10780,10 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /*background-color: #e9ecef;*/
   background: linear-gradient(124deg, #dc882b 0%, #8f5bfe 100%) 30;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   padding: 2vh;
-  /*color: rgb(65, 65, 65)*/
   color: #fff;
 }
 @media only screen and (min-width: 480px) and (max-width: 768px) {
@@ -11096,14 +11097,51 @@ form {
   }
 }
 
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .divRowOrder {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .divRowOrder {
+    width: 100%;
+  }
+}
+
 .containerRecapOrder {
   width: 90%;
 }
-@media only screen and (min-width: 480px) and (max-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
   .containerRecapOrder {
-    max-width: 700px;
+    width: 70%;
   }
 }
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .containerRecapOrder {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .col-12-Order {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .boxOrder {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 .box__recapOrder {
   width: auto;
   height: 800px;
@@ -11117,172 +11155,296 @@ form {
   flex-wrap: wrap;
   box-shadow: -1px 2px 10px 3px #e9ecef inset;
 }
-@media only screen and (min-width: 480px) and (max-width: 768px) {
-  .box__recapOrder {
-    height: 600px;
-    width: 100%;
-    margin: 0% !important;
-    margin-bottom: 20% !important;
-    display: flex;
-    justify-content: center;
-  }
-}
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .box__recapOrder {
-    height: 500px;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 5% !important;
+    width: 100%;
   }
 }
 @media only screen and (min-width: 1024px) and (max-width: 1600px) {
   .box__recapOrder {
-    height: 500px;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 5% !important;
-  }
-}
-@media only screen and (min-width: 1600px) {
-  .box__recapOrder {
-    height: 500px;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 5% !important;
+    width: 100%;
   }
 }
 
 #divCardOrder {
   margin: 0%;
-  background-color: #e9ecef;
 }
 @media only screen and (min-width: 480px) and (max-width: 768px) {
   #divCardOrder {
-    width: 95%;
-    height: 500px;
-    margin: 0%;
+    width: 80%;
     display: flex;
-    justify-content: center;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   #divCardOrder {
-    margin: 0%;
-    display: flex;
-    justify-content: center;
+    width: 80%;
+    height: 700px;
   }
 }
 @media only screen and (min-width: 1024px) and (max-width: 1600px) {
   #divCardOrder {
-    margin: 0%;
-    display: flex;
-    justify-content: center;
+    width: 80%;
   }
 }
 @media only screen and (min-width: 1600px) {
   #divCardOrder {
-    margin: 0%;
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  #divCardBodyOrder {
+    width: 100%;
+    height: 700px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #divCardBodyOrder {
+    width: 100%;
+    height: 770px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  #divCardBodyOrder {
+    width: 80%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  #divCardBodyOrder {
+    width: 80%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  #divCardBodyOrder > p:nth-child(2) {
+    margin-top: 3%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #divCardBodyOrder > p:nth-child(2) {
+    margin-top: 3%;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  #divCardBodyOrder > p:nth-child(2) {
+    margin-top: 3%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  #divCardBodyOrder > p:nth-child(2) {
+    margin-top: 3%;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  p.font-weight-bold:nth-child(5) {
+    margin-bottom: 5%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  p.font-weight-bold:nth-child(5) {
+    margin-bottom: 5%;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  p.font-weight-bold:nth-child(5) {
+    margin-bottom: 3%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  p.font-weight-bold:nth-child(5) {
+    margin-bottom: 3%;
+  }
+}
+
+.divSeparationOrder {
+  border-bottom: 2.5px solid transparent;
+  border-image: linear-gradient(124deg, #dc882b 0%, #8f5bfe 100%) 30;
+}
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .divSeparationOrder {
+    width: 60%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .divSeparationOrder {
+    width: 60%;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .divSeparationOrder {
+    width: 60%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .divSeparationOrder {
+    width: 60%;
   }
 }
 
 .coordinatesReminder {
-  margin-top: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .coordinatesReminder {
+    margin-top: 3%;
+    margin-bottom: 3%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .coordinatesReminder {
+    margin-top: 3%;
+    margin-bottom: 3%;
+  }
 }
 
-.boxFirstName {
+.boxFirstName, .boxLastName, .boxAddress, .boxCity, .boxEmail {
   width: 100%;
   display: flex;
   justify-content: center;
 }
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .boxFirstName, .boxLastName, .boxAddress, .boxCity, .boxEmail {
+    width: 70%;
+    margin-bottom: 3%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .boxFirstName, .boxLastName, .boxAddress, .boxCity, .boxEmail {
+    width: 70%;
+    margin-bottom: 3%;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .boxFirstName, .boxLastName, .boxAddress, .boxCity, .boxEmail {
+    width: 70%;
+    margin-bottom: 1%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .boxFirstName, .boxLastName, .boxAddress, .boxCity, .boxEmail {
+    width: 70%;
+    margin-bottom: 1%;
+  }
+}
 
-.nameReminder {
+.nameReminder, .lastNameReminder, .addressReminder, .cityReminder, .emailReminder {
   width: 50%;
   display: flex;
   justify-content: center;
 }
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .nameReminder, .lastNameReminder, .addressReminder, .cityReminder, .emailReminder {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .nameReminder, .lastNameReminder, .addressReminder, .cityReminder, .emailReminder {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5%;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .nameReminder, .lastNameReminder, .addressReminder, .cityReminder, .emailReminder {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .nameReminder, .lastNameReminder, .addressReminder, .cityReminder, .emailReminder {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5%;
+  }
+}
 
-.displayNameReminder {
+.displayNameReminder, .displayLastNameReminder, .displayAddressReminder, .displayCityReminder, .displayMailReminder {
   width: 50%;
   display: flex;
   justify-content: flex-start;
+  text-align: left !important;
 }
-
-.boxLastName {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .displayNameReminder, .displayLastNameReminder, .displayAddressReminder, .displayCityReminder, .displayMailReminder {
+    margin-bottom: 3%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
 }
-
-.lastNameReminder {
-  width: 50%;
-  display: flex;
-  justify-content: center;
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .displayNameReminder, .displayLastNameReminder, .displayAddressReminder, .displayCityReminder, .displayMailReminder {
+    margin-bottom: 3%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
 }
-
-.displayLastNameReminder {
-  width: 50%;
-  display: flex;
-  justify-content: flex-start;
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .displayNameReminder, .displayLastNameReminder, .displayAddressReminder, .displayCityReminder, .displayMailReminder {
+    margin-bottom: 0%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
 }
-
-.boxAddress {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.addressReminder {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-}
-
-.displayAddressReminder {
-  width: 50%;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.boxCity {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.cityReminder {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-}
-
-.displayCityReminder {
-  width: 50%;
-  display: flex;
-  justify-content: flex-start;
+@media only screen and (min-width: 1600px) {
+  .displayNameReminder, .displayLastNameReminder, .displayAddressReminder, .displayCityReminder, .displayMailReminder {
+    margin-bottom: 0%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
 }
 
 .addressContactReminder {
-  margin-top: 10%;
+  margin-top: 5%;
+}
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+  .addressContactReminder {
+    margin-top: 3%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .addressContactReminder {
+    margin-top: 3%;
+  }
 }
 
-.boxEmail {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+.spanError {
+  align-self: flex-end;
+  color: red;
 }
 
-.emailReminder {
-  width: 50%;
-  display: flex;
-  justify-content: center;
+input:focus {
+  outline: none;
 }
 
-.displayMailReminder {
-  width: 50%;
-  display: flex;
-  justify-content: flex-start;
+input:focus:valid {
+  border-color: #00c853;
+}
+
+input:focus:invalid {
+  border-color: red;
 }
 
 /*# sourceMappingURL=style.css.map */

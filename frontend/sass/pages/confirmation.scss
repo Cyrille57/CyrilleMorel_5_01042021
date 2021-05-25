@@ -1,31 +1,65 @@
+// ***************************************
+// ********* Confirmation.html ***********
+// ***************************************
 
+//////////////////////////////////////////
+///////////////// Main ///////////////////
 
+// Row:
+.divRowOrder{
+
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            width: 100%;
+        }
+
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            width: 100%;
+        }
+}
+
+// Container:
 .containerRecapOrder{
     width: 90%;
 
-    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
-    @media only screen and (min-width: 480px) and (max-width: 768px) {
-        max-width: 700px;
-
-    }
-
     // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
-
-    }
-
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            width: 70%;
+        }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-
-    }
-
-    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
-
-    }
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            width: 70%;
+            display: flex;
+            justify-content: center;
+        }
 }
 
+// Col-12:
+.col-12-Order{
+
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+}
+
+// Box:
+.boxOrder{
+
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+}
+
+// Box Recap Order:
 .box__recapOrder {
     width: auto;
     height: 800px;
@@ -42,181 +76,285 @@
 
     box-shadow: -1px 2px 10px 3px #e9ecef inset;
 
-        // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
-        @media only screen and (min-width: 480px) and (max-width: 768px) {
-            height: 600px;
-            width: 100%;
-            margin: 0% !important;
-            margin-bottom: 20% !important;
-            display: flex;
-            justify-content: center;
-        }
-
-        // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-        @media only screen and (min-width: 768px) and (max-width: 1024px) {
-            height: 500px;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 5% !important;
-            }
-
-        // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-            height: 500px;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 5% !important;
-            }
-
-        // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-        @media only screen and (min-width: 1600px) {
-            height: 500px;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 5% !important;
-            }
-}
-
-#divCardOrder{
-    
-    margin: 0%;
-    background-color: #e9ecef;
-    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
-    @media only screen and (min-width: 480px) and (max-width: 768px) {
-        width: 95%;
-        height: 500px;
-        margin: 0%;
-        display: flex;
-        justify-content: center;
-    }
-
     // Pour écrans entre 768px et 1024px (Tablette mode paysage)
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
-        margin: 0%;
-        display: flex;
-        justify-content: center;
-        }
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            width: 100%;
 
+        }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
-    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-        margin: 0%;
-        display: flex;
-        justify-content: center;
-        }
-
-    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
-    @media only screen and (min-width: 1600px) {
-        margin: 0%;
-        display: flex;
-        justify-content: center;
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            width: 100%;
         }
 }
 
+// Card:
+#divCardOrder{
+    margin: 0%;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+            width: 80%;
+            display: flex;
+        }
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            width: 80%;
+            height: 700px;
+        }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            width: 80%;
+        }
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+            width: 70%;
+        }
+}
+
+// Card-body:
 #divCardBodyOrder{
 
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+            width: 100%;
+            height: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            width: 100%;
+            height: 770px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            width: 80%;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+            width: 80%;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 }
 
+// Sélectionne la prase "votre numéro de commande:":
+#divCardBodyOrder > p:nth-child(2){
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+            margin-top: 3%;
+        }
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            margin-top: 3%;
+        }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            margin-top: 3%;
+        }
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+            margin-top: 3%;
+        }
+}
+
+// Sélectionne le prix donna:
+p.font-weight-bold:nth-child(5){
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+            margin-bottom: 5%;
+        }
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            margin-bottom: 5%;
+        }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            margin-bottom: 3%;
+        }
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+            margin-bottom: 3%;
+        }
+}
+
+// Séparation :
+.divSeparationOrder{
+    border-bottom: 2.5px solid transparent;
+    border-image: linear-gradient(124deg, rgba(220, 136, 43, 1) 0%, rgba(143, 91, 254, 1) 100%) 30;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+            width: 60%;
+        }
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            width: 60%;
+        }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            width: 60%;
+        }
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+            width: 60%;
+        }
+}
+
+// Texte rappel adresse de facturation :
 .coordinatesReminder{
-    margin-top: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            margin-top: 3%;
+            margin-bottom: 3%;
+        }
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+            margin-top: 3%;
+            margin-bottom: 3%;
+        }
 }
-// Box firstName:
-.boxFirstName{
+
+// Box:
+.boxFirstName, .boxLastName, .boxAddress, .boxCity, .boxEmail  {
     width: 100%;
     display: flex;
     justify-content: center;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+            width: 70%;
+            margin-bottom: 3%;
+        }
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            width: 70%;
+            margin-bottom: 3%;
+        }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            width: 70%;
+            margin-bottom: 1%;
+        }
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+            width: 70%;
+            margin-bottom: 1%;
+        }
 }
-// Texte firstName:
-.nameReminder{
+// Texte:
+.nameReminder, .lastNameReminder, .addressReminder, .cityReminder, .emailReminder{
     width: 50%;
     display: flex;
     justify-content: center;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 5%;
+        }
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 5%;
+        }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 5%;
+        }
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 5%;
+            }
 }
-// Affiche firstName:
-.displayNameReminder{
+// Affiche:
+.displayNameReminder, .displayLastNameReminder, .displayAddressReminder, .displayCityReminder, .displayMailReminder{
     width: 50%;
     display: flex;
     justify-content: flex-start;
-}
+    text-align: left !important;
 
-// box lastName:
-.boxLastName{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-// Texte lastName:
-.lastNameReminder{
-    width: 50%;
-    display: flex;
-    justify-content: center;
-
-}
-// Affiche lastName:
-.displayLastNameReminder{
-    width: 50%;
-    display: flex;
-    justify-content: flex-start;
-}
-
-// box adresse:
-.boxAddress{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-// Texte adresse:
-.addressReminder{
-    width: 50%;
-    display: flex;
-    justify-content: center;
-}
-// Affiche adresse:
-.displayAddressReminder{
-    width: 50%;
-    display: flex;
-    justify-content: flex-start;
-
-}
-
-// box city:
-.boxCity{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-// Texte city:
-.cityReminder{
-    width: 50%;
-    display: flex;
-    justify-content: center;
-}
-// Affiche city:
-.displayCityReminder{
-    width: 50%;
-    display: flex;
-    justify-content: flex-start;
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+            margin-bottom: 3%;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            margin-bottom: 3%;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            margin-bottom: 0%;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+            margin-bottom: 0%;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
 }
 
 // Texte rappel adresse de contact :
 .addressContactReminder{
-    margin-top: 10%;
+    margin-top: 5%;
+
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+            margin-top: 3%;
+        }
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+            margin-top: 3%;
+        }
 }
 
-// box adresse de contact:
-.boxEmail{
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.spanError{
+    align-self: flex-end;
+    color: red;
+
 }
-// Texte adresse de contact:
-.emailReminder{
-    width: 50%;
-    display: flex;
-    justify-content: center;
+
+input:focus {
+    outline:  none;
 }
-// Affiche adresse de contact:
-.displayMailReminder{
-    width: 50%;
-    display: flex;
-    justify-content: flex-start;
+
+input:focus:valid {
+    border-color: #00c853;
 }
+
+
+input:focus:invalid {
+    border-color:red;
+}
+
