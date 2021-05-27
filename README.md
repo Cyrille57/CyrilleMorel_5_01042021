@@ -15,7 +15,8 @@
 </p>
 
 <p>
-  <img alt="orinoco.html" src="https://github.com/Cyrille57/CyrilleMorel_5_01042021/blob/master/public/images/orinoco.png">
+  <img alt="orinoco.html" 
+       src="https://github.com/Cyrille57/CyrilleMorel_5_01042021/blob/master/frontend/screenshot/orinoco.png">
 </p>
 
 <h2> Général:</h2>
