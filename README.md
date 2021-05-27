@@ -14,6 +14,10 @@
   Pour ce faire, <a href="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/DWJ_FR_P5/P5_Spe%CC%81cifications%20fonctionnelles%20Orinoco%20(2).pdf">les spécifications </a> du cahier MVP, me sont fournies.
 </p>
 
+<p>
+  <img alt="orinoco.html" src="https://github.com/Cyrille57/CyrilleMorel_5_01042021/blob/master/public/images/orinoco.png">
+</p>
+
 <h2> Général:</h2>
 
 <p>
