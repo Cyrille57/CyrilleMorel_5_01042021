@@ -10087,6 +10087,10 @@ i {
   }
 }
 
+.logo {
+  width: 120em;
+}
+
 @media only screen and (min-width: 480px) and (max-width: 768px) {
   .titleH2Index {
     margin-top: 0%;
@@ -10106,6 +10110,31 @@ i {
   .titleH2Index {
     margin-top: 0%;
   }
+}
+
+.col-footer {
+  width: 100%;
+  height: 5rem;
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.footer {
+  width: 100%;
+}
+
+.box-logo {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+  align-items: center;
+}
+
+html {
+  height: auto;
 }
 
 h2 {
@@ -10876,7 +10905,6 @@ hr {
 .box-form {
   width: 100%;
   height: 800px;
-  margin-bottom: 20%;
   margin-top: 5%;
   border: 1px solid #e9ecef;
   display: flex;
@@ -10888,7 +10916,6 @@ hr {
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .box-form {
     height: 650px;
-    margin-bottom: 10%;
     display: flex;
     justify-content: center;
   }
@@ -10896,7 +10923,6 @@ hr {
 @media only screen and (min-width: 1024px) and (max-width: 1600px) {
   .box-form {
     height: 650px;
-    margin-bottom: 10%;
     display: flex;
     justify-content: center;
   }
@@ -10904,7 +10930,6 @@ hr {
 @media only screen and (min-width: 1600px) {
   .box-form {
     height: 650px;
-    margin-bottom: 10%;
     display: flex;
     justify-content: center;
   }

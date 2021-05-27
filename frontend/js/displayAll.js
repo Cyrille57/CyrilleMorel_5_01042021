@@ -44,7 +44,7 @@ connect(url)
 
 // 2) ////////////////////////////////////////////////////////
 // Fonction qui affiche les produit:
-async function displayAll(result) {
+function displayAll(result) {
 
   //Selectionne l'id parent:
   let main = document.querySelector('main')
@@ -73,7 +73,7 @@ async function displayAll(result) {
   addClass(boxCarte, 'box__carte')
 
   //////////////////////////////////////////////////////////
-  // Boucle qui parcour result:
+  // Boucle qui parcours result:
   for (var i = 0; i < result.length; i++) {
 
     //////////////////////////////////////////////////////////
@@ -97,8 +97,8 @@ async function displayAll(result) {
     // Image:
     let divCardPicture = createTag('img')
     addClass(divCardPicture, 'carte--picture')
-     divCardPicture.src = result[i].imageUrl
-      divCardPicture.alt = 'Image de nounours de la gamme Orinoco'
+    divCardPicture.src = result[i].imageUrl
+    divCardPicture.alt = 'Image de nounours de la gamme Orinoco'
 
     // Overlay:
     let divCarteOverlay = createTag('div')
@@ -111,8 +111,8 @@ async function displayAll(result) {
     // Back:
     let divCarteBack = createTag('label')
     addClass(divCarteBack, 'carte__back')
-     addClass(divCarteBack, 'text-center')
-      addClass(divCarteBack, 'bg-gradient')
+    addClass(divCarteBack, 'text-center')
+    addClass(divCarteBack, 'bg-gradient')
 
     //////////////////////////////////////////////////////////
     // Intérieur du Back:
@@ -131,7 +131,7 @@ async function displayAll(result) {
     // Description:
     let pCarteDescription = createTag('p')
     addClass(pCarteDescription, 'card-text')
-     addClass(pCarteDescription, 'text-black-50')
+    addClass(pCarteDescription, 'text-black-50')
 
     // Price:
     let price = createTag('p')
@@ -140,7 +140,7 @@ async function displayAll(result) {
     // Intérieur de Price:
     let strongPrice = createTag('strong')
     addClass(strongPrice, 'text-light')
-     addClass(strongPrice, 'font-weight-normal')
+    addClass(strongPrice, 'font-weight-normal')
 
     // Carte Footer
     let carteFooter = createTag('div')
@@ -152,9 +152,9 @@ async function displayAll(result) {
     // Button:
     let button = createTag('a')
     addClass(button, 'btn')
-     addClass(button, 'rounded-pill')
-      addClass(button, 'btn-dark')
-       button.textContent = "En savoir plus"
+    addClass(button, 'rounded-pill')
+    addClass(button, 'btn-dark')
+    button.textContent = "En savoir plus"
 
     //////////////////////////////////////////////////////////
     //Récupére l'id pour le mettre dans le href:
@@ -163,7 +163,7 @@ async function displayAll(result) {
     // Réponse: retourne les id des produits
 
     // Ajoute l'id dans l'url des produit sélectionnés:
-    button.setAttribute("href", "../../frontend/product.html?id=" + id)
+    button.setAttribute("href", "product.html?id=" + id)
 
     //////////////////////////////////////////////////////////
     // Affiche les données:

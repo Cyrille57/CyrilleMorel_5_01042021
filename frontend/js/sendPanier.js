@@ -4,10 +4,9 @@
 
 
 // 1) /////////////////////////////////////////////////////////
-/**
- * Fonction pour ajouter au panier:
- */
+// Fonction pour ajouter au panier:
 function sendCaddy(idProduct) {
+
     // Selectionne le bouton envoyer au panier:
     let btn_panier = document.querySelector("a.btn")
 
@@ -21,7 +20,7 @@ function sendCaddy(idProduct) {
         // fonction pour afficher une pop up de confirmation:
         const popConfirmation = () => {
             if (window.confirm(
-                    "Votre produit a bien été ajouté au panier ! Consultez le panier OK ou revenir a l'accueil ANNULER")) {
+                    "Votre produit a bien été ajouté au panier ! Consultez le panier OK ou revenir à l'accueil ANNULER")) {
                 window.location.href = "panier.html"
             } else {
                 window.location.href = "index.html"
@@ -38,10 +37,9 @@ function sendCaddy(idProduct) {
         }
 
         // 4) /////////////////////////////////////////////////////////
-        /**
-         * Local Storage
-         */
-        // Initialise de variable pour mettre les clef et values qui vont etre présent dans localstorage,
+        // Local Storage:
+
+        // Initialise la variable pour mettre les clef et values qui vont etre présent dans localstorage,
         // et recupéré product en format javascript:
         let productLocalStorage = JSON.parse(localStorage.getItem("product"))
 
@@ -58,20 +56,27 @@ function sendCaddy(idProduct) {
     })
 }
 
+
+// 5) /////////////////////////////////////////////////////////
 // Vérifie si l'id du produit est déja dans le LocalStorage:
-function verificationIdProductLocalStorage (idProduct, productLocalStorage, getValue) {
+function verificationIdProductLocalStorage(idProduct, productLocalStorage, getValue) {
 
     console.log(idProduct)
     console.log(productLocalStorage)
-    var indexIdProduct = productLocalStorage.map(function(item) { return item.idProduct; }).indexOf(idProduct);
-    // Si a une position on vas ajouter 1 quantité sinon on crée l'objet
-    if (indexIdProduct >= 0){
-       productLocalStorage[indexIdProduct].quantityProduct++
-    }else{
+
+    // Retounr l'index du produit
+    var indexIdProduct = productLocalStorage.map(function (item) {
+        return item.idProduct;
+    }).indexOf(idProduct);
+
+    // Si l'index retourné est supérieur à 0, alors rajoute un sinon créer un autre objet:
+    if (indexIdProduct >= 0) {
+        productLocalStorage[indexIdProduct].quantityProduct++
+    } else {
 
         let objectProduct = {
 
-            quantityProduct: 1 ,
+            quantityProduct: 1,
             idProduct: idProduct,
 
         }
@@ -79,6 +84,5 @@ function verificationIdProductLocalStorage (idProduct, productLocalStorage, getV
         // Pousse l'objet produit dans le tableau:
         productLocalStorage.push(objectProduct)
     }
-
     return productLocalStorage
 }

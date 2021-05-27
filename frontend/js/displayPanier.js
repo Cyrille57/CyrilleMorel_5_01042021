@@ -7,42 +7,37 @@
 // Récupére les produit dans localStorager: //////////////////
 let productLocalStorage = JSON.parse(localStorage.getItem("product"))
 console.log(productLocalStorage)
-console.log(productLocalStorage.length)
-
-
 //réponse : tableau des objets
 //console.log(productLocalStorage.length)
 //réponse : 3
 
-let productData = ''
 
 // 2) ////////////////////////////////////////////////////////
 // Récupére l'id un à un et les affecte a l'url: /////////////
-let idProductPanier = ""
-function getId (productLocalStorage) {
+function getId(productLocalStorage) {
     for (var i = 0; i < productLocalStorage.length; i++) {
 
         let idProductPanier = productLocalStorage[i].idProduct
         console.log(idProductPanier)
-        // Réponse 1 seul id par produit
+        // Réponse: 1 seul id par produit
 
         // Concaténe l'url de l'API avec l'id récupéré: ///////////////
         const url = "http://localhost:3000/api/teddies";
         const urlProduct = url + "/" + idProductPanier;
         //console.log(urlProduct)
-     // reponse http://localhost:3000/api/teddies/5beaaa8f1c9d440000a57d95
+        // Réeponse http://localhost:3000/api/teddies/5beaaa8f1c9d440000a57d95
 
-    takeProductInPanier(urlProduct, productLocalStorage[i])
+        takeProductInPanier(urlProduct, productLocalStorage[i])
     }
 }
-getId (productLocalStorage)
+getId(productLocalStorage)
 
 
 // 3) /////////////////////////////////////////////////////////
-// XMLHttpRequest se connecte avec l'url?récupére les données:/
+// XMLHttpRequest se connecte avec l'url et récupére les données:/
 async function takeProductInPanier(urlProduct, productLocalStorage) {
     //console.log(urlProduct)
-    // reponse http://localhost:3000/api/teddies/5beaaa8f1c9d440000a57d95
+    // Réponse http://localhost:3000/api/teddies/5beaaa8f1c9d440000a57d95
 
     // Creer un nouvel objet Ajax de type XMLHttpRequest:
     let xhr = new XMLHttpRequest();
@@ -56,14 +51,12 @@ async function takeProductInPanier(urlProduct, productLocalStorage) {
 
             // envoie le productData a la fonction displayPanier:
             displayPanier(productData, productLocalStorage)
-            countArticle (productLocalStorage.quantityProduct)
-            totalPrice (productLocalStorage.quantityProduct * productData.price)
-            sendOrder (productData)
+            countArticle(productLocalStorage.quantityProduct)
+            totalPrice(productLocalStorage.quantityProduct * productData.price)
+            sendOrder(productData)
 
-            //console.log(displayPanier)
         } else if (this.readyState == XMLHttpRequest.DONE && this.status == 500) {
             console.log("Erreur 500");
-
         }
     };
 
@@ -80,221 +73,218 @@ async function takeProductInPanier(urlProduct, productLocalStorage) {
 
 ///////////////////////////////////////////////////////////
 // I) Sélectionne le Parent: ******************************
-    //Selectionne l'id parent:
-    let main = document.querySelector('main')
-    //console.log(main)
+//Selectionne l'id parent:
+let main = document.querySelector('main')
+//console.log(main)
 
 ///////////////////////////////////////////////////////////
 // I) A) Création des éléments de base enfants: ***********
-    // Panier:
-    let divSectionPanier = createTag('section')
+// Panier:
+let divSectionPanier = createTag('section')
 
-    // Card:
-    let divCard = createTag('div')
-    addClass(divCard, 'card')
-    addClass(divCard, 'divCardPanier')
+// Card:
+let divCard = createTag('div')
+addClass(divCard, 'card')
+addClass(divCard, 'divCardPanier')
 
-    // Row:
-    let divRow = createTag('div')
-    addClass(divRow, 'divRow')
-    addClass(divRow, 'row')
+// Row:
+let divRow = createTag('div')
+addClass(divRow, 'divRow')
+addClass(divRow, 'row')
 
-    // col-md-8
-    let divCol = createTag('div')
-    addClass(divCol, 'col-md-8')
-     addClass(divCol, 'cart')
-     divCol.setAttribute("id", "parentCardProduct")
+// col-md-8
+let divCol = createTag('div')
+addClass(divCol, 'col-md-8')
+addClass(divCol, 'cart')
+divCol.setAttribute("id", "parentCardProduct")
 
 ///////////////////////////////////////////////////////////
 // I) B) Création intérieur box: **************************
-    // Entete
-    //  Title:
-    let divHeadCardTitle = createTag('div')
-    addClass(divHeadCardTitle, 'title')
-    
+// Entete
+//  Title:
+let divHeadCardTitle = createTag('div')
+addClass(divHeadCardTitle, 'title')
 
-    // Row:
-    let divRowTitle = createTag('div')
-    addClass(divRowTitle, 'row')
+// Row:
+let divRowTitle = createTag('div')
+addClass(divRowTitle, 'row')
 
-    // Col:
-    let divColTitle = createTag('div')
-    addClass(divColTitle, 'col')
-    addClass(divColTitle, 'divColTitle')
-    addClass(divColTitle, 'text-center')
+// Col:
+let divColTitle = createTag('div')
+addClass(divColTitle, 'col')
+addClass(divColTitle, 'divColTitle')
+addClass(divColTitle, 'text-center')
 
-    // H2:
-    let divSubTitle = createTag('h2')
+// H2:
+let divSubTitle = createTag('h2')
 
-    // Strong:
-    let strongTitle = createTag('strong')
-    strongTitle.innerHTML = 'Panier:'
+// Strong:
+let strongTitle = createTag('strong')
+strongTitle.innerHTML = 'Panier:'
 
-    // Item principale:
-    let divCountitem = createTag('div')
-    addClass(divCountitem, 'col')
-     addClass(divCountitem, 'align-self-center')
-      addClass(divCountitem, 'text-right')
-       addClass(divCountitem, 'text-muted')
+// Item principale:
+let divCountitem = createTag('div')
+addClass(divCountitem, 'col')
+addClass(divCountitem, 'align-self-center')
+addClass(divCountitem, 'text-right')
+addClass(divCountitem, 'text-muted')
 
-    // Border top:
-    let divBorderTop = createTag('div')
-    addClass(divBorderTop, 'border-top')
-
+// Border top:
+let divBorderTop = createTag('div')
+addClass(divBorderTop, 'border-top')
 
 ///////////////////////////////////////////////////////////
 // I) D) Pied de la carte: ********************************
-    // Div Back to shop:
-    let divBackShop = createTag('div')
-    addClass(divBackShop, 'back-to-shop')
+// Div Back to shop:
+let divBackShop = createTag('div')
+addClass(divBackShop, 'back-to-shop')
 
-    // Box lien et texte backShop:
-    let boxBackShop = createTag('div')
-    addClass(boxBackShop, 'boxBackShop')
+// Box lien et texte backShop:
+let boxBackShop = createTag('div')
+addClass(boxBackShop, 'boxBackShop')
 
-    // Lien fléché Back to shop:
-    let linkBackShop = createTag('a')
-    addClass(linkBackShop , 'linkBackShop')
-    linkBackShop.setAttribute("href", "../../frontend/index.html")
-     linkBackShop.innerHTML = "&leftarrow;"
+// Lien fléché Back to shop:
+let linkBackShop = createTag('a')
+addClass(linkBackShop, 'linkBackShop')
+linkBackShop.setAttribute("href", "../../frontend/index.html")
+linkBackShop.innerHTML = "&leftarrow;"
 
-    // Texte Back to shop:
-    let textBackShop = createTag('span')
-    addClass(textBackShop, 'textBackShop')
-    addClass(textBackShop, 'text-muted')
-     textBackShop.innerHTML = "Retour à la boutique"
+// Texte Back to shop:
+let textBackShop = createTag('span')
+addClass(textBackShop, 'textBackShop')
+addClass(textBackShop, 'text-muted')
+textBackShop.innerHTML = "Retour à la boutique"
 
-     // Box lien et texte delete all:
-     let boxDeleteAll= createTag('div')
-     addClass(boxDeleteAll, 'boxDeleteAll')
+// Box lien et texte delete all:
+let boxDeleteAll = createTag('div')
+addClass(boxDeleteAll, 'boxDeleteAll')
 
-    // lien delete all:
-    let linkDeleteAll = createTag('a')
-    linkDeleteAll.setAttribute("id", "linkDeleteAll")
-    linkDeleteAll.setAttribute("href", "#")
-    linkDeleteAll.innerHTML= "&#8634;"
+// lien delete all:
+let linkDeleteAll = createTag('a')
+linkDeleteAll.setAttribute("id", "linkDeleteAll")
+linkDeleteAll.setAttribute("href", "#")
+linkDeleteAll.innerHTML = "&#8634;"
 
-    // Texte supprimer tout le panier:
-    let textDeleteAll = createTag('span')
-    addClass(textDeleteAll, 'textDelete')
-    addClass(textDeleteAll, 'text-muted')
-    textDeleteAll.innerHTML = "Vider le panier"
-
+// Texte supprimer tout le panier:
+let textDeleteAll = createTag('span')
+addClass(textDeleteAll, 'textDelete')
+addClass(textDeleteAll, 'text-muted')
+textDeleteAll.innerHTML = "Vider le panier"
 
 ///////////////////////////////////////////////////////////
 // I) E) Récapitulatif: ***********************************
-    // Box Récapitulatif:
-    let divBoxRecap = createTag('div')
-    addClass(divBoxRecap, 'col-md-4')
-     addClass(divBoxRecap, 'summary')
-      addClass(divBoxRecap, 'bg-gradient')
+// Box Récapitulatif:
+let divBoxRecap = createTag('div')
+addClass(divBoxRecap, 'col-md-4')
+addClass(divBoxRecap, 'summary')
+addClass(divBoxRecap, 'bg-gradient')
 
-    // Div title récapitulatif:
-    let divTitleRecap = createTag('div')
+// Div title récapitulatif:
+let divTitleRecap = createTag('div')
 
-    // Title recapitulatif:
-    let titleRecap = createTag('h2')
+// Title recapitulatif:
+let titleRecap = createTag('h2')
 
-    // Strong title:
-    let titleStrongRecap = createTag('b')
-    titleStrongRecap.innerHTML = "Récapitulatif:"
+// Strong title:
+let titleStrongRecap = createTag('b')
+titleStrongRecap.innerHTML = "Récapitulatif:"
 
-    // Trait recapitulatif:
-    let separationRecap = createTag('hr')
+// Trait recapitulatif:
+let separationRecap = createTag('hr')
 
-    // Div boxItemRecap:
-    let divBoxItemRecap = createTag('div')
-    addClass(divBoxItemRecap, 'row')
-    addClass(divBoxItemRecap, 'divBoxItemRecap')
-    divBoxItemRecap.innerHTML= "Nombre d'article(s):  "
+// Div boxItemRecap:
+let divBoxItemRecap = createTag('div')
+addClass(divBoxItemRecap, 'row')
+addClass(divBoxItemRecap, 'divBoxItemRecap')
+divBoxItemRecap.innerHTML = "Nombre d'article(s):  "
 
-    // Div Item recapitulatif:
-    let divItemRecap = createTag('div')
-    //addClass(divItemRecap, 'col')
-    divItemRecap.setAttribute("id", "numberArticle")
-      //divItemRecap.innerHTML = "items 3"
-      divItemRecap.innerHTML = 0
+// Div Item recapitulatif:
+let divItemRecap = createTag('div')
+//addClass(divItemRecap, 'col')
+divItemRecap.setAttribute("id", "numberArticle")
+//divItemRecap.innerHTML = "items 3"
+divItemRecap.innerHTML = 0
 
-    // Price recapitulatif:
-    let divPriceRecap = createTag('div')
-    addClass(divPriceRecap, 'col')
-     addClass(divPriceRecap, 'text-right')
-      divPriceRecap.setAttribute("style", "margin-top: 5%;")
+// Price recapitulatif:
+let divPriceRecap = createTag('div')
+addClass(divPriceRecap, 'col')
+addClass(divPriceRecap, 'text-right')
+divPriceRecap.setAttribute("style", "margin-top: 5%;")
 
-    // Div box total recap:
-    let divBoxTotal = createTag('div')
-    addClass(divBoxTotal, 'row')
-    addClass(divBoxTotal, 'divBoxTotal')
+// Div box total recap:
+let divBoxTotal = createTag('div')
+addClass(divBoxTotal, 'row')
+addClass(divBoxTotal, 'divBoxTotal')
 
-    // Div text price total:
-    let divTextPriceTotal = createTag('div')
-    addClass(divTextPriceTotal, 'col')
-    addClass(divTextPriceTotal, 'divTextPriceTotal')
-     divTextPriceTotal.innerHTML = "Prix Total: "
+// Div text price total:
+let divTextPriceTotal = createTag('div')
+addClass(divTextPriceTotal, 'col')
+addClass(divTextPriceTotal, 'divTextPriceTotal')
+divTextPriceTotal.innerHTML = "Prix Total: "
 
-    // Div price total:
-    let divPriceTotal = createTag('div')
-    addClass(divPriceTotal, 'col')
-     divPriceTotal.setAttribute("id", "total")
-     divPriceTotal.innerHTML = 0 
+// Div price total:
+let divPriceTotal = createTag('div')
+addClass(divPriceTotal, 'col')
+divPriceTotal.setAttribute("id", "total")
+divPriceTotal.innerHTML = 0
 
-    // button valider la commande:
-    let buttonConfirm = createTag('button')
-     addClass(buttonConfirm, 'btn')
-     addClass(buttonConfirm, 'btnConfirmation')
-      addClass(buttonConfirm, 'rounded-pill')
-       addClass(buttonConfirm, 'btn-dark')
-        buttonConfirm.innerHTML = "Confirmer la commande"
+// button valider la commande:
+let buttonConfirm = createTag('button')
+addClass(buttonConfirm, 'btn')
+addClass(buttonConfirm, 'btnConfirmation')
+addClass(buttonConfirm, 'rounded-pill')
+addClass(buttonConfirm, 'btn-dark')
+buttonConfirm.innerHTML = "Confirmer la commande"
 
 ///////////////////////////////////////////////////////////
 // I) F) Ajout Panier: ************************************
-    main.appendChild(divSectionPanier)
-    // Card:
-    divSectionPanier.appendChild(divCard)
-    // Row:
-    divCard.appendChild(divRow)
-    // col-md-8
-    divRow.appendChild(divCol)
+main.appendChild(divSectionPanier)
+// Card:
+divSectionPanier.appendChild(divCard)
+// Row:
+divCard.appendChild(divRow)
+// col-md-8
+divRow.appendChild(divCol)
 
-    // Entete: ////////////////////////////////////////////////
-    //  Title:
-    divCol.appendChild(divHeadCardTitle)
-    // Row:
-    divHeadCardTitle.appendChild(divRowTitle)
-    // Col:
-    divRowTitle.appendChild(divColTitle)
-    // H2:
-    divColTitle.appendChild(divSubTitle)
-    // Strong:
-    divSubTitle.appendChild(strongTitle)
-    // Item principale:
-    divRowTitle.appendChild(divCountitem)
-    // Border top:
-    divCol.appendChild(divBorderTop)
+// Entete: ////////////////////////////////////////////////
+//  Title:
+divCol.appendChild(divHeadCardTitle)
+// Row:
+divHeadCardTitle.appendChild(divRowTitle)
+// Col:
+divRowTitle.appendChild(divColTitle)
+// H2:
+divColTitle.appendChild(divSubTitle)
+// Strong:
+divSubTitle.appendChild(strongTitle)
+// Item principale:
+divRowTitle.appendChild(divCountitem)
+// Border top:
+divCol.appendChild(divBorderTop)
 
-    // Récapitulatif: /////////////////////////////////////////
-    // Box Récapitulatif:
-    divRow.appendChild(divBoxRecap)
-    // Div title récapitulatif:
-    divBoxRecap.appendChild(titleRecap)
-    // Strong title:
-    titleRecap.appendChild(titleStrongRecap)
-    // Trait recapitulatif:
-    divBoxRecap.appendChild(separationRecap)
-    // divBoxItemRecap:
-    divBoxRecap.appendChild(divBoxItemRecap)
-    // Div Item recapitulatif:
-    divBoxItemRecap.appendChild(divItemRecap)
-    // Price recapitulatif:
-    divBoxItemRecap.appendChild(divPriceRecap)
-    // Div box total recap:
-    divBoxRecap.appendChild(divBoxTotal)
-    // Div text price total:
-    divBoxTotal.appendChild(divTextPriceTotal)
-    // Div price total:
-    divBoxTotal.appendChild(divPriceTotal)
-    // button valider la commande:
-    divBoxRecap.appendChild(buttonConfirm)
+// Récapitulatif: /////////////////////////////////////////
+// Box Récapitulatif:
+divRow.appendChild(divBoxRecap)
+// Div title récapitulatif:
+divBoxRecap.appendChild(titleRecap)
+// Strong title:
+titleRecap.appendChild(titleStrongRecap)
+// Trait recapitulatif:
+divBoxRecap.appendChild(separationRecap)
+// divBoxItemRecap:
+divBoxRecap.appendChild(divBoxItemRecap)
+// Div Item recapitulatif:
+divBoxItemRecap.appendChild(divItemRecap)
+// Price recapitulatif:
+divBoxItemRecap.appendChild(divPriceRecap)
+// Div box total recap:
+divBoxRecap.appendChild(divBoxTotal)
+// Div text price total:
+divBoxTotal.appendChild(divTextPriceTotal)
+// Div price total:
+divBoxTotal.appendChild(divPriceTotal)
+// button valider la commande:
+divBoxRecap.appendChild(buttonConfirm)
 
 
 //////////////////////////////////////////////////////////
@@ -308,13 +298,13 @@ function displayPanier(productData, productLocalStorage) {
     let divRowArticle = createTag('div')
     addClass(divRowArticle, "divRowArticle")
     addClass(divRowArticle, "row")
-     divRowArticle.setAttribute("id", "row_" + productData._id)
+    divRowArticle.setAttribute("id", "row_" + productData._id)
 
     // Row principale:
     let divRowMain = createTag('div')
     addClass(divRowMain, "row")
-     addClass(divRowMain, "main")
-       addClass(divRowMain, "border-bottom")
+    addClass(divRowMain, "main")
+    addClass(divRowMain, "border-bottom")
 
     // Col Image:
     let divCol2 = createTag('div')
@@ -323,11 +313,11 @@ function displayPanier(productData, productLocalStorage) {
     // Image:
     let img = createTag('img')
     addClass(img, "img-fluid")
-     addClass(img, "hidden-mobile")
-      img.alt = 'Image du produit'
+    addClass(img, "hidden-mobile")
+    img.alt = 'Image du produit'
 
     // Box pour col title et col div amount:
-    let boxTitleAmount= createTag('div')
+    let boxTitleAmount = createTag('div')
     addClass(boxTitleAmount, 'boxTitleAmount')
 
     // Col Titre du produit:
@@ -338,55 +328,54 @@ function displayPanier(productData, productLocalStorage) {
     // Titre du produit:
     let divTitleProduct = createTag('h3')
     addClass(divTitleProduct, 'row')
-     addClass(divTitleProduct, 'childrenCardProduct')
-      divTitleProduct.setAttribute("id","title")
-       divTitleProduct.setAttribute("data-idtitre",productData._id)
+    addClass(divTitleProduct, 'childrenCardProduct')
+    divTitleProduct.setAttribute("id", "title")
+    divTitleProduct.setAttribute("data-idtitre", productData._id)
 
     // Prix unitaire:
     let divUnitPrice = createTag('div')
     addClass(divUnitPrice, 'divUnitPrice')
-    divUnitPrice.setAttribute("id", "unitPrice_"+ productData._id)
+    divUnitPrice.setAttribute("id", "unitPrice_" + productData._id)
     divUnitPrice.setAttribute("price", productData.price)
 
     // Box pour Div Price et Delete:
-    let boxDynamicPrice= createTag('div')
+    let boxDynamicPrice = createTag('div')
     addClass(boxDynamicPrice, 'boxDynamicPrice')
 
     // Div amount:
     let divColAmount = createTag('div')
     addClass(divColAmount, 'col')
     addClass(divColAmount, 'modifyWidth')
-     divColAmount.setAttribute("style", " display:flex; ")
+    divColAmount.setAttribute("style", " display:flex; ")
 
     // Less:
     let less = createTag('a')
     less.setAttribute("id", "less")
-     less.setAttribute("href", "#")
-      less.innerHTML = "-"
-       less.setAttribute("data-idproduct",productData._id)
+    less.setAttribute("href", "#")
+    less.innerHTML = "-"
+    less.setAttribute("data-idproduct", productData._id)
 
     // Input Amount:
     let inputAmount = createTag('input')
     addClass(inputAmount, 'inputAmount')
     addClass(inputAmount, 'text-center')
-     inputAmount.setAttribute("id", "amount_" + productData._id)
-      inputAmount.setAttribute("value", productLocalStorage.quantityProduct)
-      inputAmount.setAttribute("data-inputamount", productData._id )
+    inputAmount.setAttribute("id", "amount_" + productData._id)
+    inputAmount.setAttribute("value", productLocalStorage.quantityProduct)
+    inputAmount.setAttribute("data-inputamount", productData._id)
 
     // More:
     let more = createTag('a')
     more.setAttribute("id", "more")
-     more.setAttribute("href", "#")
-      more.innerHTML = "+"
-       more.setAttribute("data-idproduct", productData._id )
-
+    more.setAttribute("href", "#")
+    more.innerHTML = "+"
+    more.setAttribute("data-idproduct", productData._id)
 
     //Div Price:
     let divPrice = createTag('div')
     addClass(divPrice, 'col')
     addClass(divPrice, 'price')
-     divPrice.setAttribute("id", "price_" + productData._id)
-     //console.log(divPrice)
+    divPrice.setAttribute("id", "price_" + productData._id)
+    //console.log(divPrice)
 
     // Col delete:
     let divBoxDelete = createTag('div')
@@ -395,10 +384,9 @@ function displayPanier(productData, productLocalStorage) {
     // Delete:
     let deleteProduct = createTag('a')
     deleteProduct.setAttribute("id", "delete")
-     deleteProduct.setAttribute("href", "#")
-      deleteProduct.innerHTML = "&#10005"
-       deleteProduct.setAttribute("data-iddelete",productData._id)
-
+    deleteProduct.setAttribute("href", "#")
+    deleteProduct.innerHTML = "&#10005"
+    deleteProduct.setAttribute("data-iddelete", productData._id)
 
     // Corps: ////////////////////////////////////////////////
     // Row Article:
@@ -457,136 +445,125 @@ function displayPanier(productData, productLocalStorage) {
     // texte delete all:
     boxDeleteAll.appendChild(textDeleteAll)
 
-
     //////////////////////////////////////////////////////////
     // I) E) Récupére et affiche les données: ****************
     // Récupére l'imageUrl
     img.src = productData.imageUrl
-     //console.log(productData.imageUrl)
+    //console.log(productData.imageUrl)
 
     // Récupére le titre du produit:
     divTitleProduct.innerHTML = productData.name
     //console.log(productData.name)
 
     //Récupére le prix du produit:
-    divPrice.innerHTML = productData.price * productLocalStorage.quantityProduct + " €" 
+    divPrice.innerHTML = productData.price * productLocalStorage.quantityProduct + " €"
     //console.log(divPrice.innerHTML)
 
     divUnitPrice.innerHTML = productData.price + " €"
 
+    ///////////////////////////////////////////////////////////
+    // Ecoute les +,- et * : //////////////////////////////////
 
+    // Ecoute le boutton -:
+    less.addEventListener('click', (event) => {
+        event.preventDefault();
+        //console.log(event)
+        // Cible l'id du less utilisé:
+        let idProduct = event.target.getAttribute('data-idproduct')
+        //console.log(idProduct)
 
-///////////////////////////////////////////////////////////
-// Ecoute les +,- et * : //////////////////////////////////
+        // Sélectionne la div du prix unitaire, récupére le price du productData et le multiplie par -1
+        let getPriceUnit = document.getElementById('unitPrice_' + idProduct).getAttribute("price") * -1
 
-        // Ecoute le boutton -:
-        less.addEventListener('click', (event) => {
-            event.preventDefault();
-            //console.log(event)
-            // Cible l'id du less utilisé:
-            let idProduct = event.target.getAttribute('data-idproduct')
-            console.log(idProduct)
+        // Envoie de parametre a la fonction ModifyQuantity:
+        getValue = modifyQuantity(idProduct, -1)
+        //console.log(getValue)
 
-            // Sélectionne la div du prix unitaire, récupére le price du productData et le multiplie par -1
-            let getPriceUnit = document.getElementById('unitPrice_'+ idProduct).getAttribute ("price") * -1 
+        // Envoie des paramétre aux fonctions suivantes:
+        modifyPrice(idProduct, getValue)
+        countArticle(-1)
+        totalPrice(getPriceUnit)
+        modifyQuantityProductInLocalStorage(idProduct, getValue)
 
-            // Envoie de parametre a la fonction ModifyQuantity:
-            getValue = modifyQuantity(idProduct, -1)
-            console.log(getValue)
+    })
 
-           // Envoie des paramétre aux fonctions suivantes:
-           modifyPrice(idProduct,getValue)
-           countArticle (-1)
-           totalPrice(getPriceUnit)
+    // Ecoute le boutton +:
+    more.addEventListener('click', (event) => {
+        event.preventDefault();
+        //console.log(event)
+        // Cible l'id du more utilisé:
+        let idProduct = event.target.getAttribute('data-idproduct')
+        //console.log(idProduct)
 
-           modifyQuantityProductInLocalStorage (idProduct,getValue)
+        // Sélectionne la div du prix unitaire, récupére le price du productData et le multiplie par 1
+        let getPriceUnit = document.getElementById('unitPrice_' + idProduct).getAttribute("price") * 1
+        //console.log(getPriceUnit)
 
-           // Envoie idProduct à la fonction deleteProduct:
-           //deleteProduct(idProduct)
+        // Envoie de parametre a la fonction ModifyQuantity:
+        getValue = modifyQuantity(idProduct, 1)
+        //console.log(getValue)
 
-        })
+        // Envoie des paramétre aux fonctions suivantes:
+        modifyPrice(idProduct, getValue)
+        countArticle(1)
+        totalPrice(getPriceUnit)
+        modifyQuantityProductInLocalStorage(idProduct, getValue)
 
-        // Ecoute le boutton +:
-        more.addEventListener('click', (event) => {
-            event.preventDefault();
-            console.log(event)
-            // Cible l'id du more utilisé:
-            let idProduct = event.target.getAttribute('data-idproduct')
-            console.log(idProduct)
+    })
 
-            // Sélectionne la div du prix unitaire, récupére le price du productData et le multiplie par 1
-            let getPriceUnit = document.getElementById('unitPrice_'+ idProduct).getAttribute ("price") * 1
-            console.log(getPriceUnit)
+    // Ecoute le boutton delete:
+    deleteProduct.addEventListener('click', (event) => {
+        event.preventDefault();
+        //console.log(event)
+        // Cible l'id du delete utilisé:
+        let idDelete = event.target.getAttribute('data-iddelete')
+        //console.log(idDelete)
 
-            // Envoie de parametre a la fonction ModifyQuantity:
-            getValue = modifyQuantity(idProduct, 1)
-            console.log(getValue)
+        // Recharge la page:
+        location.reload()
 
-            // Envoie des paramétre aux fonctions suivantes:
-            modifyPrice(idProduct,getValue)
-            countArticle (1)
-            totalPrice(getPriceUnit)
-            modifyQuantityProductInLocalStorage (idProduct,getValue)
+        // Envoie des paramétre aux fonctions suivantes:
+        deleteRowProduct(idDelete)
+        deleteProductLocalStorage(idDelete)
+    })
 
-        })
-
-        // Ecoute le boutton delete:
-        deleteProduct.addEventListener('click', (event) => {
-            event.preventDefault();
-            console.log(event)
-            // Cible l'id du delete utilisé:
-            let idDelete = event.target.getAttribute('data-iddelete')
-            console.log(idDelete)
-            location.reload()
-
-            // Envoie des paramétre aux fonctions suivantes:
-            deleteRowProduct(idDelete)
-            deleteProductLocalStorage(idDelete)
-        })
-
-        // Ecoute le boutton vider le panier:
-        let clearAllProduct = document.getElementById('linkDeleteAll')
-        clearAllProduct.addEventListener('click', (event) => {
-            console.log(event)
-            event.preventDefault
-            // Vide le localStorage avec .removeItem:
-            localStorage.removeItem('product')
-            // Recharge la page:
-            document.location.reload()
-            // ou si rediriger vers une page no produits:
-            // window.location.href = "./"
-        })
+    // Ecoute le boutton vider le panier:
+    let clearAllProduct = document.getElementById('linkDeleteAll')
+    clearAllProduct.addEventListener('click', (event) => {
+        //console.log(event)
+        event.preventDefault
+        // Vide le localStorage avec .removeItem:
+        localStorage.removeItem('product')
+        // Recharge la page:
+        document.location.reload()
+    })
 }
-
 
 ///////////////////////////////////////////////////////////
 // Modifie les quantité: //////////////////////////////////
 function modifyQuantity(idProduct, nQuantity) {
-    console.log(nQuantity)
-    // Cible data de more et less:
-    //let idProduct = event.target.getAttribute('data-idproduct')
-    console.log(idProduct)
+    //console.log(nQuantity)
+    //console.log(idProduct)
     // Réponse : 5beaaa8f1c9d440000a57d95
 
     // Récupére la valeur de l'element et l'initialise:
     let getValue = parseInt(document.getElementById('amount_' + idProduct).value)
-    console.log(getValue)
+    //console.log(getValue)
     // Réponse : 1
 
     getValue = getValue + nQuantity
-    console.log(getValue)
+    //console.log(getValue)
     // Réponse: 2
 
     if (getValue >= 0) {
-    // Modifie la valeur de l'element:
-    document.getElementById('amount_' + idProduct).value = getValue
-    console.log(getValue)
-    return getValue
-   }
-   //console.log(getValue)
-   return 0
+        // Modifie la valeur de l'element:
+        document.getElementById('amount_' + idProduct).value = getValue
+        //console.log(getValue)
+        return getValue
+    }
+    //console.log(getValue)
+    return 0
 }
-
 
 ///////////////////////////////////////////////////////////
 // Modifie le prix en fonction de la quantité: ////////////
@@ -606,14 +583,12 @@ function modifyPrice(idProduct, getValue) {
     //console.log(newPrice)
 
     // Récupére la valeur de l'element et l'initialise:
-    let getNewPrice = document.getElementById('price_'+ idProduct)
+    let getNewPrice = document.getElementById('price_' + idProduct)
     //console.log(getNewPrice)
-    getNewPrice.innerHTML= newPrice + " €"
+    getNewPrice.innerHTML = newPrice + " €"
     //console.log(getNewPrice)
-
 
 }
-
 
 ///////////////////////////////////////////////////////////
 // Suprime la ligne de l' article: ////////////////////////
@@ -632,17 +607,18 @@ function deleteRowProduct(idDelete) {
     getDelete.remove(idDelete)
 }
 
-
 ///////////////////////////////////////////////////////////
 // Ajoute ou enleve un produit coté localStorage: /////////
-function modifyQuantityProductInLocalStorage (idProduct,getValue){
+function modifyQuantityProductInLocalStorage(idProduct, getValue) {
 
     // Récupére le local storage:
     let arrayNbProductLocalStorage = JSON.parse(localStorage.getItem("product"))
     console.log(arrayNbProductLocalStorage)
 
     // Récupère l'index de l'objet avec l'id (idProduct)
-    var getIndex = arrayNbProductLocalStorage.map(function(item) { return item.idProduct; }).indexOf(idProduct);
+    var getIndex = arrayNbProductLocalStorage.map(function (item) {
+        return item.idProduct;
+    }).indexOf(idProduct);
     console.log(getIndex)
     // Réponse: retourne l'index de l'objet du tableau
 
@@ -651,7 +627,7 @@ function modifyQuantityProductInLocalStorage (idProduct,getValue){
     console.log(getQuantityProduct) // 1
 
     // Modifie la valeur de quantityProduct:
-    let newQuantityProduct = arrayNbProductLocalStorage[getIndex].quantityProduct=(getValue)
+    let newQuantityProduct = arrayNbProductLocalStorage[getIndex].quantityProduct = (getValue)
     console.log(arrayNbProductLocalStorage)
     console.log(newQuantityProduct)
 
@@ -660,17 +636,18 @@ function modifyQuantityProductInLocalStorage (idProduct,getValue){
 
 }
 
-
 ///////////////////////////////////////////////////////////
 // Supprime la ligne coté localStorage: ///////////////////
-function deleteProductLocalStorage (idDelete) {
+function deleteProductLocalStorage(idDelete) {
 
     // Récupére le local storage:
     let arrayproductLocalStorage = JSON.parse(localStorage.getItem("product"))
     console.log(arrayproductLocalStorage)
 
     // Récupère l'index de l'objet avec l'id (idDelete)
-    var removeIndex = arrayproductLocalStorage.map(function(item) { return item.idProduct; }).indexOf(idDelete);
+    var removeIndex = arrayproductLocalStorage.map(function (item) {
+        return item.idProduct;
+    }).indexOf(idDelete);
     console.log(removeIndex)
     // Réponse: retourne l'index de l'objet du tableau
 
@@ -684,10 +661,9 @@ function deleteProductLocalStorage (idDelete) {
 
 }
 
-
 ///////////////////////////////////////////////////////////
 // Affiche le nombre d'article: ///////////////////////////
-function countArticle (quantityProduct) {
+function countArticle(quantityProduct) {
 
     // selectionne l'élément ou inscrire le résultat:
     let numberRecap = document.getElementById("numberArticle")
@@ -696,10 +672,8 @@ function countArticle (quantityProduct) {
     let displayCount = numberRecap.innerHTML = parseInt(numberRecap.innerHTML) + quantityProduct
     console.log(displayCount)
 
-    sendOrder (displayCount)
-
+    sendOrder(displayCount)
 }
-
 
 ///////////////////////////////////////////////////////////
 // Affiche le Prix total: /////////////////////////////////
@@ -707,7 +681,7 @@ function countArticle (quantityProduct) {
 // Crér un tableau:
 let pushPriceTab = []
 
-function totalPrice (price){
+function totalPrice(price) {
     // Selectionne le prix:
     let someTotale = document.getElementById('total')
     someTotale.innerHTML = parseInt(someTotale.innerHTML) + price + " €"
@@ -719,258 +693,256 @@ function totalPrice (price){
 
 ///////////////////////////////////////////////////////////
 // I) A) Création des éléments de base enfants: ///////////
-    // Container:
+// Container:
 
-    let divContainer = createTag('div')
-    addClass(divContainer, 'container')
+let divContainer = createTag('div')
+addClass(divContainer, 'container')
 
-    divContainer.setAttribute("id", "animation")
+divContainer.setAttribute("id", "animation")
 
-    let form = document.getElementById('animation')
-    buttonConfirm.addEventListener('click', () => {
-        addClass(divContainer, 'runAnimation')
-    })
+let form = document.getElementById('animation')
+buttonConfirm.addEventListener('click', () => {
+    addClass(divContainer, 'runAnimation')
+})
 
-    // Row:
-    let divRowPrincipale = createTag('div')
-    addClass(divRowPrincipale, 'row')
+// Row:
+let divRowPrincipale = createTag('div')
+addClass(divRowPrincipale, 'row')
 
-    // Col-12
-    let divColPrincipale = createTag('div')
-    addClass(divColPrincipale, 'col-12')
+// Col-12
+let divColPrincipale = createTag('div')
+addClass(divColPrincipale, 'col-12')
 
 ///////////////////////////////////////////////////////////
 // I) B) Création intérieur box: //////////////////////////
-    // Formulaire:
-    divForm = createTag('section')
-    addClass(divForm, 'section--modify')
-    divForm.setAttribute("style", "padding-top: 5%;")
+// Formulaire:
+divForm = createTag('section')
+addClass(divForm, 'section--modify')
+divForm.setAttribute("style", "padding-top: 5%;")
 
-    // Box panier:
-    let boxForm = createTag('div')
-    addClass(boxForm, 'box-form')
+// Box panier:
+let boxForm = createTag('div')
+addClass(boxForm, 'box-form')
 
-    // Card:
-    divCard = createTag('div')
-    addClass(divCard, 'card')
-    addClass(divCard, 'divCard')
-    divCard.setAttribute("style", "box-shadow: -1px 2px 10px 3px #e9ecef inset;")
+// Card:
+divCard = createTag('div')
+addClass(divCard, 'card')
+addClass(divCard, 'divCard')
+divCard.setAttribute("style", "box-shadow: -1px 2px 10px 3px #e9ecef inset;")
 
-    // Row:
-    divRow = createTag('div')
-    addClass(divRow, 'row')
-    addClass(divRow, 'row--modify')
+// Row:
+divRow = createTag('div')
+addClass(divRow, 'row')
+addClass(divRow, 'row--modify')
 
-    // col-md-8
-    divCol2 = createTag('div')
-    addClass(divCol2, 'col-md-10')
-    addClass(divCol2, 'cart')
-    addClass(divCol2, 'cart--modify')
+// col-md-8
+divCol2 = createTag('div')
+addClass(divCol2, 'col-md-10')
+addClass(divCol2, 'cart')
+addClass(divCol2, 'cart--modify')
 
-    // Box Récapitulatif:
-    let divBoxRecapLeft = createTag('div')
-    addClass(divBoxRecapLeft, 'col-md-4')
-    addClass(divBoxRecapLeft, 'summary')
-    addClass(divBoxRecapLeft, 'bg-gradient')
+// Box Récapitulatif:
+let divBoxRecapLeft = createTag('div')
+addClass(divBoxRecapLeft, 'col-md-4')
+addClass(divBoxRecapLeft, 'summary')
+addClass(divBoxRecapLeft, 'bg-gradient')
 
-    ///////////////////////////////////////////////////////////
-    // Ajout des élément de base: /////////////////////////////
-    main.appendChild(divContainer)
-    main.appendChild(divForm)
-    divForm.appendChild(divContainer)
-    divContainer.appendChild(divRowPrincipale)
-    divRowPrincipale.appendChild(divColPrincipale)
-    divColPrincipale.appendChild(boxForm)
+///////////////////////////////////////////////////////////
+// Ajout des élément de base: /////////////////////////////
+main.appendChild(divContainer)
+main.appendChild(divForm)
+divForm.appendChild(divContainer)
+divContainer.appendChild(divRowPrincipale)
+divRowPrincipale.appendChild(divColPrincipale)
+divColPrincipale.appendChild(boxForm)
 
-    boxForm.appendChild(divCard)
-    divCard.appendChild(divRow)
-    divRow.appendChild(divCol2)
+boxForm.appendChild(divCard)
+divCard.appendChild(divRow)
+divRow.appendChild(divCol2)
 
-    // Div Form:
-    let formCheckOut = createTag('form')
-    formCheckOut.setAttribute("id", "formValidation")
-    formCheckOut.setAttribute("action", "")
-    formCheckOut.setAttribute("method", "POST")
+// Div Form:
+let formCheckOut = createTag('form')
+formCheckOut.setAttribute("id", "formValidation")
+formCheckOut.setAttribute("action", "")
+formCheckOut.setAttribute("method", "POST")
 
-    // Form Row:
-    let formRow = createTag('div')
-    addClass(formRow, 'form-row')
+// Form Row:
+let formRow = createTag('div')
+addClass(formRow, 'form-row')
 
-    ///////////////////////////////////////////////////////////
-    // Form group name: ///////////////////////////////////////
-    let formGroupName = createTag('div')
-    addClass(formGroupName, 'form-group')
-    addClass(formGroupName, 'col-md-6')
+///////////////////////////////////////////////////////////
+// Form group name: ///////////////////////////////////////
+let formGroupName = createTag('div')
+addClass(formGroupName, 'form-group')
+addClass(formGroupName, 'col-md-6')
 
-    // Label name customer:
-    let labelName = createTag('label')
-    labelName.setAttribute("for", "firstName")
-    labelName.innerHTML = "Nom:"
+// Label name customer:
+let labelName = createTag('label')
+labelName.setAttribute("for", "firstName")
+labelName.innerHTML = "Nom:"
 
-    // Input name:
-    let inputName = createTag('input')
-    addClass(inputName, 'form-control')
-    inputName.setAttribute("id", "inputName")
-    inputName.setAttribute("type", "text")
-    inputName.setAttribute("name", "inputName")
-    inputName.setAttribute("style", "margin:0%;")
-    inputName.setAttribute("minlength", "3")
-    inputName.setAttribute("maxlength", "30")
-    inputName.required = true;
+// Input name:
+let inputName = createTag('input')
+addClass(inputName, 'form-control')
+inputName.setAttribute("id", "inputName")
+inputName.setAttribute("type", "text")
+inputName.setAttribute("name", "inputName")
+inputName.setAttribute("style", "margin:0%;")
+inputName.setAttribute("minlength", "1")
+inputName.setAttribute("maxlength", "30")
+inputName.required = true;
 
-    // Span erreur:
-    let spanErrorFirstName = createTag('span')
-    addClass(spanErrorFirstName, 'spanError')
-    spanErrorFirstName.setAttribute("id", "spanErrorFirstName")
+// Span erreur:
+let spanErrorFirstName = createTag('span')
+addClass(spanErrorFirstName, 'spanError')
+spanErrorFirstName.setAttribute("id", "spanErrorFirstName")
 
+///////////////////////////////////////////////////////////
+// Form group last name: //////////////////////////////////
+let formGroupLastName = createTag('div')
+addClass(formGroupLastName, 'form-group')
+addClass(formGroupLastName, 'col-md-6')
 
-    ///////////////////////////////////////////////////////////
-    // Form group last name: //////////////////////////////////
-    let formGroupLastName = createTag('div')
-    addClass(formGroupLastName, 'form-group')
-    addClass(formGroupLastName, 'col-md-6')
+// Label last name customer:
+let labelLastName = createTag('label')
+labelLastName.setAttribute("for", "lastName")
+labelLastName.innerHTML = "Prénom:"
 
-    // Label last name customer:
-    let labelLastName = createTag('label')
-    labelLastName.setAttribute("for", "lastName")
-    labelLastName.innerHTML = "Prénom:"
+// Input last name:
+let inputLastName = createTag('input')
+addClass(inputLastName, 'form-control')
+inputLastName.setAttribute("id", "inputLastName")
+inputLastName.setAttribute("type", "text")
+inputLastName.setAttribute("name", "inputLastName")
+inputLastName.setAttribute("minlength", "1")
+inputLastName.setAttribute("maxlength", "30")
+inputLastName.required = true;
 
-    // Input last name:
-    let inputLastName = createTag('input')
-    addClass(inputLastName, 'form-control')
-    inputLastName.setAttribute("id", "inputLastName")
-    inputLastName.setAttribute("type", "text")
-    inputLastName.setAttribute("name", "inputLastName")
-    inputLastName.setAttribute("minlength", "3")
-    inputLastName.setAttribute("maxlength", "30")
-    inputLastName.required = true;
+// Span erreur:
+let spanErrorLastName = createTag('span')
+addClass(spanErrorLastName, 'spanError')
+spanErrorLastName.setAttribute("id", "spanErrorLastName")
 
-    // Span erreur:
-    let spanErrorLastName = createTag('span')
-    addClass(spanErrorLastName, 'spanError')
-    spanErrorLastName.setAttribute("id", "spanErrorLastName")
+///////////////////////////////////////////////////////////
+// Form group Email: //////////////////////////////////////
+let formGroupEmail = createTag('div')
+addClass(formGroupEmail, 'form-group')
 
-    ///////////////////////////////////////////////////////////
-    // Form group Email: //////////////////////////////////////
-    let formGroupEmail = createTag('div')
-    addClass(formGroupEmail, 'form-group')
+// Label Email customer:
+let labelEmail = createTag('label')
+labelEmail.setAttribute("for", "email")
+labelEmail.innerHTML = "E-mail:"
 
-    // Label Email customer:
-    let labelEmail = createTag('label')
-    labelEmail.setAttribute("for", "email")
-    labelEmail.innerHTML = "E-mail:"
+// Input Email:
+let inputEmail = createTag('input')
+addClass(inputEmail, 'form-control')
+inputEmail.setAttribute("id", "inputEmail")
+inputEmail.setAttribute("type", "email")
+inputEmail.setAttribute("name", "inputEmail")
+inputEmail.required = true;
 
-    // Input Email:
-    let inputEmail = createTag('input')
-    addClass(inputEmail, 'form-control')
-    inputEmail.setAttribute("id", "inputEmail")
-    inputEmail.setAttribute("type", "email")
-    inputEmail.setAttribute("name", "inputEmail")
-    inputEmail.required = true;
+// Span erreur:
+let spanErrorEmail = createTag('span')
+addClass(spanErrorEmail, 'spanError')
+spanErrorEmail.setAttribute("id", "spanErrorEmail")
 
-    // Span erreur:
-    let spanErrorEmail = createTag('span')
-    addClass(spanErrorEmail, 'spanError')
-    spanErrorEmail.setAttribute("id", "spanErrorEmail")
+///////////////////////////////////////////////////////////
+// Form group adresse: ////////////////////////////////////
+let formGroupAddress = createTag('div')
+addClass(formGroupAddress, 'form-group')
 
-    ///////////////////////////////////////////////////////////
-    // Form group adresse: ////////////////////////////////////
-    let formGroupAddress = createTag('div')
-    addClass(formGroupAddress, 'form-group')
+// Label address customer:
+let labelAddress = createTag('label')
+labelAddress.setAttribute("for", "address")
+labelAddress.innerHTML = "Adresse:"
 
-    // Label address customer:
-    let labelAddress = createTag('label')
-    labelAddress.setAttribute("for", "address")
-    labelAddress.innerHTML = "Adresse:"
+// Input address:
+let inputAddress = createTag('input')
+addClass(inputAddress, 'form-control')
+inputAddress.setAttribute("id", "inputAddress")
+inputAddress.setAttribute("type", "text")
+inputAddress.setAttribute("name", "inputAddress")
+inputAddress.required = true;
 
-    // Input address:
-    let inputAddress = createTag('input')
-    addClass(inputAddress, 'form-control')
-    inputAddress.setAttribute("id", "inputAddress")
-    inputAddress.setAttribute("type", "text")
-    inputAddress.setAttribute("name", "inputAddress")
-    inputAddress.required = true;
+// Span erreur:
+let spanErrorAddress = createTag('span')
+addClass(spanErrorAddress, 'spanError')
+spanErrorAddress.setAttribute("id", "spanErrorAddress")
 
-    // Span erreur:
-    let spanErrorAddress = createTag('span')
-    addClass(spanErrorAddress, 'spanError')
-    spanErrorAddress.setAttribute("id", "spanErrorAddress")
+///////////////////////////////////////////////////////////
+// Div form row location //////////////////////////////////
+let divFormRowLocation = createTag('div')
+addClass(divFormRowLocation, 'form-row')
 
-    ///////////////////////////////////////////////////////////
-    // Div form row location //////////////////////////////////
-    let divFormRowLocation = createTag('div')
-    addClass(divFormRowLocation, 'form-row')
+///////////////////////////////////////////////////////////
+// Div form group city: ///////////////////////////////////
+let divFormGroupLocation = createTag('div')
+addClass(divFormGroupLocation, 'form-group')
+addClass(divFormGroupLocation, 'divFormGroupLocation')
+addClass(divFormGroupLocation, 'col-md-6')
 
-    ///////////////////////////////////////////////////////////
-    // Div form group city: ///////////////////////////////////
-    let divFormGroupLocation = createTag('div')
-    addClass(divFormGroupLocation, 'form-group')
-    addClass(divFormGroupLocation, 'divFormGroupLocation')
-    addClass(divFormGroupLocation, 'col-md-6')
+// Label Location City:
+let labelCity = createTag('label')
+labelCity.setAttribute("for", "city")
+labelCity.innerHTML = "Ville:"
 
-    // Label Location City:
-    let labelCity = createTag('label')
-    labelCity.setAttribute("for", "city")
-    labelCity.innerHTML = "Ville:"
+// Input city:
+let inputLocationCity = createTag('input')
+addClass(inputLocationCity, 'form-control')
+inputLocationCity.setAttribute("id", "inputCity")
+inputLocationCity.setAttribute("type", "text")
+inputLocationCity.setAttribute("name", "inputLocationCity")
+inputLocationCity.required = true;
 
-    // Input city:
-    let inputLocationCity = createTag('input')
-    addClass(inputLocationCity, 'form-control')
-    inputLocationCity.setAttribute("id", "inputCity")
-    inputLocationCity.setAttribute("type", "text")
-    inputLocationCity.setAttribute("name", "inputLocationCity")
-    inputLocationCity.required = true;
+// Span erreur:
+let spanErrorCity = createTag('span')
+addClass(spanErrorCity, 'spanError')
+spanErrorCity.setAttribute("id", "spanErrorCity")
 
-    // Span erreur:
-    let spanErrorCity = createTag('span')
-    addClass(spanErrorCity, 'spanError')
-    spanErrorCity.setAttribute("id", "spanErrorCity")
+///////////////////////////////////////////////////////////
+// Div form group zip: ////////////////////////////////////
+let divFormGroupzip = createTag('div')
+addClass(divFormGroupzip, 'form-group')
+addClass(divFormGroupzip, 'divFormGroupzip')
+addClass(divFormGroupzip, 'col-md-6')
 
-    ///////////////////////////////////////////////////////////
-    // Div form group zip: ////////////////////////////////////
-    let divFormGroupzip = createTag('div')
-    addClass(divFormGroupzip, 'form-group')
-    addClass(divFormGroupzip, 'divFormGroupzip')
-    addClass(divFormGroupzip, 'col-md-6')
+// Label zip:
+let labelZip = createTag('label')
+labelZip.setAttribute("for", "codeZip")
+labelZip.innerHTML = "Code Postal:"
 
-    // Label zip:
-    let labelZip = createTag('label')
-    labelZip.setAttribute("for", "codeZip")
-    labelZip.innerHTML = "Code Postal:"
+// Input Zip:
+let inputZip = createTag('input')
+addClass(inputZip, 'form-control')
+inputZip.setAttribute("type", "texte")
+inputZip.setAttribute("id", "inputZip")
+inputZip.setAttribute("name", "inputZip")
+inputZip.required = true;
 
-    // Input Zip:
-    let inputZip = createTag('input')
-    addClass(inputZip, 'form-control')
-    inputZip.setAttribute("type", "texte")
-    inputZip.setAttribute("id", "inputZip")
-    inputZip.setAttribute("name", "inputZip")
-    inputZip.required = true;
+// Span erreur:
+let spanErrorZip = createTag('span')
+addClass(spanErrorZip, 'spanError')
+spanErrorZip.setAttribute("id", "spanErrorZip")
 
-    // Span erreur:
-    let spanErrorZip = createTag('span')
-    addClass(spanErrorZip, 'spanError')
-    spanErrorZip.setAttribute("id", "spanErrorZip")
+///////////////////////////////////////////////////////////
+// Div form group bouton: /////////////////////////////////
+let divFormGroupButton = createTag('div')
+addClass(divFormGroupButton, 'form-group')
+addClass(divFormGroupButton, 'boxSubmit')
 
-    ///////////////////////////////////////////////////////////
-    // Div form group bouton: /////////////////////////////////
-    let divFormGroupButton = createTag('div')
-    addClass(divFormGroupButton, 'form-group')
-    addClass(divFormGroupButton, 'boxSubmit')
+// bouton:
+let buttonConfirmationPanier = createTag('button')
+addClass(buttonConfirmationPanier, 'btn')
+addClass(buttonConfirmationPanier, 'submit')
+addClass(buttonConfirmationPanier, 'rounded-pill')
+addClass(buttonConfirmationPanier, 'bg-gradient')
+addClass(buttonConfirmationPanier, 'justify-content-center')
 
-    // bouton:
-    let buttonConfirmationPanier = createTag ('button')
-    addClass(buttonConfirmationPanier, 'btn')
-    addClass(buttonConfirmationPanier, 'submit')
-    addClass(buttonConfirmationPanier, 'rounded-pill')
-    addClass(buttonConfirmationPanier, 'bg-gradient')
-    addClass(buttonConfirmationPanier, 'justify-content-center')
-
-    buttonConfirmationPanier.setAttribute("id", "buttonConfirmationPanier")
-    buttonConfirmationPanier.setAttribute("type", "submit")
-    buttonConfirmationPanier.setAttribute("href", "../../frontend/confirmation.html")
-    buttonConfirmationPanier.setAttribute("border", "transparent")
-    buttonConfirmationPanier.innerHTML = "Valider la commande"
-
+buttonConfirmationPanier.setAttribute("id", "buttonConfirmationPanier")
+buttonConfirmationPanier.setAttribute("type", "submit")
+buttonConfirmationPanier.setAttribute("href", "../../frontend/confirmation.html")
+buttonConfirmationPanier.setAttribute("border", "transparent")
+buttonConfirmationPanier.innerHTML = "Valider la commande"
 
 ///////////////////////////////////////////////////////////
 // Div Form: //////////////////////////////////////////////
@@ -1070,7 +1042,7 @@ divFormGroupButton.appendChild(buttonConfirmationPanier)
 
 //////////////////////////////////////////////////////////
 // Fonction qui envoie la commande dans localStorage et serveur:
-function sendOrder (displayCount) {
+function sendOrder(displayCount) {
 
     // Sélection du bouton "valider la commande":
     let btnValidateOrder = document.getElementById('buttonConfirmationPanier')
@@ -1079,8 +1051,8 @@ function sendOrder (displayCount) {
 
         event.preventDefault()
         // Récupére dans un tableau les id des produits séléctionner:
-       const id = productLocalStorage.map(productLocalStorages => productLocalStorages.idProduct)
-       //console.log(id)
+        const id = productLocalStorage.map(productLocalStorages => productLocalStorages.idProduct)
+        //console.log(id)
 
         // Création de l'objet;
         let orderTeddies = {
@@ -1094,7 +1066,7 @@ function sendOrder (displayCount) {
                 //codeZip: document.getElementById('inputZip').value
             },
 
-            "products" : id
+            "products": id
         }
         //console.log(orderTeddies)
 
@@ -1103,7 +1075,7 @@ function sendOrder (displayCount) {
         // Modéle regex pour firstname, lastname et city:
         const regExNameCity = (value) => {
             // Contient que des lettres majuscules ou minuscule entre 3 et 30 caratéres:
-            return /^[A-Za-z]{3,30}$/.test(value)
+            return /^[A-Za-z]{1,30}$/.test(value)
         }
 
         // Modéle regex pour email:
@@ -1117,7 +1089,7 @@ function sendOrder (displayCount) {
         // Modéle regex pour adresse:
         const regExAddress = (value) => {
             // Contient que des lettres, majuscules ou minuscule, des chiifres et espacement entre 3 et 50 caratéres:
-            return /^[A-Za-z0-9\s]{3,50}$/.test(value)
+            return /^[A-Za-z0-9\s]{3,}$/.test(value)
         }
 
         /*
@@ -1129,12 +1101,12 @@ function sendOrder (displayCount) {
         */
 
         // Fonction qui vérifie la validité du firstname::
-        function verifyFirstName () {
+        function verifyFirstName() {
 
             // Sélectionne la vaeur de l'input first name:
             const firstName = document.getElementById('inputName').value
 
-            if (regExNameCity(firstName))  {
+            if (regExNameCity(firstName)) {
                 document.getElementById('spanErrorFirstName').textContent = ""
                 return true
             } else {
@@ -1144,12 +1116,12 @@ function sendOrder (displayCount) {
         }
 
         // Fonction qui vérifie la validité du last name::
-        function verifyLastName () {
+        function verifyLastName() {
 
             // Sélectionne la vaeur de l'input first name:
             const lastName = document.getElementById('inputLastName').value
 
-            if (regExNameCity(lastName))  {
+            if (regExNameCity(lastName)) {
                 document.getElementById('spanErrorLastName').textContent = ""
                 return true
             } else {
@@ -1159,12 +1131,12 @@ function sendOrder (displayCount) {
         }
 
         // Fonction qui vérifie la validité du email:
-        function verifyEmail () {
+        function verifyEmail() {
 
             // Sélectionne la vaeur de l'input code zip:
             const email = document.getElementById('inputEmail').value
 
-            if (regExEmail(email))  {
+            if (regExEmail(email)) {
                 document.getElementById('spanErrorEmail').textContent = ""
                 return true
             } else {
@@ -1174,12 +1146,12 @@ function sendOrder (displayCount) {
         }
 
         // Fonction qui vérifie la validité de l'adresse:
-        function verifyAddress () {
+        function verifyAddress() {
 
             // Sélectionne la vaeur de l'input first name:
             const address = document.getElementById('inputAddress').value
 
-            if (regExAddress(address))  {
+            if (regExAddress(address)) {
                 document.getElementById('spanErrorAddress').textContent = ""
                 return true
             } else {
@@ -1189,12 +1161,12 @@ function sendOrder (displayCount) {
         }
 
         // Fonction qui vérifie la validité de l'adresse:
-        function verifyCity () {
+        function verifyCity() {
 
             // Sélectionne la vaeur de l'input first name:
             const city = document.getElementById('inputCity').value
 
-            if (regExNameCity(city))  {
+            if (regExNameCity(city)) {
                 document.getElementById('spanErrorCity').textContent = ""
                 return true
             } else {
@@ -1221,7 +1193,7 @@ function sendOrder (displayCount) {
         */
 
         // Si tout les input vérifié sont validé, envoie l'objet dans localStorage:
-        if (verifyFirstName() && verifyLastName() && verifyAddress() && verifyCity() && verifyEmail() /*&& verifyCodeZip()*/  ) {
+        if (verifyFirstName() && verifyLastName() && verifyAddress() && verifyCity() && verifyEmail() /*&& verifyCodeZip()*/ ) {
 
             // Crée la clef, convertit l'objet en chaine de caractére et l'envoie dans localStorage:
             localStorage.setItem("orderTeddies", JSON.stringify(orderTeddies))
@@ -1232,24 +1204,34 @@ function sendOrder (displayCount) {
 
             // Objet contenant les options en second paramétre de fetch:
             var myInit = {
-                method:'POST',
-                headers:new Headers({'Content-Type':'application/json;charset=UTF-8'}),
-                body:JSON.stringify(orderTeddies),
-                mode:'cors',
-                cache:'default'
+                method: 'POST',
+                headers: new Headers({
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }),
+                body: JSON.stringify(orderTeddies),
+                mode: 'cors',
+                cache: 'default'
             };
 
             // Fetch à laquelle on donne en paramétres l'url et options:
             fetch(urlPost, myInit)
-            .then(response => response.json())
-            // Quand la promesse est tenue, elle est parsée au format Json
-            .then(json_object => {
-                // Quand la promesse est tenue, crée une varaiable qui contient l'objet:
-                let getOrder = json_object
-                // Crée la clef, convertit l'objet en chaine de caractére et l'envoie dans localStorage:
-                localStorage.setItem("getOrder", JSON.stringify(getOrder))
-                window.location = "../../frontend/confirmation.html"
-            })
+                .then(response => response.json())
+                // Quand la promesse est tenue, elle est parsée au format Json
+                .then(json_object => {
+                    // Quand la promesse est tenue, crée une variable qui contient l'objet:
+                    let getOrder = json_object
+
+                    // Crée la clef, convertit l'objet en chaine de caractére et l'envoie dans localStorage:
+                    localStorage.setItem("getOrder", JSON.stringify(getOrder))
+
+                    // Va à la page:
+                    window.location = "confirmation.html"
+
+                    // remove le product
+                    localStorage.removeItem("product")
+                    // remove orderTeddies
+                    localStorage.removeItem("orderTeddies")
+                })
 
         } else {
 
@@ -1258,10 +1240,4 @@ function sendOrder (displayCount) {
 
     })
 }
-sendOrder ()
-
-
-
-
-
-
+sendOrder()

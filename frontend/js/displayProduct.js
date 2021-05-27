@@ -9,6 +9,7 @@ const getIdUrl = window.location.search;
 //console.log(getIdUrl)
 // réponse : ?id=XXXXXXXX
 
+
 // 2) /////////////////////////////////////////////////////////
 // Purge getIdUrl de ?id= et recupere uniquement l'id avec la méthode getUrlParams:
 
@@ -17,16 +18,13 @@ const getUrlParams = new URLSearchParams(getIdUrl);
 
 // retournera la première valeur associée au paramètre de recherche donné:
 const getId = getUrlParams.get('id')
-console.log(getId)
+//console.log(getId)
 // réponse : xxxxxxxxx
 
 
 // 3) /////////////////////////////////////////////////////////
-/**
- * Fonction qui concaténe l'url de l'API
- * avec l'id récupéré et filtré
- */
-async function assemblyId(getId) {
+// Fonction qui concaténe l'url de l'API avec l'id récupéré et filtré
+function assemblyId(getId) {
     //console.log(getId);
     //réponse : 5beaaa8f1c9d440000a57d95
 
@@ -37,16 +35,12 @@ async function assemblyId(getId) {
     // reponse http://localhost:3000/api/teddies/5beaaa8f1c9d440000a57d95
 
     connect2(urlProduct);
-
 }
 assemblyId(getId);
 
 
 // 4) /////////////////////////////////////////////////////////
-/**
- * Fonction XMLHttpRequest qui se connecte avec l'url précédent
- *  et récupére les données:
- */
+// XMLHttpRequest se connecte et récupére les données de l'url précédent:
 async function connect2(urlProduct) {
     //console.log(urlProduct)
     // reponse http://localhost:3000/api/teddies/5beaaa8f1c9d440000a57d95
@@ -78,25 +72,18 @@ async function connect2(urlProduct) {
 }
 
 
-
 // 5) ////////////////////////////////////////////////////////
-/**
- * Fonction qui affiche les données
- * par rapport a l'id du produit:
- */
-
-
-async function displayProduct(result2) {
-    console.log(result2)
+// Fonction qui affiche les données par rapport a l'id du produit:
+function displayProduct(result2) {
+    //console.log(result2)
 
     ///////////////////////////////////////////////////////////
     //Selectionne l'id parent:
     let main = document.querySelector('main')
 
     ///////////////////////////////////////////////////////////
-    /**
-     * Création des éléments de base enfants:
-     */
+    // Création des éléments de base enfants:
+
     // Container:
     let divContainer = createTag('div')
     addClass(divContainer, 'container')
@@ -111,9 +98,8 @@ async function displayProduct(result2) {
     addClass(divCol, 'col-12')
 
     ///////////////////////////////////////////////////////////
-    /**
-     * Création de la box qui vas contenir le produit:
-     */
+    // Création de la box qui vas contenir le produit:
+
     // Box:
     let divBox = createTag('div')
     addClass(divBox, 'box')
@@ -123,9 +109,8 @@ async function displayProduct(result2) {
     addClass(divBoxProduct, 'box__product')
 
     ///////////////////////////////////////////////////////////
-    /**
-     * Création de la carte produit:
-     */
+    // Création de la carte produit:
+
     // Card:
     let divCard = createTag('div')
     divCard.setAttribute("id", "divCardIndex")
@@ -137,9 +122,9 @@ async function displayProduct(result2) {
     addClass(divCardBody, 'card-body')
     addClass(divCardBody, 'card-body-product')
 
-    /**
-     * Partie gauche de la box:
-     */
+    ///////////////////////////////////////////////////////////
+    // Partie gauche de la box:
+
     // PictureBox:
     let divPictureBox = createTag('div')
     addClass(divPictureBox, 'picture-box')
@@ -173,6 +158,7 @@ async function displayProduct(result2) {
     // Recupére l'objet colors:
     let colors = result2.colors
 
+    // Boucle qui vas parcourir le tableau color:
     for (var i = 0; i < colors.length; i++) {
 
         // Création du divColorChoice:
@@ -183,9 +169,8 @@ async function displayProduct(result2) {
         divColorChoice.setAttribute("data-toggle", "tooltip")
         divColorChoice.setAttribute("data-placement", "bottom")
         divColorChoice.setAttribute("title", colors[i])
-        divColorChoice.appendChild = ""
 
-        // Récupére les couleurs une a une:
+        // Récupére les couleurs une à une:
         let selectColors = colors[i]
 
         // Convertit dark et pale brown et met le background adéquate:
@@ -199,7 +184,6 @@ async function displayProduct(result2) {
             default:
                 divColorChoice.style.backgroundColor = colors[i]
         }
-
         divChoice.appendChild(divColorChoice)
     }
 
@@ -207,10 +191,10 @@ async function displayProduct(result2) {
     let divSeparation = createTag('div')
     addClass(divSeparation, 'separation')
 
-    /**
-     * Partie droite de la box:
-     */
-    // DescritionBox:
+    ///////////////////////////////////////////////////////////
+    // Partie droite de la box:
+
+    // Descrition Box:
     let divDescriptionBox = createTag('div')
     addClass(divDescriptionBox, 'description-box')
 
@@ -247,7 +231,7 @@ async function displayProduct(result2) {
     addClass(divA, 'btn-dark')
     addClass(divA, 'btn-lg')
     divA.textContent = "Ajouter au panier"
-    divA.setAttribute("href", "../panier.html")
+    divA.setAttribute("href", "panier.html")
     console.log(divA)
 
     // Ajoute la reponse trouvé dans l'objet:
@@ -293,12 +277,7 @@ async function displayProduct(result2) {
     divCardFooter.appendChild(divButtonBox)
     divButtonBox.appendChild(divA)
 
-    /**
-     * Récupération des donneés de l'article selectionné par le client
-     * et création de l'objet du produit:
-     */
-
+    // Envoie l'id du produit à la fonction sendCaddy:
     sendCaddy(result2._id)
 
 }
-

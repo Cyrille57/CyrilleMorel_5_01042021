@@ -594,7 +594,6 @@ hr {
 .box-form{
     width: 100%;
     height: 800px;
-    margin-bottom: 20%;
 
     margin-top: 5%;
 
@@ -614,21 +613,18 @@ hr {
     // Pour écrans entre 768px et 1024px (Tablette mode paysage)
         @media only screen and (min-width: 768px) and (max-width: 1024px) {
             height: 650px;
-            margin-bottom: 10%;
             display: flex;
             justify-content: center;
         }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
         @media only screen and (min-width: 1024px) and (max-width: 1600px) {
             height: 650px;
-            margin-bottom: 10%;
             display: flex;
             justify-content: center;
         }
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
         @media only screen and (min-width: 1600px) {
             height: 650px;
-            margin-bottom: 10%;
             display: flex;
             justify-content: center;
         }

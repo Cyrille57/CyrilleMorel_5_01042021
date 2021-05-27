@@ -3,16 +3,14 @@
 ///////////////////////////////////////////////////////////
 
 
-/**
- * Fonction qui crées les balises
- */
+//////////////////////////////////////////////////////////
+// Fonction qui crées les balises:
 function createTag(tag) {
   return document.createElement(tag)
 }
 
-/**
- * Fonction qui ajoute des classes aux balises:
- */
+//////////////////////////////////////////////////////////
+// Fonction qui ajoute des classes aux balises:
 function addClass(name, classe) {
   return name.classList.add(classe)
 }
