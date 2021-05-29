@@ -120,6 +120,7 @@ function displayAll(result) {
     // Header:
     let divCarteHeader = createTag('div')
     addClass(divCarteHeader, 'card-header')
+    addClass(divCarteHeader, 'card-header--modify')
 
     // Body:
     let divCarteBody = createTag('div')
@@ -163,7 +164,7 @@ function displayAll(result) {
     // Réponse: retourne les id des produits
 
     // Ajoute l'id dans l'url des produit sélectionnés:
-    button.setAttribute("href", "product.html?id=" + id)
+    button.setAttribute("href", "../../frontend/product.html?id=" + id)
 
     //////////////////////////////////////////////////////////
     // Affiche les données:

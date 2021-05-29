@@ -60,7 +60,7 @@ async function connect2(urlProduct) {
             //console.log(displayProduct)
         } else if (this.readyState == XMLHttpRequest.DONE && this.status == 500) {
             console.log("Erreur 500");
-            window.location.href = '../page404.html'
+            window.location.href = 'page404.html'
         }
     };
 

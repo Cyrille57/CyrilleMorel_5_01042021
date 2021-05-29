@@ -11,6 +11,11 @@ console.log(productLocalStorage)
 //console.log(productLocalStorage.length)
 //réponse : 3
 
+// Si tableau est vide:
+if (productLocalStorage.length == 0){
+    // Va à la page:
+    window.location = "panierEmpty.html"
+}
 
 // 2) ////////////////////////////////////////////////////////
 // Récupére l'id un à un et les affecte a l'url: /////////////
@@ -81,6 +86,7 @@ let main = document.querySelector('main')
 // I) A) Création des éléments de base enfants: ***********
 // Panier:
 let divSectionPanier = createTag('section')
+addClass(divSectionPanier, 'sectionPanier')
 
 // Card:
 let divCard = createTag('div')
@@ -162,7 +168,7 @@ addClass(boxDeleteAll, 'boxDeleteAll')
 // lien delete all:
 let linkDeleteAll = createTag('a')
 linkDeleteAll.setAttribute("id", "linkDeleteAll")
-linkDeleteAll.setAttribute("href", "#")
+linkDeleteAll.setAttribute("href", "panierEmpty.html")
 linkDeleteAll.innerHTML = "&#8634;"
 
 // Texte supprimer tout le panier:
@@ -655,6 +661,12 @@ function deleteProductLocalStorage(idDelete) {
     arrayproductLocalStorage.splice(removeIndex, 1)
     console.log(arrayproductLocalStorage)
     // Réponse: retourne le tableau avec les objet restant
+
+    // Si tableau est vide:
+    if (arrayproductLocalStorage.length == 0){
+        // Va à la page:
+        window.location = "panierEmpty.html"
+    }
 
     //Renvoie le tableau dans LocalStorage:
     localStorage.setItem("product", JSON.stringify(arrayproductLocalStorage))

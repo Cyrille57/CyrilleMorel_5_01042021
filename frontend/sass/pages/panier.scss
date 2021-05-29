@@ -17,26 +17,81 @@ header {
 
 //////////////////////////////////////////
 //////////// Section Panier //////////////
+.sectionPanier{
+    margin-top: 20%;
 
+// Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+        margin-top: 15%;
+    }
+// Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        margin-top: 10%;
+    }
+// Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        margin-top: 10%;
+    }
+// Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+        margin-top: 10%;
+    }
+}
 .divCardPanier{
 
+    width: 90% !important;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+            width: 80% !important;
+        }
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            width: 90% !important;
+        }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
         @media only screen and (min-width: 1024px) and (max-width: 1600px) {
-            width: 80% !important;
+            width: 70% !important;
         }
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
         @media only screen and (min-width: 1600px) {
-            width: 60% !important;
+            width: 55% !important;
         }
 }
 
 .divRow{
     width: 100%;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+
+        }
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            height: 380px !important;
+        }
+    // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+        @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+
+        }
+    // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+        @media only screen and (min-width: 1600px) {
+
+        }
 }
 
 #parentCardProduct{
     width: 100%;
+    border-radius: 20px 20px;
 
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+
+        }
+    // Pour écrans entre 768px et 1024px (Tablette mode paysage)
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            height: 320px !important;
+        }
     // Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
         @media only screen and (min-width: 1024px) and (max-width: 1600px) {
             width: 30%;
@@ -507,11 +562,13 @@ a {
 
     // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
         @media only screen and (min-width: 480px) and (max-width: 768px) {
+            height: 400px;
             border-top-right-radius: unset;
             border-bottom-left-radius: 1rem;
         }
     // Pour écrans entre 768px et 1024px (Tablette mode paysage)
         @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            height: 380px;
             border-top-right-radius: 1rem;
             border-bottom-left-radius: 0rem;
             display: flex;
@@ -562,6 +619,8 @@ hr {
     width: 100%;
     margin-top: 5%;
     text-align: center;
+    font-weight: bold;
+    font-size: 1em;
 }
 
 .divBoxTotal{
@@ -577,10 +636,29 @@ hr {
 #total{
     width: 100%;
     display: flex;
-    justify-content: flex-start
+    justify-content: flex-start;
+    font-weight: bold;
+    font-size: 1em;
 }
 .btnConfirmation{
     margin-top: 10%;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+        margin-top: 5%;
+    }
+// Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    }
+// Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+
+    }
+// Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+
+    }
 }
 
 
@@ -786,12 +864,46 @@ form {
     animation-duration: 1000ms;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+        width: 100%;
+    }
+// Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        width: 93%;
+    }
+// Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        width: 70%;
+    }
+// Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+
+    }
 }
 
 .boxSubmit{
     width: 100%;
     display: flex;
     justify-content: center;
+
+    // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+
+    }
+// Pour écrans entre 768px et 1024px (Tablette mode paysage)
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        margin-top: 5%;
+    }
+// Pour écrans entre 1024px et 1600px (Ecrans pc de petite et moyenne taille)
+    @media only screen and (min-width: 1024px) and (max-width: 1600px) {
+        margin-top: 5%;
+    }
+// Pour écrans de 1600px et plus (Ecrans pc de grande taille)
+    @media only screen and (min-width: 1600px) {
+        margin-top: 5%;
+    }
 }
 #buttonSubmit {
     width: 80% !important;
@@ -813,7 +925,6 @@ form {
     // Pour écrans de 1600px et plus (Ecrans pc de grande taille)
         @media only screen and (min-width: 1600px) {
             width: 40% !important;
-            margin-top: 5%;
         }
 }
 

@@ -18,7 +18,7 @@ h2 {
 //////////////////////////////////////////
 ///////////// Container 2 ////////////////
 .containerCardProduct{
-    width: 90%;
+    width: 100%;
 
     // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
         @media only screen and (min-width: 480px) and (max-width: 768px) {
@@ -39,7 +39,7 @@ h2 {
 }
 
 .box__product {
-    width: auto;
+    width: 100%;
     height: 800px;
     margin-top: 5%;
     margin-bottom: 20%;
@@ -55,7 +55,7 @@ h2 {
 
     // Pour ecrans entre 480px et 768px (Portable mode paysage et tablette)
         @media only screen and (min-width: 480px) and (max-width: 768px) {
-            height: 600px;
+            height: 600px !important;
             width: 100%;
             margin: 0% !important;
             margin-bottom: 20% !important;
