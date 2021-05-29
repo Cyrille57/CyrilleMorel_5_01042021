@@ -66,7 +66,7 @@
   </li>
 </ul>
 
-<h2> Rendue </h2>
+<h2> Rendue: </h2>
 
 <h3> Prérequis: </h3>
 
