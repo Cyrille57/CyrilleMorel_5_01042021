@@ -12,7 +12,7 @@ console.log(productLocalStorage)
 //réponse : 3
 
 // Si tableau est vide:
-if (productLocalStorage.length == 0){
+if (productLocalStorage === null || productLocalStorage.length === 0){
     // Va à la page:
     window.location = "panierEmpty.html"
 }
