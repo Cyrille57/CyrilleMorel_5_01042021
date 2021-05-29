@@ -68,8 +68,22 @@
 
 <h2> Rendue </h2>
 
+<h3> Prérequis: </h3>
+
 <p>
+  Node et npm doivent être installés localement sur votre machine.
+</p>
+
+<h3>Installation:</h3>
+
+<p>
+  Clonez le dépôt, exécutez <code>npm install</code>.</br>
+  
+  Pour le sass, dans le terminal, accéder au dossier frontend avec <code>cd frontend</code> puis <code>npm run sass</code>.</br>
+  
+  Pour lancer le serveur accéder au répertoire backend avec <code>cd backend</code> puis <code>node server</code>.
   
 </p>
+
 <h2> Contact </h2>
 <p> Vous pouvez me contacter sur <a href="https://discord.gg/At8T9HD">discord</a>, <a href="https://twitter.com/Cyril2101">twitter</a> et <a href="mailto:cyril_dev@outlook.fr">mail</a>
