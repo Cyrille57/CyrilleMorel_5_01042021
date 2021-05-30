@@ -66,7 +66,7 @@
   </li>
 </ul>
 
-<h2> Rendue </h2>
+<h2> Rendu: </h2>
 
 <h3> Prérequis: </h3>
 
@@ -77,12 +77,10 @@
 <h3>Installation:</h3>
 
 <p>
-  Clonez le dépôt, exécutez <code>npm install</code>.</br>
-  
-  Pour le sass, dans le terminal, accéder au dossier frontend avec <code>cd frontend</code> puis <code>npm run sass</code>.</br>
-  
-  Pour lancer le serveur accéder au répertoire backend avec <code>cd backend</code> puis <code>node server</code>.
-  
+  Clonez le dépôt, puis installer le serveur.</br>
+  Pour ce faire, dans le terminal, aller dans le dossier backend <code>cd backend</code>,</br>
+  Ensuite exécutez la commande npm instal <code>npm install</code>,</br>
+  puis pour lancer le serveur, <code>node server</code>.
 </p>
 
 <h2> Contact </h2>
