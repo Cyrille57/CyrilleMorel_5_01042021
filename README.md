@@ -77,10 +77,10 @@
 <h3>Installation:</h3>
 
 <p>
-  Clonez le dépôt, exécutez <code>npm install</code> dans <code> cd backend</code>.</br>
-  
-  Pour lancer le serveur accéder au répertoire backend avec <code>cd backend</code> puis <code>node server</code>.
-  
+  Clonez le dépôt, puis installer le serveur.</br>
+  Pour ce faire, dans le terminal, aller dans le dossier backend <code>cd backend</code>,</br>
+  Ensuite exécutez la commande npm instal <code>npm install</code>,</br>
+  puis pour lancer le serveur, <code>node server</code>.
 </p>
 
 <h2> Contact </h2>
