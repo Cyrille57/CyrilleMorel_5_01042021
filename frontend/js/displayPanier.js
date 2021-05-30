@@ -152,7 +152,7 @@ addClass(boxBackShop, 'boxBackShop')
 // Lien fléché Back to shop:
 let linkBackShop = createTag('a')
 addClass(linkBackShop, 'linkBackShop')
-linkBackShop.setAttribute("href", "../../frontend/index.html")
+linkBackShop.setAttribute("href", "index.html")
 linkBackShop.innerHTML = "&leftarrow;"
 
 // Texte Back to shop:
@@ -952,7 +952,7 @@ addClass(buttonConfirmationPanier, 'justify-content-center')
 
 buttonConfirmationPanier.setAttribute("id", "buttonConfirmationPanier")
 buttonConfirmationPanier.setAttribute("type", "submit")
-buttonConfirmationPanier.setAttribute("href", "../../frontend/confirmation.html")
+buttonConfirmationPanier.setAttribute("href", "confirmation.html")
 buttonConfirmationPanier.setAttribute("border", "transparent")
 buttonConfirmationPanier.innerHTML = "Valider la commande"
 
