@@ -164,7 +164,7 @@ function displayAll(result) {
     // Réponse: retourne les id des produits
 
     // Ajoute l'id dans l'url des produit sélectionnés:
-    button.setAttribute("href", "../../frontend/product.html?id=" + id)
+    button.setAttribute("href", "product.html?id=" + id)
 
     //////////////////////////////////////////////////////////
     // Affiche les données:
