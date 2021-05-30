@@ -66,20 +66,18 @@
   </li>
 </ul>
 
-<h2> Rendue: </h2>
+<h2> Rendu: </h2>
 
 <h3> Prérequis: </h3>
 
 <p>
-  Node et npm doivent être installés localement sur votre machine.
+  Node et npm (<code>npm install</code> en fessant <code> cd backend</code>) doivent être installés localement sur votre machine.
 </p>
 
 <h3>Installation:</h3>
 
 <p>
   Clonez le dépôt, exécutez <code>npm install</code>.</br>
-  
-  Pour le sass, dans le terminal, accéder au dossier frontend avec <code>cd frontend</code> puis <code>npm run sass</code>.</br>
   
   Pour lancer le serveur accéder au répertoire backend avec <code>cd backend</code> puis <code>node server</code>.
   
