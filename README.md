@@ -71,13 +71,13 @@
 <h3> Prérequis: </h3>
 
 <p>
-  Node et npm (<code>npm install</code> en fessant <code> cd backend</code>) doivent être installés localement sur votre machine.
+  Node et npm doivent être installés localement sur votre machine.
 </p>
 
 <h3>Installation:</h3>
 
 <p>
-  Clonez le dépôt, exécutez <code>npm install</code>.</br>
+  Clonez le dépôt, exécutez <code>npm install</code> dans <code> cd backend</code>.</br>
   
   Pour lancer le serveur accéder au répertoire backend avec <code>cd backend</code> puis <code>node server</code>.
   
