@@ -237,7 +237,7 @@ function displayProduct(result2) {
     // Ajoute la reponse trouvé dans l'objet:
     divDescriptionTitle.innerHTML = result2.name
     divDescriptionProduct.innerHTML = result2.description
-    divDescriptionPrice.innerHTML = result2.price + "€"
+    divDescriptionPrice.innerHTML = result2.price /100 + "€"
 
     // Ajout des élément de base:
     main.appendChild(divContainer)

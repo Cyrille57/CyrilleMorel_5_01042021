@@ -58,6 +58,7 @@ async function takeProductInPanier(urlProduct, productLocalStorage) {
             displayPanier(productData, productLocalStorage)
             countArticle(productLocalStorage.quantityProduct)
             totalPrice(productLocalStorage.quantityProduct * productData.price)
+            //totalPrice(productData.price)
             sendOrder(productData)
 
         } else if (this.readyState == XMLHttpRequest.DONE && this.status == 500) {
@@ -462,10 +463,10 @@ function displayPanier(productData, productLocalStorage) {
     //console.log(productData.name)
 
     //Récupére le prix du produit:
-    divPrice.innerHTML = productData.price * productLocalStorage.quantityProduct + " €"
+    divPrice.innerHTML = productData.price * productLocalStorage.quantityProduct /100 + " €"
     //console.log(divPrice.innerHTML)
 
-    divUnitPrice.innerHTML = productData.price + " €"
+    divUnitPrice.innerHTML = productData.price /100 + " €"
 
     ///////////////////////////////////////////////////////////
     // Ecoute les +,- et * : //////////////////////////////////
@@ -480,6 +481,7 @@ function displayPanier(productData, productLocalStorage) {
 
         // Sélectionne la div du prix unitaire, récupére le price du productData et le multiplie par -1
         let getPriceUnit = document.getElementById('unitPrice_' + idProduct).getAttribute("price") * -1
+        console.log(getPriceUnit)
 
         // Envoie de parametre a la fonction ModifyQuantity:
         getValue = modifyQuantity(idProduct, -1)
@@ -488,7 +490,7 @@ function displayPanier(productData, productLocalStorage) {
         // Envoie des paramétre aux fonctions suivantes:
         modifyPrice(idProduct, getValue)
         countArticle(-1)
-        totalPrice(getPriceUnit)
+        totalPrice(getPriceUnit, idProduct)
         modifyQuantityProductInLocalStorage(idProduct, getValue)
 
     })
@@ -525,12 +527,12 @@ function displayPanier(productData, productLocalStorage) {
         let idDelete = event.target.getAttribute('data-iddelete')
         //console.log(idDelete)
 
-        // Recharge la page:
-        location.reload()
-
         // Envoie des paramétre aux fonctions suivantes:
         deleteRowProduct(idDelete)
         deleteProductLocalStorage(idDelete)
+
+        // Recharge la page:
+        location.reload()
     })
 
     // Ecoute le boutton vider le panier:
@@ -540,8 +542,6 @@ function displayPanier(productData, productLocalStorage) {
         event.preventDefault
         // Vide le localStorage avec .removeItem:
         localStorage.removeItem('product')
-        // Recharge la page:
-        document.location.reload()
     })
 }
 
@@ -554,7 +554,7 @@ function modifyQuantity(idProduct, nQuantity) {
 
     // Récupére la valeur de l'element et l'initialise:
     let getValue = parseInt(document.getElementById('amount_' + idProduct).value)
-    //console.log(getValue)
+    console.log(getValue)
     // Réponse : 1
 
     getValue = getValue + nQuantity
@@ -566,9 +566,13 @@ function modifyQuantity(idProduct, nQuantity) {
         document.getElementById('amount_' + idProduct).value = getValue
         //console.log(getValue)
         return getValue
+    }else if (getValue =>1){
+        getValue = getValue * 0
+        console.log(getValue)
     }
     //console.log(getValue)
     return 0
+
 }
 
 ///////////////////////////////////////////////////////////
@@ -582,17 +586,26 @@ function modifyPrice(idProduct, getValue) {
 
     // Récupére la valeur de l'element et l'initialise:
     let getPrice = parseInt(document.getElementById('unitPrice_' + idProduct).innerHTML)
-    //console.log(getPrice)
+    console.log(getPrice)
 
     //getPrice = getValue * getPrice
     let newPrice = getValue * getPrice
-    //console.log(newPrice)
+    console.log(newPrice)
+
+
+    if (0 >= newPrice){
+
+    }
+
+
 
     // Récupére la valeur de l'element et l'initialise:
     let getNewPrice = document.getElementById('price_' + idProduct)
-    //console.log(getNewPrice)
-    getNewPrice.innerHTML = newPrice + " €"
-    //console.log(getNewPrice)
+    console.log(getNewPrice)
+    getNewPrice.innerHTML = parseInt(newPrice) + " €"
+
+    console.log(newPrice)
+
 
 }
 
@@ -602,11 +615,11 @@ function deleteRowProduct(idDelete) {
 
     ///////////////////////////////////////////////////////////
     // Supprime la ligne coté client: /////////////////////////
-    console.log(idDelete)
+    //console.log(idDelete)
     // Réponse : l'id du delete sélectionner
 
     let getDelete = document.getElementById('row_' + idDelete)
-    console.log(getDelete)
+    //console.log(getDelete)
     // Réponse: selectionne le row en fonction de l'id
 
     // supprime la ligne:
@@ -619,23 +632,39 @@ function modifyQuantityProductInLocalStorage(idProduct, getValue) {
 
     // Récupére le local storage:
     let arrayNbProductLocalStorage = JSON.parse(localStorage.getItem("product"))
-    console.log(arrayNbProductLocalStorage)
+    //console.log(arrayNbProductLocalStorage)
 
     // Récupère l'index de l'objet avec l'id (idProduct)
     var getIndex = arrayNbProductLocalStorage.map(function (item) {
         return item.idProduct;
     }).indexOf(idProduct);
-    console.log(getIndex)
+    //console.log(getIndex)
     // Réponse: retourne l'index de l'objet du tableau
 
     // Récupére la valeur de quantityProduct
     let getQuantityProduct = arrayNbProductLocalStorage[getIndex].quantityProduct
-    console.log(getQuantityProduct) // 1
+    //console.log(getQuantityProduct) // 1
 
     // Modifie la valeur de quantityProduct:
     let newQuantityProduct = arrayNbProductLocalStorage[getIndex].quantityProduct = (getValue)
-    console.log(arrayNbProductLocalStorage)
-    console.log(newQuantityProduct)
+    //console.log(arrayNbProductLocalStorage)
+    //console.log(newQuantityProduct)
+
+    // Créer un tableau
+    let tabValue = []
+    for (let i = 0; i < arrayNbProductLocalStorage.length; i++){
+        // Récupére toutes les quantité et les pousse ds le tableau:
+        tabValue.push(arrayNbProductLocalStorage[i].quantityProduct)
+        //console.log(tabValue)
+    }
+
+    // Totale des valeurs du tableau avec la méthode reduce():
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    let totalQuantity = tabValue.reduce(reducer)
+
+    // selectionne l'élément ou inscrire le résultat:
+    let numberRecap = document.getElementById("numberArticle")
+    numberRecap.innerHTML = totalQuantity
 
     //Renvoie le tableau dans LocalStorage:
     localStorage.setItem("product", JSON.stringify(arrayNbProductLocalStorage))
@@ -648,18 +677,18 @@ function deleteProductLocalStorage(idDelete) {
 
     // Récupére le local storage:
     let arrayproductLocalStorage = JSON.parse(localStorage.getItem("product"))
-    console.log(arrayproductLocalStorage)
+    //console.log(arrayproductLocalStorage)
 
     // Récupère l'index de l'objet avec l'id (idDelete)
     var removeIndex = arrayproductLocalStorage.map(function (item) {
         return item.idProduct;
     }).indexOf(idDelete);
-    console.log(removeIndex)
+    //console.log(removeIndex)
     // Réponse: retourne l'index de l'objet du tableau
 
     // Supprime l'objet grace à son index:
     arrayproductLocalStorage.splice(removeIndex, 1)
-    console.log(arrayproductLocalStorage)
+    //console.log(arrayproductLocalStorage)
     // Réponse: retourne le tableau avec les objet restant
 
     // Si tableau est vide:
@@ -679,24 +708,32 @@ function countArticle(quantityProduct) {
 
     // selectionne l'élément ou inscrire le résultat:
     let numberRecap = document.getElementById("numberArticle")
-    //console.log(numberRecap)
+    console.log(numberRecap)
 
     let displayCount = numberRecap.innerHTML = parseInt(numberRecap.innerHTML) + quantityProduct
     console.log(displayCount)
 
     sendOrder(displayCount)
+
 }
 
 ///////////////////////////////////////////////////////////
 // Affiche le Prix total: /////////////////////////////////
 
-// Crér un tableau:
-let pushPriceTab = []
+function totalPrice(price, idProduct) {
 
-function totalPrice(price) {
-    // Selectionne le prix:
+    console.log(productLocalStorage)
+    // Selectionne où l'on vas afficher le prix total:
     let someTotale = document.getElementById('total')
-    someTotale.innerHTML = parseInt(someTotale.innerHTML) + price + " €"
+    console.log(someTotale)
+
+    console.log(price)
+
+    let displayTotalPrice = someTotale.innerHTML = parseInt(someTotale.innerHTML) + price / 100 + " €"
+    //console.log(parseInt(displayTotalPrice))
+    //console.log(parseInt(someTotale.innerHTML))
+
+
 
 }
 
@@ -1080,7 +1117,7 @@ function sendOrder(displayCount) {
 
             "products": id
         }
-        //console.log(orderTeddies)
+        console.log(orderTeddies)
 
         // Vérification saisie utilisateur
 
@@ -1236,20 +1273,16 @@ function sendOrder(displayCount) {
                     // Crée la clef, convertit l'objet en chaine de caractére et l'envoie dans localStorage:
                     localStorage.setItem("getOrder", JSON.stringify(getOrder))
 
-                    // Va à la page:
-                    window.location = "confirmation.html"
-
-                    // remove le product
-                    localStorage.removeItem("product")
                     // remove orderTeddies
                     localStorage.removeItem("orderTeddies")
+
+                    // Va à la page:-
+                    window.location = "confirmation.html"
                 })
 
         } else {
 
         }
-
-
     })
 }
 sendOrder()

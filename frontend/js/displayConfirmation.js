@@ -8,6 +8,10 @@
 let getOrderInLocalStorage = JSON.parse(localStorage.getItem("getOrder"))
 console.log(getOrderInLocalStorage)
 
+// Récupére les produit dans localStorager: //////////////////
+let productLocalStorage = JSON.parse(localStorage.getItem("product"))
+console.log(productLocalStorage)
+
 ///////////////////////////////////////////////////////////
 //Selectionne l'id parent:
 let main = document.querySelector('main')
@@ -74,20 +78,39 @@ priceTotal.innerHTML = ' Pour un montant total de:'
 
 // Affiche le prix total:
 let displayPriceTotal = createTag('p')
+displayPriceTotal.setAttribute("id", "final-price")
 addClass(displayPriceTotal, 'font-weight-bold')
 
 // Création d'un tableau pour y mettre les tarifs:
 let tabPrice = []
 for (let i = 0; i < getOrderInLocalStorage.products.length; i++) {
-    // Pousse les tarifs dans le tableau:
-    tabPrice.push(getOrderInLocalStorage.products[i].price)
+    console.log(getOrderInLocalStorage)
 
-    // Totale des valeur du tableau avec la méthode reduce():
+    // Récupére un à un les prix des produits du LS:
+    let price =  getOrderInLocalStorage.products[i].price
+    console.log(price)
+
+    // Récupére le nombre de produit du LS:
+    let quantity = productLocalStorage[i].quantityProduct
+    console.log(quantity)
+
+    // Multiplie le tout:
+    let cumulPrice = price * quantity
+    console.log(cumulPrice)
+
+    // Pousse les tarifs dans le tableau:
+    tabPrice.push(cumulPrice)
+    console.log(tabPrice)
+
+    // Totale des valeurs du tableau avec la méthode reduce():
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
     let totalPriceOrder = tabPrice.reduce(reducer)
 
     // Affiche le montant total:
-    displayPriceTotal.innerHTML = totalPriceOrder + ' €'
+    displayPriceTotal.innerHTML = totalPriceOrder / 100 + ' €'
+
+    // remove le product
+    localStorage.removeItem("product")
 }
 
 ///////////////////////////////////////////////////////////

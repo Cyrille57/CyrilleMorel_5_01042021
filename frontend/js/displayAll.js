@@ -171,7 +171,7 @@ function displayAll(result) {
     divCardPicture.innerHTML = result[i].imageurl
     divCarteTitle.innerHTML = result[i].name
     pCarteDescription.innerHTML = result[i].description
-    price.innerHTML = result[i].price + "€"
+    price.innerHTML = result[i].price /100 + "€"
 
     //////////////////////////////////////////////////////////
     // Ajout des élément dans le index.html:

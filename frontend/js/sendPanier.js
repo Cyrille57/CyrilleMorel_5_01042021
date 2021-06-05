@@ -83,6 +83,7 @@ function verificationIdProductLocalStorage(idProduct, productLocalStorage, getVa
 
         // Pousse l'objet produit dans le tableau:
         productLocalStorage.push(objectProduct)
+        console.log(objectProduct)
     }
     return productLocalStorage
 }
