@@ -109,7 +109,7 @@ for (let i = 0; i < getOrderInLocalStorage.products.length; i++) {
     totalamount = cumulPrice + totalamount
 
     // remove le product
-    //localStorage.removeItem("product")
+    localStorage.removeItem("product")
 }
 displayPriceTotal.innerHTML = totalamount / 100 + '€';
 
