@@ -30,7 +30,7 @@ function getId(productLocalStorage) {
         const url = "http://localhost:3000/api/teddies";
         const urlProduct = url + "/" + idProductPanier;
         //console.log(urlProduct)
-        // Réeponse http://localhost:3000/api/teddies/5beaaa8f1c9d440000a57d95
+        // Réponse http://localhost:3000/api/teddies/5beaaa8f1c9d440000a57d95
 
         takeProductInPanier(urlProduct, productLocalStorage[i])
     }
@@ -58,7 +58,6 @@ async function takeProductInPanier(urlProduct, productLocalStorage) {
             displayPanier(productData, productLocalStorage)
             countArticle(productLocalStorage.quantityProduct)
             totalPrice(productLocalStorage.quantityProduct * productData.price)
-            //totalPrice(productData.price)
             sendOrder(productData)
 
         } else if (this.readyState == XMLHttpRequest.DONE && this.status == 500) {
@@ -487,11 +486,25 @@ function displayPanier(productData, productLocalStorage) {
         getValue = modifyQuantity(idProduct, -1)
         //console.log(getValue)
 
+
+        if (getvalue=0){
+            deleteProductLocalStorage(idProduct)
+            location.reload()
+        } else {
+            // Envoie des paramétre aux fonctions suivantes:
+            modifyQuantityProductInLocalStorage(idProduct, getValue)
+            modifyQuantity()
+            //modifyPrice(idProduct, getValue)
+            countArticle(-1)
+            //totalPrice(getPriceUnit, idProduct) 
+        }
+
         // Envoie des paramétre aux fonctions suivantes:
-        modifyPrice(idProduct, getValue)
+        //modifyPrice(idProduct, getValue)
         countArticle(-1)
-        totalPrice(getPriceUnit, idProduct)
-        modifyQuantityProductInLocalStorage(idProduct, getValue)
+        totalPrice(getPriceUnit, idProduct) 
+        //modifyQuantityProductInLocalStorage(idProduct, getValue)
+
 
     })
 
@@ -514,7 +527,7 @@ function displayPanier(productData, productLocalStorage) {
         // Envoie des paramétre aux fonctions suivantes:
         modifyPrice(idProduct, getValue)
         countArticle(1)
-        totalPrice(getPriceUnit)
+        totalPrice(getPriceUnit , idProduct) 
         modifyQuantityProductInLocalStorage(idProduct, getValue)
 
     })
@@ -566,10 +579,8 @@ function modifyQuantity(idProduct, nQuantity) {
         document.getElementById('amount_' + idProduct).value = getValue
         //console.log(getValue)
         return getValue
-    }else if (getValue =>1){
-        getValue = getValue * 0
-        console.log(getValue)
     }
+
     //console.log(getValue)
     return 0
 
@@ -579,6 +590,7 @@ function modifyQuantity(idProduct, nQuantity) {
 // Modifie le prix en fonction de la quantité: ////////////
 function modifyPrice(idProduct, getValue) {
 
+
     console.log(idProduct)
     // Réponse: id
     console.log(getValue)
@@ -587,22 +599,20 @@ function modifyPrice(idProduct, getValue) {
     // Récupére la valeur de l'element et l'initialise:
     let getPrice = parseInt(document.getElementById('unitPrice_' + idProduct).innerHTML)
     console.log(getPrice)
+    // resort le prix unitaire de - ou + seléctionner
 
     //getPrice = getValue * getPrice
     let newPrice = getValue * getPrice
     console.log(newPrice)
 
-
-    if (0 >= newPrice){
-
-    }
-
-
+    // resort le montant de la quantité fois le prix unitaires
 
     // Récupére la valeur de l'element et l'initialise:
     let getNewPrice = document.getElementById('price_' + idProduct)
     console.log(getNewPrice)
+    // resort le sous total de la ligne du + ou -
     getNewPrice.innerHTML = parseInt(newPrice) + " €"
+
 
     console.log(newPrice)
 
@@ -714,7 +724,7 @@ function countArticle(quantityProduct) {
     console.log(displayCount)
 
     sendOrder(displayCount)
-
+    //totalPrice(displayCount)
 }
 
 ///////////////////////////////////////////////////////////
@@ -722,20 +732,15 @@ function countArticle(quantityProduct) {
 
 function totalPrice(price, idProduct) {
 
-    console.log(productLocalStorage)
     // Selectionne où l'on vas afficher le prix total:
     let someTotale = document.getElementById('total')
-    console.log(someTotale)
-
-    console.log(price)
+    //console.log(someTotale)
 
     let displayTotalPrice = someTotale.innerHTML = parseInt(someTotale.innerHTML) + price / 100 + " €"
-    //console.log(parseInt(displayTotalPrice))
-    //console.log(parseInt(someTotale.innerHTML))
-
-
 
 }
+
+
 
 // 5) ////////////////////////////////////////////////////////
 // Affichage Formulaire //////////////////////////////////////
