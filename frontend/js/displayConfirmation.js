@@ -106,7 +106,7 @@ for (let i = 0; i < getOrderInLocalStorage.products.length; i++) {
     let totalPriceOrder = tabPrice.reduce(reducer)
 
     // Affiche le montant total:
-    totalamount = cumulPrice
+    totalamount = cumulPrice + totalamount
 
     // remove le product
     //localStorage.removeItem("product")
