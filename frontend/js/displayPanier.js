@@ -486,21 +486,19 @@ function displayPanier(productData, productLocalStorage) {
         getValue = modifyQuantity(idProduct, -1)
         //console.log(getValue)
 
-
         if (getValue == 0){
             deleteProductLocalStorage(idProduct)
             location.reload()
         } else {
             // Envoie des paramétre aux fonctions suivantes:
             modifyQuantityProductInLocalStorage(idProduct, getValue)
-
         }
 
         // Envoie des paramétre aux fonctions suivantes:
         modifyPrice(idProduct, getValue)
         countArticle(-1)
         totalPrice(getPriceUnit, idProduct) 
-        //modifyQuantityProductInLocalStorage(idProduct, getValue)
+        modifyQuantityProductInLocalStorage(idProduct, getValue)
 
 
     })
