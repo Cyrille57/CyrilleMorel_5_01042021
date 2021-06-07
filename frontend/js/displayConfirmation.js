@@ -74,6 +74,7 @@ displayNumberOrder.innerHTML = getOrderInLocalStorage.orderId
 
 // Texte somme total:
 let priceTotal = createTag('p')
+//displayPriceTotal.setAttribute("id", "final-price")
 priceTotal.innerHTML = ' Pour un montant total de:'
 
 // Affiche le prix total:
