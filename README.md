@@ -1,4 +1,4 @@
-# Projet OpenClassrooms / P5 Orinoco
+# 📢 Projet OpenClassrooms / P5 Orinoco
 
 <p> 
   Dans le cadre de ma formation développeur web avec OpenClassrooms, différents projets sont à realiser.
@@ -19,7 +19,7 @@
        src="https://github.com/Cyrille57/CyrilleMorel_5_01042021/blob/master/frontend/screenshot/orinoco.png">
 </p>
 
-<h2> Général:</h2>
+<h2>🔎 Général:</h2>
 
 <p>
   L’application web sera composée de 4 pages:
@@ -45,11 +45,11 @@
   </li>
 </ul>
 
-<h2> Technologies demandées: </h2>
+<h2>⚡ Technologies demandées: </h2>
 
 <p> Uniquement en Html,Css et javascript (sans framework).</p>
 
-<h2> Les consignes / fonctionnalités: </h2>
+<h2>📝 Les consignes / fonctionnalités: </h2>
 
 <ul>
   <li>
@@ -66,15 +66,15 @@
   </li>
 </ul>
 
-<h2> Rendu: </h2>
+<h2>👀 Rendu: </h2>
 
-<h3> Prérequis: </h3>
+<h3>🔨 Prérequis: </h3>
 
 <p>
   Node et npm doivent être installés localement sur votre machine.
 </p>
 
-<h3>Installation:</h3>
+<h3>🔧 Installation:</h3>
 
 <p>
   Clonez le dépôt, puis installer le serveur.</br>
@@ -83,5 +83,30 @@
   puis pour lancer le serveur, <code>node server</code>.
 </p>
 
-<h2> Contact </h2>
-<p> Vous pouvez me contacter sur <a href="https://discord.gg/At8T9HD">discord</a>, <a href="https://twitter.com/Cyril2101">twitter</a> et <a href="mailto:cyril_dev@outlook.fr">mail</a>
+<h2>🙋‍♂️ À propos: </h2>
+
+<ul>
+  <li>
+    <a href="https://www.linkedin.com/in/cyrille-morel/">Linkedin</a>
+  </li>
+</ul> 
+
+
+<h2>📫 Contact: </h2>
+
+<ul>
+  <li>
+    <a href="mailto:cyril_dev@outlook.fr">Mail</a>
+  </li>
+</ul>
+
+ <h2>🌐 Réseaux sociaux:</h2>
+ 
+<ul>
+  <li>
+    <a href="https://discord.gg/At8T9HD">Discord</a>
+  </li>
+  <li>
+    <a href="https://twitter.com/Cyril2101">Twitter</a>
+  </li>
+</ul>
