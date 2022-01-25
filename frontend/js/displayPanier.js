@@ -363,6 +363,7 @@ function displayPanier(productData, productLocalStorage) {
 
     // Input Amount:
     let inputAmount = createTag('input')
+    //let inputAmount = createTag('p')
     addClass(inputAmount, 'inputAmount')
     addClass(inputAmount, 'text-center')
     inputAmount.setAttribute("id", "amount_" + productData._id)
@@ -562,6 +563,7 @@ function modifyQuantity(idProduct, nQuantity) {
 
     // Récupére la valeur de l'element et l'initialise:
     let getValue = parseInt(document.getElementById('amount_' + idProduct).value)
+    //let getValue = parseInt(document.getElementById('amount_' + idProduct).innerHTML)
     console.log(getValue)
     // Réponse : 1
 
