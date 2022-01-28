@@ -701,7 +701,7 @@ function deleteProductLocalStorage(idDelete) {
     // Si tableau est vide:
     if (arrayproductLocalStorage.length == 0){
         // Va à la page:
-        window.location = "panierEmpty.html"
+        window.location = "../panierEmpty.html"
     }
 
     //Renvoie le tableau dans LocalStorage:
