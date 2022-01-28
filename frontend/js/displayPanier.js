@@ -27,9 +27,9 @@ function getId(productLocalStorage) {
         // Réponse: 1 seul id par produit
 
         // Concaténe l'url de l'API avec l'id récupéré: ///////////////
-        const url = "http://localhost:3000/api/teddies";
+        const url = "https://projet-oc-orinoco.herokuapp.com/api/teddies";
         const urlProduct = url + "/" + idProductPanier;
-        //console.log(urlProduct)
+        console.log(urlProduct)
         // Réponse http://localhost:3000/api/teddies/5beaaa8f1c9d440000a57d95
 
         takeProductInPanier(urlProduct, productLocalStorage[i])
@@ -41,7 +41,7 @@ getId(productLocalStorage)
 // 3) /////////////////////////////////////////////////////////
 // XMLHttpRequest se connecte avec l'url et récupére les données:/
 async function takeProductInPanier(urlProduct, productLocalStorage) {
-    //console.log(urlProduct)
+    console.log(urlProduct)
     // Réponse http://localhost:3000/api/teddies/5beaaa8f1c9d440000a57d95
 
     // Creer un nouvel objet Ajax de type XMLHttpRequest:
@@ -1251,7 +1251,7 @@ function sendOrder(displayCount) {
 
             // Envoie sur le serveur avec la méthode fetch
             // Variable contenant l'adresse du serveur
-            const urlPost = 'http://localhost:3000/api/teddies/order'
+            const urlPost = 'https://projet-oc-orinoco.herokuapp.com/api/teddies/order' 
 
             // Objet contenant les options en second paramétre de fetch:
             var myInit = {

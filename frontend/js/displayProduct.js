@@ -29,7 +29,7 @@ function assemblyId(getId) {
     //réponse : 5beaaa8f1c9d440000a57d95
 
     // Déclaration des variables:
-    const url = "http://localhost:3000/api/teddies";
+    const url = "https://projet-oc-orinoco.herokuapp.com/api/teddies";
     const urlProduct = url + "/" + getId;
     //console.log(urlProduct)
     // reponse http://localhost:3000/api/teddies/5beaaa8f1c9d440000a57d95
