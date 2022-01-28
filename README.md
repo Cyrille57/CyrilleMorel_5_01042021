@@ -83,6 +83,10 @@
   puis pour lancer le serveur, <code>node server</code>.
 </p>
 
+<h3>▶️ Ou pour voir directement le résultat: </h3>
+
+<p> C'est par <a href="https://bit.ly/projet-orinoco">ici 😉 </a></p>
+
 <h2>🙋‍♂️ À propos: </h2>
 
 <ul>
