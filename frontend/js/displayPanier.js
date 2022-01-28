@@ -14,8 +14,7 @@ console.log(productLocalStorage)
 // Si tableau est vide:
 if (productLocalStorage === null || productLocalStorage.length === 0){
     // Va à la page:
-    window.location = "panierEmpty.html"
-}
+    window.location = "../panierEmpty.html"
 
 // 2) ////////////////////////////////////////////////////////
 // Récupére l'id un à un et les affecte a l'url: /////////////
