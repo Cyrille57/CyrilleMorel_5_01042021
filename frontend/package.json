@@ -10,7 +10,7 @@
   "scripts": {
     "start": "npm run",
     "sass": "sass --watch ./sass/main.scss:./public/css/style.css",
-    "prefix": "postcss ./public/css/style.css --use autoprefixer -d ./public/css/",
+    "prefix": "postcss ./public/css/style.css --use autoprefixer -d ./public/css/prefixed/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
