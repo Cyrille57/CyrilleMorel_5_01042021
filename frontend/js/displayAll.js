@@ -7,7 +7,7 @@
 // XMLHttpRequest se connecte et récupére les données:
 
 // Déclaration de la variable contenant l'url:
-const url = "https://projet-oc-orinoco.herokuapp.com/api/teddies";
+const url = "apiUrl/api/teddies";
 
 // Création de la fonction qui se connecte:
 async function connect(url) {
