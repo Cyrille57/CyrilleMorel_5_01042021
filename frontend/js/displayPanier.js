@@ -14,7 +14,8 @@ console.log(productLocalStorage)
 // Si tableau est vide:
 if (productLocalStorage === null || productLocalStorage.length === 0){
     // Va à la page:
-    window.location = "../panierEmpty.html"
+    window.location = "panierEmpty.html"
+}
 
 // 2) ////////////////////////////////////////////////////////
 // Récupére l'id un à un et les affecte a l'url: /////////////
@@ -700,7 +701,7 @@ function deleteProductLocalStorage(idDelete) {
     // Si tableau est vide:
     if (arrayproductLocalStorage.length == 0){
         // Va à la page:
-        window.location = "../panierEmpty.html"
+        window.location = "panierEmpty.html"
     }
 
     //Renvoie le tableau dans LocalStorage:
@@ -1250,7 +1251,7 @@ function sendOrder(displayCount) {
 
             // Envoie sur le serveur avec la méthode fetch
             // Variable contenant l'adresse du serveur
-            const urlPost = 'https://projet-oc-orinoco.herokuapp.com/api/teddies/order' 
+            const urlPost = 'https://projet-oc-orinoco.herokuapp.com/api/teddies/order'
 
             // Objet contenant les options en second paramétre de fetch:
             var myInit = {
